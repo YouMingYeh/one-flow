@@ -17,10 +17,6 @@
         "NEXT_APP_URL",
         "SUPABASE_URL",
         "SUPABASE_ANON_KEY",
-        "PAYPAL_CLIENT_ID",
-        "PAYPAL_CLIENT_SECRET",
-        "NEXT_PUBLIC_PAYPAL_CLIENT_ID",
-        "PAYPAL_SECRET"
       ],
       "outputs": [".next/**"]
     }

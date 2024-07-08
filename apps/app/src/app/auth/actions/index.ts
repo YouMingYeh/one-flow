@@ -32,14 +32,6 @@ export async function AdaptUser(user: SupabaseUser | null) {
 
   await supabase.from('user').insert(newUser);
 
-  const newBilling: Billing = {
-    user_id: newUser.id,
-    plan: 'free',
-    credit: 100,
-  };
-
-  await supabase.from('billing').insert([newBilling]);
-
   return newUser;
 }
 
