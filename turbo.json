@@ -1,0 +1,28 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "lint": {},
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "app#build": {
+      "dependsOn": ["^build"],
+      "env": [
+        "NEXT_APP_URL",
+        "SUPABASE_URL",
+        "SUPABASE_ANON_KEY",
+        "PAYPAL_CLIENT_ID",
+        "PAYPAL_CLIENT_SECRET",
+        "NEXT_PUBLIC_PAYPAL_CLIENT_ID",
+        "PAYPAL_SECRET"
+      ],
+      "outputs": [".next/**"]
+    }
+  }
+}

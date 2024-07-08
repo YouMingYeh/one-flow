@@ -1,0 +1,9 @@
+dspy-ai
+python-dotenv
+flask
+flask_cors
+pydantic
+extracty
+youtube-transcript-api
+openai
+pydub
