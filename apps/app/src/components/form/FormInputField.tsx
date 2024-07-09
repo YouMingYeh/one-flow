@@ -40,7 +40,7 @@ export function FormInputField<T extends FieldValues>({
         {...rest}
         {...register(path, {
           setValueAs: value => {
-            if (!value) return null;
+            if (value === null) return null;
             if (
               type === 'number' ||
               rest.inputMode === 'numeric' ||
@@ -55,7 +55,7 @@ export function FormInputField<T extends FieldValues>({
           onBlur,
         })}
         autoCapitalize='none'
-        autoCorrect='off'
+        autoCorrect='on'
         disabled={disabled}
       >
         {children}

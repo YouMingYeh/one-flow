@@ -5,6 +5,7 @@ import createSupabaseServerClient from '../../../../../../../lib/supabase/server
 import { updateActivity } from '../../../../../../modules/recent/actions';
 import EditFlowButton from '../../../../../../modules/workspace/components/EditFlowButton';
 import DeleteFlowButton from '../../../../../../modules/workspace/components/DeleteFlowButton';
+import Flow from './Flow';
 
 const RecentPage = async ({ params }: { params: { flowId: string } }) => {
   const supabase = await createSupabaseServerClient();
@@ -50,7 +51,9 @@ const RecentPage = async ({ params }: { params: { flowId: string } }) => {
         </div>
       </div>
       <Separator className='my-6' />
-      <div className='relative h-full w-full'>Not implemented yet</div>
+      <div className='relative h-[80vh] w-full'>
+        <Flow />
+      </div>
     </div>
   );
 };

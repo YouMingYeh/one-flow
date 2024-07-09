@@ -26,7 +26,7 @@ export const DashboardSideBar: FC<DashboardSideBarProps> = ({ children }) => {
       className='max-w-screen h-full w-screen rounded-none border'
       direction='horizontal'
     >
-      <ResizablePanel defaultSize={30} id='onborda-step2' maxSize={40}>
+      <ResizablePanel defaultSize={20} id='onborda-step2' maxSize={40}>
         <div className='flex w-full flex-col gap-2 p-4 font-thin'>
           {barItemsUp.map(item => (
             <div
@@ -60,7 +60,7 @@ export const DashboardSideBar: FC<DashboardSideBarProps> = ({ children }) => {
         </div>
       </ResizablePanel>
       <ResizableHandle withHandle />
-      <ResizablePanel defaultSize={90} id='onborda-step3'>
+      <ResizablePanel defaultSize={80} id='onborda-step3'>
         <div className='h-[90vh] overflow-y-scroll p-4'>
           <AppBreadcrumb items={breadcrumbs} />
           {children}

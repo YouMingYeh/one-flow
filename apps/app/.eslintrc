@@ -1,0 +1,13 @@
+{
+  "root": true,
+  "extends": ["custom/next"],
+  "overrides": [
+    {
+      "files": ["./src/**/*"],
+      "extends": ["custom/next"],
+      "rules": {
+        "eslint-comments/require-description": "off"
+      }
+    }
+  ]
+}

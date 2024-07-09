@@ -2,7 +2,7 @@ import type { DefaultValues, FieldValues } from 'react-hook-form';
 import { FormProvider, useForm } from 'react-hook-form';
 import type { Schema } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import type { ReactNode } from 'react';
+import { useEffect, type ReactNode } from 'react';
 
 export type AppFormProps<T extends FieldValues> = {
   onSubmit: (input: T) => void;
@@ -29,6 +29,11 @@ export function AppForm<T extends FieldValues>({
   });
 
   const handleSubmit = methods.handleSubmit(onSubmit);
+  const reset = methods.reset;
+
+  useEffect(() => {
+    reset(defaultValues);
+  }, [defaultValues, reset]);
 
   return (
     <FormProvider {...methods}>
