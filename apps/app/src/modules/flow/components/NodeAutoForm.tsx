@@ -9,6 +9,7 @@ import {
 } from 'ui';
 import { AppForm } from '../../../components/form/AppForm';
 import { FormInputField } from '../../../components/form/FormInputField';
+import { FormSelect } from '../../../components/form/FormSelect';
 
 interface NodeAutoFormProps {
   nodeConfig: Node;
@@ -30,6 +31,10 @@ const NodeAutoForm = ({ nodeConfig, setNodeConfig }: NodeAutoFormProps) => {
       },
       data: {
         label: values.data.label,
+        task: values.data.task,
+        config: {
+          ...values.data.config,
+        },
       },
       style: {
         width: values.measured.width,
@@ -58,11 +63,62 @@ const NodeAutoForm = ({ nodeConfig, setNodeConfig }: NodeAutoFormProps) => {
     >
       <Accordion className='w-full' collapsible type='single'>
         <AccordionItem value='item-1'>
-          <AccordionTrigger>Functionality</AccordionTrigger>
-          <AccordionContent className='flex flex-col gap-2 p-1' />
+          <AccordionTrigger className='font-bold'>
+            Task Definition
+          </AccordionTrigger>
+          <AccordionContent className='flex flex-col gap-2 p-1'>
+            <FormSelect<NodeFormValues>
+              label='Task'
+              onChange={value => {
+                handleUpdate({
+                  ...nodeConfig,
+                  data: {
+                    ...nodeConfig.data,
+                    task: value,
+                  },
+                });
+              }}
+              options={[
+                { label: 'Start Flow', value: 'start-flow' },
+                { label: 'Check Settings', value: 'check-settings' },
+                { label: 'Check E-Commerce Data', value: 'check-ecom' },
+              ]}
+              path='data.task'
+              placeholder='Task'
+            />
+            <h3 className='mt-1 font-semibold'>Configuration</h3>
+            {typeof nodeConfig.data === 'object' &&
+            typeof nodeConfig.data.config === 'object'
+              ? Object.entries(
+                  nodeConfig.data.config as Record<string, unknown>,
+                ).map(([key, _]) => {
+                  return (
+                    <FormInputField<NodeFormValues>
+                      key={key}
+                      label={key}
+                      onChange={e => {
+                        handleUpdate({
+                          ...nodeConfig,
+                          data: {
+                            ...nodeConfig.data,
+                            config: {
+                              ...(nodeConfig.data.config as object),
+                              [key]: e.target.value,
+                            },
+                          },
+                        });
+                      }}
+                      path={`data.config.${key}`}
+                      placeholder={key}
+                      type='text'
+                    />
+                  );
+                })
+              : null}
+          </AccordionContent>
         </AccordionItem>
         <AccordionItem value='item-2'>
-          <AccordionTrigger>Appearance</AccordionTrigger>
+          <AccordionTrigger className='font-bold'>Appearance</AccordionTrigger>
           <AccordionContent className='flex flex-col gap-2 p-1'>
             <FormInputField<NodeFormValues>
               label='ID'
@@ -176,7 +232,9 @@ const NodeAutoForm = ({ nodeConfig, setNodeConfig }: NodeAutoFormProps) => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value='item-3'>
-          <AccordionTrigger>Interact (BETA)</AccordionTrigger>
+          <AccordionTrigger className='font-bold'>
+            Interact (BETA)
+          </AccordionTrigger>
           <AccordionContent className='flex flex-col gap-2 p-1'>
             <FormInputField<NodeFormValues>
               label='Draggable'
@@ -233,6 +291,8 @@ const nodeFormSchema = z.object({
   type: z.enum(['default', 'input', 'output', 'group', 'annotation']),
   data: z.object({
     label: z.string(),
+    task: z.string(),
+    config: z.record(z.string(), z.unknown()),
   }),
   measured: z.object({
     width: z.number(),

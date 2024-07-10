@@ -15,7 +15,7 @@ export const AppNavBar: FC<AppNavbarProps> = () => {
   return (
     <nav className='py-2 text-black dark:text-white md:py-3'>
       <div className='mx-auto flex max-w-6xl items-center justify-between'>
-        <a href='/app'>
+        <a className='z-50' href='/app'>
           <Icons.logo />
         </a>
 
@@ -26,7 +26,7 @@ export const AppNavBar: FC<AppNavbarProps> = () => {
         </div> */}
         <AppNavigationMenu />
 
-        <div className='flex items-center space-x-6'>
+        <div className='flex items-center space-x-6 z-50'>
           <Command />
           <ProfileIconMenu />
         </div>

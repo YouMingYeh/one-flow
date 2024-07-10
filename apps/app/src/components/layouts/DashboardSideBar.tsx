@@ -96,6 +96,15 @@ const barItemsUp = [
     ),
   },
   {
+    title: 'flow',
+    content: (
+      <Link className='flex h-6 w-full items-center gap-1 p-2' href='/app/flow'>
+        <Icons.logo />
+        Flow
+      </Link>
+    ),
+  },
+  {
     title: 'cookbooks',
     content: (
       <Link

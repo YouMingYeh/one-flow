@@ -21,11 +21,22 @@ type Flow = {
   workspace_id: string;
   name: string;
   description: string;
-  pipeline: string;
+  content: string;
   icon: string;
   type: string;
   template: string;
 };
+
+type SavedFlow = {
+  id: string;
+  created_at?: Date;
+  user_id: string;
+  version: number;
+  name: string;
+  content: string;
+  public: boolean;
+};
+
 
 type Activity = {
   created_at?: Date;

@@ -1,13 +1,21 @@
 import { Separator, nameToIcon } from 'ui';
-import { redirect } from 'next/navigation';
-import Link from 'next/link';
+import { notFound, redirect } from 'next/navigation';
+import type { Edge, Node } from '@xyflow/react';
 import createSupabaseServerClient from '../../../../../../../lib/supabase/server';
 import { updateActivity } from '../../../../../../modules/recent/actions';
 import EditFlowButton from '../../../../../../modules/workspace/components/EditFlowButton';
 import DeleteFlowButton from '../../../../../../modules/workspace/components/DeleteFlowButton';
 import Flow from './Flow';
+import FlowPreview from './FlowPreview';
 
-const RecentPage = async ({ params }: { params: { flowId: string } }) => {
+const RecentPage = async ({
+  params,
+  searchParams,
+}: {
+  params: { workspaceId: string; flowId: string };
+  searchParams: { preview: string };
+}) => {
+  const isPreview = searchParams.preview === 'true';
   const supabase = await createSupabaseServerClient();
   const { data: sessionData } = await supabase.auth.getSession();
 
@@ -18,17 +26,10 @@ const RecentPage = async ({ params }: { params: { flowId: string } }) => {
 
   const { data } = await supabase.from('flow').select().eq('id', params.flowId);
 
-  if (!data) {
-    return (
-      <div>
-        <h1>Flow not found or still loading...</h1>
-        <Link className='underline' href='/app/workspace'>
-          Go back to workspaces
-        </Link>
-      </div>
-    );
+  const flow = data?.[0] as Flow | null;
+  if (!flow) {
+    notFound();
   }
-  const flow = data[0] as Flow;
 
   await updateActivity({
     user_id: user.id,
@@ -36,6 +37,13 @@ const RecentPage = async ({ params }: { params: { flowId: string } }) => {
     workspace_id: flow.workspace_id,
     created_at: new Date(),
   });
+
+  const initialContent = JSON.parse(flow.content) as {
+    nodes: Node[];
+    edges: Edge[];
+  } | null;
+  const initialNodes = initialContent ? initialContent.nodes : [];
+  const initialEdges = initialContent ? initialContent.edges : [];
 
   return (
     <div className='space-y-6 px-10'>
@@ -52,7 +60,14 @@ const RecentPage = async ({ params }: { params: { flowId: string } }) => {
       </div>
       <Separator className='my-6' />
       <div className='relative h-[80vh] w-full'>
-        <Flow />
+        {isPreview ? (
+          <FlowPreview
+            flowId={params.flowId}
+            workspaceId={params.workspaceId}
+          />
+        ) : (
+          <Flow flowId={params.flowId} initialEdges={initialEdges} initialNodes={initialNodes} workspaceId={params.workspaceId} />
+        )}
       </div>
     </div>
   );

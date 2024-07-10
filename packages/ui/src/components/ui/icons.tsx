@@ -47,6 +47,12 @@ import {
   Workflow,
   Computer,
   AlertCircle,
+  Trash2,
+  Upload,
+  Save,
+  Share2,
+  ScanEye,
+  Check
 } from 'lucide-react';
 import { forwardRef } from 'react';
 
@@ -138,6 +144,12 @@ export const Icons = {
   Computer,
   AlertCircle,
   VerticalEllipsis,
+  Trash2,
+  Upload,
+  Save,
+  Share2,
+  ScanEye,
+  Check
 };
 
 export function nameToIcon(name: string) {

@@ -30,5 +30,6 @@ export * from './src/components/ui/popover';
 export * from './src/components/ui/tabs';
 export * from './src/components/ui/parallax-scroll';
 export * from './src/components/ui/alert';
+export * from './src/components/ui/checkbox';
 
 export { cn } from './src/lib/utils';
