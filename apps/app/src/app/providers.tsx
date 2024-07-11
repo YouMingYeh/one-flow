@@ -78,8 +78,8 @@ const steps: Step[] = [
         now.
       </>
     ),
-    selector: '#onborda-step4',
-    side: 'bottom',
+    selector: '#onborda-step3',
+    side: 'left',
     showControls: true,
     pointerPadding: 20,
     pointerRadius: 24,
