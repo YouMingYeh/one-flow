@@ -60,10 +60,10 @@ export function FormSelect<T extends FieldValues>({
               variant='outline'
             >
               <span className='truncate'>
-              {field.value
-                ? options.find(option => option.value === field.value)?.label
-                : placeholder}
-                </span>
+                {field.value
+                  ? options.find(option => option.value === field.value)?.label
+                  : placeholder}
+              </span>
             </Button>
           </FormControl>
         </PopoverTrigger>

@@ -26,7 +26,7 @@ export const AppNavBar: FC<AppNavbarProps> = () => {
         </div> */}
         <AppNavigationMenu />
 
-        <div className='flex items-center space-x-6 z-50'>
+        <div className='z-50 flex items-center space-x-6'>
           <Command />
           <ProfileIconMenu />
         </div>

@@ -34,7 +34,10 @@ import { useParams, useRouter } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 import createSupabaseClientClient from '../../../../../../../lib/supabase/client';
-import { edges, nodes } from '../../../../../../modules/flow/components/initial-elements';
+import {
+  edges,
+  nodes,
+} from '../../../../../../modules/flow/components/initial-elements';
 
 type Type = {
   label: string;
@@ -168,7 +171,7 @@ const RecentPage = () => {
       type: selectedType.value,
       template: selectedTemplate,
       // TODO: Fix this, it should be the actual flow content imported by the user
-      content: JSON.stringify({nodes, edges})
+      content: JSON.stringify({ nodes, edges }),
     } as Flow;
 
     await supabase.from('flow').insert([flow]);

@@ -29,7 +29,7 @@ export const nodes: Node[] = [
       config: {
         authentication: 'on',
         authorization: 'on',
-      }
+      },
     },
     position: { x: 150, y: 0 },
   },
@@ -41,7 +41,7 @@ export const nodes: Node[] = [
       task: 'check-settings',
       config: {
         include: 'all',
-      }
+      },
     },
     position: { x: 0, y: 100 },
   },
@@ -256,5 +256,5 @@ export const edges = [
     type: 'custom',
     className: 'edge',
     markerEnd: { type: MarkerType.Arrow },
-  }
+  },
 ];

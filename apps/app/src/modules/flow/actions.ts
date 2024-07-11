@@ -17,3 +17,9 @@ export async function getSavedFlows(): Promise<SavedFlow[]> {
     .eq('user_id', user.id);
   return data as SavedFlow[];
 }
+
+export async function getSavedFlowById(flowId: string): Promise<SavedFlow> {
+  const supabase = await createSupabaseServerClient();
+  const { data } = await supabase.from('saved_flow').select().eq('id', flowId);
+  return data?.[0] as SavedFlow;
+}

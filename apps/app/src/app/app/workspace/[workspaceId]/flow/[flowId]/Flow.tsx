@@ -74,7 +74,12 @@ interface FlowProps {
   initialEdges: Edge[];
 }
 
-const Flow = ({ workspaceId, flowId, initialNodes, initialEdges }: FlowProps) => {
+const Flow = ({
+  workspaceId,
+  flowId,
+  initialNodes,
+  initialEdges,
+}: FlowProps) => {
   const store = useStoreApi();
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);

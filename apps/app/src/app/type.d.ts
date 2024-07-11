@@ -37,7 +37,6 @@ type SavedFlow = {
   public: boolean;
 };
 
-
 type Activity = {
   created_at?: Date;
   user_id: string;

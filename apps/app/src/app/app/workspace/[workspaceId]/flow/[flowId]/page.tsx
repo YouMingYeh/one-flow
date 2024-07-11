@@ -66,7 +66,12 @@ const RecentPage = async ({
             workspaceId={params.workspaceId}
           />
         ) : (
-          <Flow flowId={params.flowId} initialEdges={initialEdges} initialNodes={initialNodes} workspaceId={params.workspaceId} />
+          <Flow
+            flowId={params.flowId}
+            initialEdges={initialEdges}
+            initialNodes={initialNodes}
+            workspaceId={params.workspaceId}
+          />
         )}
       </div>
     </div>

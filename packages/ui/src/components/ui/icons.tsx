@@ -52,7 +52,7 @@ import {
   Save,
   Share2,
   ScanEye,
-  Check
+  Check,
 } from 'lucide-react';
 import { forwardRef } from 'react';
 
@@ -149,7 +149,7 @@ export const Icons = {
   Save,
   Share2,
   ScanEye,
-  Check
+  Check,
 };
 
 export function nameToIcon(name: string) {
