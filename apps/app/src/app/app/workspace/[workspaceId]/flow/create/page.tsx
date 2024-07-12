@@ -34,92 +34,8 @@ import { useParams, useRouter } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 import createSupabaseClientClient from '../../../../../../../lib/supabase/client';
-import {
-  edges,
-  nodes,
-} from '../../../../../../modules/flow/components/initial-elements';
-
-type Type = {
-  label: string;
-  value: string;
-};
-
-const types = [
-  { label: 'Payment Processing', value: 'payment-processing' },
-  { label: 'Cash Flow Management', value: 'cash-flow-management' },
-  { label: 'Transaction Processing', value: 'transaction-processing' },
-  { label: 'Financial Reporting', value: 'financial-reporting' },
-  { label: 'Budgeting', value: 'budgeting' },
-  { label: 'Tax Management', value: 'tax-management' },
-  { label: 'Bank Reconciliation', value: 'bank-reconciliation' },
-  { label: 'Expense Tracking', value: 'expense-tracking' },
-  { label: 'Invoice Management', value: 'invoice-management' },
-  { label: 'Financial Analysis', value: 'financial-analysis' },
-  { label: 'Risk Management', value: 'risk-management' },
-  { label: 'Regulatory Compliance', value: 'regulatory-compliance' },
-  { label: 'Investment Management', value: 'investment-management' },
-  { label: 'Estate Planning', value: 'estate-planning' },
-  { label: 'Personal Finance', value: 'personal-finance' },
-  { label: 'Other', value: 'other' },
-];
-
-type Template = {
-  value: string;
-  title: string;
-  description: string;
-};
-
-const templates: Record<string, Template[]> = {
-  'payment-processing': [
-    {
-      value: 'default',
-      title: 'Default',
-      description: 'Default template for payment processing flows.',
-    },
-    {
-      value: 'recurring-payments',
-      title: 'Recurring Payments',
-      description: 'Template for recurring payments.',
-    },
-  ],
-  'cash-flow-management': [
-    {
-      value: 'default',
-      title: 'Default',
-      description: 'Default template for cash flow management flows.',
-    },
-    {
-      value: 'cash-flow-projection',
-      title: 'Cash Flow Projection',
-      description: 'Template for cash flow projection.',
-    },
-  ],
-  'transaction-processing': [
-    {
-      value: 'default',
-      title: 'Default',
-      description: 'Default template for transaction processing flows.',
-    },
-    {
-      value: 'transaction-categorization',
-      title: 'Transaction Categorization',
-      description: 'Template for transaction categorization.',
-    },
-  ],
-  'financial-reporting': [
-    {
-      value: 'default',
-      title: 'Default',
-      description: 'Default template for financial reporting flows.',
-    },
-    {
-      value: 'monthly-financial-report',
-      title: 'Monthly Financial Report',
-      description: 'Template for monthly financial report.',
-    },
-  ],
-  // ...
-};
+import type { Type} from './mapping';
+import { templates, types } from './mapping';
 
 const RecentPage = () => {
   const { toast } = useToast();
@@ -162,6 +78,15 @@ const RecentPage = () => {
       setLoading(false);
       return;
     }
+    const nodes =
+      templates[selectedType.value].find(
+        template => template.value === selectedTemplate,
+      )?.nodes || [];
+
+    const edges =
+      templates[selectedType.value].find(
+        template => template.value === selectedTemplate,
+      )?.edges || [];
 
     const flow = {
       id: uuidv4(),
@@ -183,29 +108,7 @@ const RecentPage = () => {
     );
   };
 
-  const getTemplateOptions = () => {
-    if (!selectedType) {
-      return [
-        {
-          value: 'default',
-          title: 'Default',
-          description: 'Default template for flows.',
-        },
-      ] as Template[];
-    }
-    if (selectedType.value in templates) {
-      return templates[selectedType.value];
-    }
-    return [
-      {
-        value: 'default',
-        title: 'Default',
-        description: 'Default template for flows.',
-      },
-    ] as Template[];
-  };
-
-  const templateOptions = getTemplateOptions();
+  const templateOptions = templates[selectedType?.value || 'default'] || [];
 
   return (
     <div className='space-y-6 px-10'>
@@ -347,13 +250,13 @@ const RecentPage = () => {
                   }}
                 >
                   <CardHeader>
-                    <CardTitle>{template.title}</CardTitle>
+                    <CardTitle>{template.name}</CardTitle>
                     <CardDescription>{template.description}</CardDescription>
                   </CardHeader>
                   <CardContent>{/* <p>...</p> */}</CardContent>
                   <CardFooter>
                     <Button className='absolute bottom-4 right-4' size='sm'>
-                      Check it out <Icons.ChevronRight />
+                      Learn more <Icons.ChevronRight />
                     </Button>
                   </CardFooter>
                 </Card>

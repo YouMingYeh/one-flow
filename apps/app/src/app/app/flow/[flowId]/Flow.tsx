@@ -48,6 +48,7 @@ const Flow = ({ initialEdges, initialNodes }: FlowProps) => {
   const [activatedNode, setActivatedNode] = useState<Node | null>(null);
   const [edges, setEdges] = useEdgesState(initialEdges);
   const [running, setRunning] = useState(false);
+  const [store, setStore] = useState({});
   const { toast } = useToast();
 
   const nextNodes = activatedNode
@@ -71,6 +72,7 @@ const Flow = ({ initialEdges, initialNodes }: FlowProps) => {
         }),
       );
     } else {
+      setStore({});
       toast({
         title: 'Flow stopped',
         description: 'The flow was stopped. You can now start it again.',
@@ -212,24 +214,27 @@ const Flow = ({ initialEdges, initialNodes }: FlowProps) => {
           running ? '' : 'hidden',
         )}
         content={
-          <Select
-            onValueChange={value => {
-              const node = nodes.find(nd => nd.id === value);
-              setActivatedNode(node ? node : null);
-            }}
-            value={activatedNode?.id}
-          >
-            <SelectTrigger className='w-[180px]'>
-              <SelectValue placeholder='Select starting node' />
-            </SelectTrigger>
-            <SelectContent>
-              {nodes.map(node => (
-                <SelectItem key={node.id} value={node.id}>
-                  {node.data.label as string}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <>
+            <Select
+              onValueChange={value => {
+                const node = nodes.find(nd => nd.id === value);
+                setActivatedNode(node ? node : null);
+              }}
+              value={activatedNode?.id}
+            >
+              <SelectTrigger className='w-[180px]'>
+                <SelectValue placeholder='Select starting node' />
+              </SelectTrigger>
+              <SelectContent>
+                {nodes.map(node => (
+                  <SelectItem key={node.id} value={node.id}>
+                    {node.data.label as string}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <div>{JSON.stringify(activatedNode?.data)}</div>
+          </>
         }
         description={(activatedNode?.data.record as string) || 'None'}
         footer={
@@ -257,6 +262,28 @@ const Flow = ({ initialEdges, initialNodes }: FlowProps) => {
           </div>
         }
         title={(activatedNode?.data.label as string) || 'Please Select a Node'}
+      />
+      <DraggableCard
+        className={cn(
+          'z-100 fixed left-20 top-20 flex h-96 w-96 flex-col hover:cursor-grab',
+          running ? '' : 'hidden',
+        )}
+        content={<>{JSON.stringify(store)}</>}
+        description='Here shows the store of running flow, the data like Preferences/Settings will be updated in real-time.'
+        footer={
+          <div className='flex w-full flex-col gap-2'>
+            <Button
+              className='w-full'
+              onClick={() => {
+                setRunning(false);
+              }}
+              variant='secondary'
+            >
+              Stop Flow
+            </Button>
+          </div>
+        }
+        title='Data Store'
       />
     </div>
   );

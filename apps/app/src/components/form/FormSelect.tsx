@@ -14,6 +14,7 @@ import {
 import type { FieldValues, Path, PathValue } from 'react-hook-form';
 import { useFormContext, useController } from 'react-hook-form';
 import { FormControl } from 'ui/src/components/ui/form';
+import { useState } from 'react';
 import { FormFieldset } from './FormFieldset';
 
 export type FormSelectProps<T> = Omit<
@@ -44,9 +45,11 @@ export function FormSelect<T extends FieldValues>({
     control,
   });
 
+  const [open, setOpen] = useState(false);
+
   return (
     <FormFieldset<T> label={label} path={path}>
-      <Popover>
+      <Popover onOpenChange={(v)=>{ setOpen(v); }} open={open}>
         <PopoverTrigger asChild>
           <FormControl>
             <Button
@@ -69,7 +72,7 @@ export function FormSelect<T extends FieldValues>({
         </PopoverTrigger>
         <PopoverContent className='w-[200px] p-0'>
           <Command>
-            <CommandInput className='h-9' placeholder='Search framework...' />
+            <CommandInput className='h-9' placeholder='Search task...' />
             <CommandEmpty>No option found.</CommandEmpty>
             <CommandGroup>
               {options.map(option => (
@@ -78,6 +81,7 @@ export function FormSelect<T extends FieldValues>({
                   onSelect={() => {
                     onChange && onChange(option.value);
                     setValue(path, option.value);
+                    setOpen(false);
                   }}
                   value={option.value}
                 >

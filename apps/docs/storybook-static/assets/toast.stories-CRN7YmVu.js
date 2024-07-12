@@ -5,14 +5,14 @@ import{a as u,j as o}from"./jsx-runtime-DYLoWL1Z.js";import{T as I,a as O,b as y
   const {
     toast
   } = useToast();
-  return <div>
+  return <div>\r
       <Button onClick={() => toast({
       title,
       variant
-    })} variant='outline'>
-        Show toast
-      </Button>
-      <Toaster />
+    })} variant='outline'>\r
+        Show toast\r
+      </Button>\r
+      <Toaster />\r
     </div>;
 }`,...(h=(g=n.parameters)==null?void 0:g.docs)==null?void 0:h.source}}};var A,v,E;i.parameters={...i.parameters,docs:{...(A=i.parameters)==null?void 0:A.docs,source:{originalSource:`{
   name: 'SingleToast',

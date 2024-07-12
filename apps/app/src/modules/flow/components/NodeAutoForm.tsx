@@ -21,37 +21,12 @@ import { useState } from 'react';
 import { AppForm } from '../../../components/form/AppForm';
 import { FormInputField } from '../../../components/form/FormInputField';
 import { FormSelect } from '../../../components/form/FormSelect';
+import { taskOptions } from './mapping';
 
 interface NodeAutoFormProps {
   nodeConfig: Node;
   setNodeConfig: (nodeConfig: Node) => void;
 }
-
-const taskOptions = [
-  {
-    label: 'Start Flow',
-    value: 'start-flow',
-    configOptions: [
-      {
-        label: 'Show Flow ID',
-        value: 'show-flow-id',
-        placeholder: 'on/off',
-      },
-      {
-        label: 'Authentication Method',
-        value: 'authentication-method',
-        placeholder: 'token/basic/none',
-      },
-      {
-        label: 'Authorization',
-        value: 'authorization',
-        placeholder: 'on/off',
-      },
-    ],
-  },
-  { label: 'Check Settings', value: 'check-settings', configOptions: [] },
-  { label: 'Check E-Commerce Data', value: 'check-ecom', configOptions: [] },
-];
 
 const NodeAutoForm = ({ nodeConfig, setNodeConfig }: NodeAutoFormProps) => {
   const [open, setOpen] = useState(false);
@@ -85,7 +60,11 @@ const NodeAutoForm = ({ nodeConfig, setNodeConfig }: NodeAutoFormProps) => {
     });
   };
 
-  const task = taskOptions.find(t => t.value === nodeConfig.data.task);
+  const task = taskOptions.find(
+    t =>
+      (nodeConfig.data as { task: string } | undefined)?.task &&
+      t.value === nodeConfig.data.task,
+  );
 
   const configOptions = task?.configOptions ? task.configOptions : [];
 
@@ -150,7 +129,9 @@ const NodeAutoForm = ({ nodeConfig, setNodeConfig }: NodeAutoFormProps) => {
                           });
                         }}
                         path={`data.config.${key}`}
-                        placeholder={key}
+                        placeholder={
+                          configOptions.find(c => c.value === key)?.placeholder
+                        }
                         type='text'
                       />
                       <Button
@@ -204,7 +185,7 @@ const NodeAutoForm = ({ nodeConfig, setNodeConfig }: NodeAutoFormProps) => {
                               });
                               setOpen(false);
                             }}
-                            value={status.placeholder}
+                            value={status.value}
                           >
                             {status.label}
                           </CommandItem>
