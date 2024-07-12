@@ -554,7 +554,7 @@ const Flow = ({
             </DialogFooter>
           </DialogContent>
         </Dialog>
-        <div ref={messagesEndRef} />
+        <div className='-translate-y-10' ref={messagesEndRef} />
 
         <Sidebar
           nodeConfig={nodeConfig}

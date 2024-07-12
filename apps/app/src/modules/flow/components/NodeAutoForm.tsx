@@ -6,7 +6,18 @@ import {
   AccordionItem,
   AccordionTrigger,
   Button,
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  Icons,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
 } from 'ui';
+import { useState } from 'react';
 import { AppForm } from '../../../components/form/AppForm';
 import { FormInputField } from '../../../components/form/FormInputField';
 import { FormSelect } from '../../../components/form/FormSelect';
@@ -16,7 +27,34 @@ interface NodeAutoFormProps {
   setNodeConfig: (nodeConfig: Node) => void;
 }
 
+const taskOptions = [
+  {
+    label: 'Start Flow',
+    value: 'start-flow',
+    configOptions: [
+      {
+        label: 'Show Flow ID',
+        value: 'show-flow-id',
+        placeholder: 'on/off',
+      },
+      {
+        label: 'Authentication Method',
+        value: 'authentication-method',
+        placeholder: 'token/basic/none',
+      },
+      {
+        label: 'Authorization',
+        value: 'authorization',
+        placeholder: 'on/off',
+      },
+    ],
+  },
+  { label: 'Check Settings', value: 'check-settings', configOptions: [] },
+  { label: 'Check E-Commerce Data', value: 'check-ecom', configOptions: [] },
+];
+
 const NodeAutoForm = ({ nodeConfig, setNodeConfig }: NodeAutoFormProps) => {
+  const [open, setOpen] = useState(false);
   const handleUpdate = (values: Node) => {
     setNodeConfig(values);
   };
@@ -46,6 +84,10 @@ const NodeAutoForm = ({ nodeConfig, setNodeConfig }: NodeAutoFormProps) => {
       zIndex: values.zIndex,
     });
   };
+
+  const task = taskOptions.find(t => t.value === nodeConfig.data.task);
+
+  const configOptions = task?.configOptions ? task.configOptions : [];
 
   return (
     <AppForm
@@ -78,11 +120,7 @@ const NodeAutoForm = ({ nodeConfig, setNodeConfig }: NodeAutoFormProps) => {
                   },
                 });
               }}
-              options={[
-                { label: 'Start Flow', value: 'start-flow' },
-                { label: 'Check Settings', value: 'check-settings' },
-                { label: 'Check E-Commerce Data', value: 'check-ecom' },
-              ]}
+              options={taskOptions}
               path='data.task'
               placeholder='Task'
             />
@@ -93,28 +131,90 @@ const NodeAutoForm = ({ nodeConfig, setNodeConfig }: NodeAutoFormProps) => {
                   nodeConfig.data.config as Record<string, unknown>,
                 ).map(([key, _]) => {
                   return (
-                    <FormInputField<NodeFormValues>
+                    <div
+                      className='flex items-end justify-center gap-1'
                       key={key}
-                      label={key}
-                      onChange={e => {
-                        handleUpdate({
-                          ...nodeConfig,
-                          data: {
-                            ...nodeConfig.data,
-                            config: {
-                              ...(nodeConfig.data.config as object),
-                              [key]: e.target.value,
+                    >
+                      <FormInputField<NodeFormValues>
+                        label={key}
+                        onChange={e => {
+                          handleUpdate({
+                            ...nodeConfig,
+                            data: {
+                              ...nodeConfig.data,
+                              config: {
+                                ...(nodeConfig.data.config as object),
+                                [key]: e.target.value,
+                              },
                             },
-                          },
-                        });
-                      }}
-                      path={`data.config.${key}`}
-                      placeholder={key}
-                      type='text'
-                    />
+                          });
+                        }}
+                        path={`data.config.${key}`}
+                        placeholder={key}
+                        type='text'
+                      />
+                      <Button
+                        className='text-muted-foreground'
+                        onClick={() => {
+                          const { [key]: __, ...rest } = nodeConfig.data
+                            .config as Record<string, unknown>;
+                          handleUpdate({
+                            ...nodeConfig,
+                            data: {
+                              ...nodeConfig.data,
+                              config: rest,
+                            },
+                          });
+                        }}
+                        size='icon'
+                        variant='ghost'
+                      >
+                        <Icons.Trash2 size={16} />
+                      </Button>
+                    </div>
                   );
                 })
               : null}
+            <div className='flex gap-1'>
+              <Popover onOpenChange={setOpen} open={open}>
+                <PopoverTrigger asChild>
+                  <Button className='w-full justify-start' variant='outline'>
+                    + Add Field
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent align='start' className='p-0' side='right'>
+                  <Command>
+                    <CommandInput placeholder='Field to Add' />
+                    <CommandList>
+                      <CommandEmpty>No results found.</CommandEmpty>
+                      <CommandGroup>
+                        {configOptions.map(status => (
+                          <CommandItem
+                            key={status.value}
+                            onSelect={value => {
+                              handleUpdate({
+                                ...nodeConfig,
+                                data: {
+                                  ...nodeConfig.data,
+                                  config: {
+                                    ...(nodeConfig.data.config as object),
+                                    [value]: '',
+                                  },
+                                },
+                              });
+                              setOpen(false);
+                            }}
+                            value={status.placeholder}
+                          >
+                            {status.label}
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    </CommandList>
+                  </Command>
+                </PopoverContent>
+              </Popover>
+            </div>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value='item-2'>
@@ -273,7 +373,7 @@ const NodeAutoForm = ({ nodeConfig, setNodeConfig }: NodeAutoFormProps) => {
         </AccordionItem>
       </Accordion>
 
-      <Button className='mt-2 w-full' type='submit'>
+      <Button className='mt-2 w-full' type='submit' variant='secondary'>
         Check
       </Button>
     </AppForm>
