@@ -108,7 +108,7 @@ const RecentPage = () => {
     );
   };
 
-  const templateOptions = templates[selectedType?.value || 'default'] || [];
+  const templateOptions = templates[selectedType?.value || 'default']
 
   return (
     <div className='space-y-6 px-10'>
