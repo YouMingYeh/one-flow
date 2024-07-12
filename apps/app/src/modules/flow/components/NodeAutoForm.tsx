@@ -85,7 +85,11 @@ const NodeAutoForm = ({ nodeConfig, setNodeConfig }: NodeAutoFormProps) => {
     });
   };
 
-  const task = taskOptions.find(t => t.value === nodeConfig.data.task);
+  const task = taskOptions.find(
+    t =>
+      (nodeConfig.data as { task: string } | undefined)?.task &&
+      t.value === nodeConfig.data.task,
+  );
 
   const configOptions = task?.configOptions ? task.configOptions : [];
 
