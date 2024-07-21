@@ -53,6 +53,9 @@ import {
   Share2,
   ScanEye,
   Check,
+  Rocket,
+  PackageOpen,
+  PiggyBank,
 } from 'lucide-react';
 import { forwardRef } from 'react';
 
@@ -150,6 +153,9 @@ export const Icons = {
   Share2,
   ScanEye,
   Check,
+  Rocket,
+  PackageOpen,
+  PiggyBank,
 };
 
 export function nameToIcon(name: string) {

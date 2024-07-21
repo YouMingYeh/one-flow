@@ -1,5 +1,5 @@
 import { Separator, nameToIcon } from 'ui';
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import type { Edge, Node } from '@xyflow/react';
 import createSupabaseServerClient from '../../../../../../../lib/supabase/server';
 import { updateActivity } from '../../../../../../modules/recent/actions';
@@ -21,7 +21,7 @@ const RecentPage = async ({
 
   const user = sessionData.session?.user;
   if (!user) {
-    redirect('/auth/login');
+    return null
   }
 
   const { data } = await supabase.from('flow').select().eq('id', params.flowId);

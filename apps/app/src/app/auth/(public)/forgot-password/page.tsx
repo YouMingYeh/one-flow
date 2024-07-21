@@ -1,28 +1,35 @@
-import type { NextPage } from 'next';
 import Link from 'next/link';
 import { Icons } from 'ui';
 import { ForgotPasswordForm } from '../../../../modules/auth/components/ForgotPasswordForm';
+import { getDictionary } from '../../../i18n';
 
-const Page: NextPage = () => {
+const Page = ({
+  searchParams,
+}: {
+  searchParams: {
+    lang: string;
+  };
+}) => {
+  const dictionary = getDictionary(searchParams.lang);
   return (
     <div className='mx-auto flex w-full flex-col justify-center gap-6 sm:w-[350px]'>
       <div className='flex flex-col gap-y-2 text-center'>
         <Icons.logo className='mx-auto h-6 w-6' />
         <h1 className='text-2xl font-semibold tracking-tight'>
-          Forgot Your Password?
+          {dictionary.auth.forgotPassword.header}
         </h1>
         <p className='text-muted-foreground text-sm'>
-          No worries! Enter your email below to reset your password.
+          {dictionary.auth.forgotPassword.subheader}
         </p>
       </div>
       <ForgotPasswordForm />
       <p className='text-muted-foreground px-8 text-center text-sm'>
-        Remembered your password?{' '}
+        {dictionary.auth.forgotPassword.rememberPassword}{' '}
         <Link
           className='hover:text-brand underline underline-offset-4'
           href='/auth/login'
         >
-          Sign in here
+          {dictionary.auth.forgotPassword.signInHere}
         </Link>
       </p>
     </div>

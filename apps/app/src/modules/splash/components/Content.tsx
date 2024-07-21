@@ -1,255 +1,100 @@
-import Link from 'next/link';
 import {
-  buttonVariants,
+  Button,
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
-  cn,
   Icons,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
 } from 'ui';
-import Image from 'next/image';
-import { PricingCards } from '../../pricing/components/PricingCards';
-import Placeholder from './placeholder.png';
+import Link from 'next/link';
+import type { Dictionary } from '../../../dictionaries';
 
-export default function Content() {
+export default function Content({ dictionary }: { dictionary: Dictionary }) {
   return (
     <>
-      <h2 className='text-3xl font-bold tracking-tight'>Demo</h2>
+      <h2 className='text-3xl font-bold tracking-tight'>
+        {dictionary.landing.content.title}
+      </h2>
       <p className='text-muted-foreground'>
-        Here is a quick demo of what you can achieve with OneFlow:
+        {dictionary.landing.content.description}
       </p>
-      <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
-        <Card>
-          <CardHeader className='items-start justify-start'>
-            <CardTitle>
-              Find Your Best Match of Financial Solution in Real-Time
+      <div className='grid grid-cols-1 gap-6 md:grid-cols-3'>
+        <Card className='flex flex-col justify-between'>
+          <CardHeader>
+            <CardTitle className='flex flex-col items-center justify-center gap-1'>
+              <Icons.Rocket />
+              {dictionary.landing.content.cards.findYourBestMatch.title}
             </CardTitle>
             <CardDescription>
-              Our domain database and advanced Algorithm will help you find the
-              best financial solution in real-time.
+              {dictionary.landing.content.cards.findYourBestMatch.description}
             </CardDescription>
           </CardHeader>
           <CardContent className='item-center'>
             <p className='text-sm'>
-              With OneFlow, you can receive the insights and recommendations you
-              need to make informed financial decisions tailored to your unique
-              situation.
+              {dictionary.landing.content.cards.findYourBestMatch.content}
             </p>
           </CardContent>
+          <CardFooter className='flex justify-end'>
+            <Link href='/'>
+              <Button>
+                {dictionary.landing.content.cards.findYourBestMatch.cta}{' '}
+                <Icons.ChevronRight />
+              </Button>
+            </Link>
+          </CardFooter>
         </Card>
-        <Card>
-          <CardHeader className='items-start justify-start'>
-            <CardTitle>Create your own financial workflow</CardTitle>
+        <Card className='flex flex-col justify-between'>
+          <CardHeader>
+            <CardTitle className='flex flex-col items-center justify-center gap-1'>
+              <Icons.PackageOpen />
+              {dictionary.landing.content.cards.itJustWorks.title}
+            </CardTitle>
             <CardDescription>
-              Automate your financial processes with our powerful workflow
-              builder, built-in templates, integrations, and more.
+              {dictionary.landing.content.cards.itJustWorks.description}
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <p>
-              OneFlow provides a powerful and flexible workflow builder that
-              allows you to create custom workflows to automate your financial
-              processes
-            </p>
-            <p>
-              We also provided a set of pre-built templates and integrations to
-              get you started quickly.
+          <CardContent className='item-center'>
+            <p className='text-sm'>
+              {dictionary.landing.content.cards.itJustWorks.content}
             </p>
           </CardContent>
+          <CardFooter className='flex justify-end'>
+            <Link href='/'>
+              <Button>
+                {dictionary.landing.content.cards.itJustWorks.cta}{' '}
+                <Icons.ChevronRight />
+              </Button>
+            </Link>
+          </CardFooter>
+        </Card>
+
+        <Card className='flex flex-col justify-between'>
+          <CardHeader>
+            <CardTitle className='flex flex-col items-center justify-center gap-1'>
+              <Icons.PiggyBank />
+              {dictionary.landing.content.cards.howMuch.title}
+            </CardTitle>
+            <CardDescription>
+              {dictionary.landing.content.cards.howMuch.description}
+            </CardDescription>
+          </CardHeader>
+          <CardContent className='item-center'>
+            <p className='text-sm'>
+              {dictionary.landing.content.cards.howMuch.content}
+            </p>
+          </CardContent>
+          <CardFooter className='flex justify-end'>
+            <Link href='/'>
+              <Button>
+                {dictionary.landing.content.cards.howMuch.cta}{' '}
+                <Icons.ChevronRight />
+              </Button>
+            </Link>
+          </CardFooter>
         </Card>
       </div>
-      <h2 className='mb-8 text-3xl font-bold tracking-tight'>Features</h2>
-      <Tabs
-        className='w-full max-w-3xl scale-110'
-        defaultValue='Domain database'
-      >
-        <TabsList className='flex h-fit flex-wrap overflow-x-auto'>
-          <TabsTrigger value='Domain database'>Domain database</TabsTrigger>
-          <TabsTrigger value='Custom workflow builder'>
-            Custom workflow builder
-          </TabsTrigger>
-          <TabsTrigger value='Insights and reports'>
-            Insights and reports
-          </TabsTrigger>
-          <TabsTrigger value='Underlying Magic 🎩'>
-            Underlying Magic 🎩
-          </TabsTrigger>
-        </TabsList>
-        <TabsContent value='Domain database'>
-          Our domain database is a collection of financial solutions and their
-          details. It is constantly updated with the latest information to
-          provide you with the most accurate and up-to-date recommendations.
-          <Image alt='Domain database' src={Placeholder} />
-        </TabsContent>
-        <TabsContent value='Custom workflow builder'>
-          Our custom workflow builder allows you to create custom workflows
-          tailored to your unique needs with ease. You can automate your
-          financial processes, integrate with other tools, and more.
-          <Image alt='Custom workflow builder' src={Placeholder} />
-        </TabsContent>
-        <TabsContent value='Insights and reports'>
-          Our insights and reports feature provides you with valuable domain
-          insights into your financial data, helping you make informed
-          decisions. You can generate reports, track your progress, and more.
-          <Image alt='Insights and reports' src={Placeholder} />
-        </TabsContent>
-        <TabsContent value='Underlying Magic 🎩'>
-          Our underlying magic is our advanced algorithm that powers OneFlow. It
-          analyzes your financial data, identifies patterns, and provides you
-          with personalized recommendations and insights.
-          <Image alt='Underlying Magic 🎩' src={Placeholder} />
-        </TabsContent>
-      </Tabs>
-      <Link
-        className={`${cn(buttonVariants({ size: 'lg' }))} mt-8`}
-        href='/auth/login'
-      >
-        Try it for free now <Icons.ChevronRight />
-      </Link>
-
-      <h2 className='mt-16 text-3xl font-bold tracking-tight'>
-        What our users say
-      </h2>
-      <h3 className='text-muted-foreground'>
-        Don&apos;t just take our word for it. Here&apos;s what our early users
-        have to say about OneFlow:
-      </h3>
-
-      {/* Parallax Scroll Cards */}
-      <div className='grid grid-cols-1 gap-10 md:grid-cols-3'>
-        <div className='flex flex-col gap-4'>
-          {testimonialCards1.map(card => (
-            <Card key={card.name}>
-              <CardHeader className='items-start justify-start'>
-                <CardTitle>{card.name}</CardTitle>
-                <CardDescription>{card.title}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Icons.Quote />
-                <p>{card.content}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-        <p className='text-muted-foreground md:hidden'>
-          Use your desktop to see more testimonials...
-        </p>
-        <div className='hidden flex-col gap-4 md:flex'>
-          {testimonialCards2.map(card => (
-            <Card key={card.name}>
-              <CardHeader className='items-start justify-start'>
-                <CardTitle>{card.name}</CardTitle>
-                <CardDescription>{card.title}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Icons.Quote />
-                <p>{card.content}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-        <div className='hidden flex-col gap-4 md:flex'>
-          {testimonialCards3.map(card => (
-            <Card key={card.name}>
-              <CardHeader className='items-start justify-start'>
-                <CardTitle>{card.name}</CardTitle>
-                <CardDescription>{card.title}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Icons.Quote />
-                <p>{card.content}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-      <Link
-        className={`${cn(buttonVariants({ size: 'lg' }))} mt-8`}
-        href='/auth/login'
-      >
-        Try it for free now <Icons.ChevronRight />
-      </Link>
-
-      <h2 className='mt-16 text-3xl font-bold tracking-tight'>Pricing</h2>
-      <Link className='underline' href='/pricing'>
-        Learn more about our pricing?
-      </Link>
-      <PricingCards />
-      <Link
-        className={`${cn(buttonVariants({ size: 'lg' }))} mt-8`}
-        href='/auth/login'
-      >
-        Try it for free now <Icons.ChevronRight />
-      </Link>
     </>
   );
 }
-
-const testimonialCards1 = [
-  {
-    name: '😃 Mark Johnson',
-    title: 'E-commerce Entrepreneur',
-    content:
-      'OneFlow has been a game-changer for my business. It has helped me automate my financial workflows and save time. I highly recommend it!',
-  },
-  {
-    name: '🚀 Sarah Smith',
-    title: 'Startup Founder',
-    content:
-      'OneFlow has helped me streamline my financial processes and make better decisions. The insights and recommendations are invaluable!',
-  },
-  {
-    name: '🌟 John Doe',
-    title: 'Freelancer',
-    content:
-      'OneFlow has made it easy for me to manage my finances and stay organized. I love the custom workflows and integrations!',
-  },
-];
-
-const testimonialCards2 = [
-  {
-    name: '🎉 Jane Doe',
-    title: 'Small Business Owner',
-    content:
-      'OneFlow has helped me automate my financial workflows and save time. It has made a huge difference in my business!',
-  },
-  {
-    name: '🔥 Alex Johnson',
-    title: 'Financial Analyst',
-    content:
-      'OneFlow has helped me analyze financial data and generate reports quickly. It has saved me hours of work!',
-  },
-  {
-    name: '🌈 Emily Smith',
-    title: 'Consultant',
-    content:
-      'OneFlow has helped me streamline my financial processes and make better decisions. The insights and recommendations are invaluable!',
-  },
-];
-
-const testimonialCards3 = [
-  {
-    name: '🎨 Jessica Brown',
-    title: 'Designer',
-    content:
-      'OneFlow has made it easy for me to manage my finances and stay organized. I love the custom workflows and integrations!',
-  },
-  {
-    name: '🌺 Michael Johnson',
-    title: 'Entrepreneur',
-    content:
-      'OneFlow has been a game-changer for my business. It has helped me automate my financial workflows and save time. I highly recommend it!',
-  },
-  {
-    name: '🚀 Sarah Smith',
-    title: 'Startup Founder',
-    content:
-      'OneFlow has helped me streamline my financial processes and make better decisions. The insights and recommendations are invaluable!',
-  },
-];

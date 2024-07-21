@@ -23,8 +23,8 @@ const config = {
   },
   publicRuntimeConfig: {
     appUrl: getEnv('NEXT_APP_URL'),
-    supaBaseUrl: getEnv('SUPABASE_URL'),
-    supaKey: getEnv('SUPABASE_ANON_KEY'),
+    supaBaseUrl: getEnv('NEXT_PUBLIC_SUPABASE_URL'),
+    supaKey: getEnv('NEXT_PUBLIC_SUPABASE_ANON_KEY'),
   },
   images: {
     remotePatterns: [

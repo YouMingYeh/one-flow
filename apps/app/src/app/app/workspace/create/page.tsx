@@ -23,7 +23,7 @@ const RecentPage = () => {
 
     const user = data.session?.user;
     if (!user) {
-      redirect('/auth/login');
+      return null;
     }
 
     const workspace = {

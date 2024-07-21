@@ -1,5 +1,4 @@
 import { Separator, nameToIcon } from 'ui';
-import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import createSupabaseServerClient from '../../../../../lib/supabase/server';
 import { readFlows } from '../../../../modules/workspace/actions';
@@ -14,7 +13,7 @@ const Page = async ({ params }: { params: { workspaceId: string } }) => {
 
   const user = sessionData.session?.user;
   if (!user) {
-    redirect('/auth/login');
+    return null;
   }
 
   const { data } = await supabase

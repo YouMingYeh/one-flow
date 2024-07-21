@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import { redirect } from 'next/navigation';
 import createSupabaseServerClient from '../../../../lib/supabase/server';
 
 const LandingLayout = async ({ children }: { children: ReactNode }) => {
@@ -13,7 +12,7 @@ const LandingLayout = async ({ children }: { children: ReactNode }) => {
 
   const user = data.session?.user;
 
-  if (user) return redirect('/app');
+  if (user) return null;
   return <>{children}</>;
 };
 

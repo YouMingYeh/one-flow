@@ -1,16 +1,17 @@
-import type { NextPage } from 'next';
 import Link from 'next/link';
 import { Icons, buttonVariants, cn } from 'ui';
-import { SplashHeader } from '../../../modules/splash/components/SplashHeader';
-import { SplashContent } from '../../../modules/splash/components/SplashContent';
+import { Header } from '../../../modules/splash/components/Header';
+import { Subheader } from '../../../modules/splash/components/Subheader';
+import { getDictionary } from '../../i18n';
 import Content from '../../../modules/splash/components/Content';
 
-const Page: NextPage = () => {
+const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
+  const dictionary = getDictionary(searchParams.lang);
   return (
     <section className='space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32'>
       <div className='container flex max-w-[64rem] flex-col items-center gap-4 text-center'>
-        <SplashHeader />
-        <SplashContent />
+        <Header dictionary={dictionary} />
+        <Subheader dictionary={dictionary} />
         <div className='relative mb-36 w-[24rem]'>
           <Link
             className={cn(buttonVariants({ size: 'lg' }))}
@@ -19,7 +20,7 @@ const Page: NextPage = () => {
             Get Started <Icons.ChevronRight />
           </Link>
         </div>
-        <Content />
+        <Content dictionary={dictionary} />
       </div>
     </section>
   );
