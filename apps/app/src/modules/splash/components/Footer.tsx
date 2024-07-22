@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ThemeToggle } from '../../../components/layouts/ThemeToggle';
 import type { Dictionary } from '../../../dictionaries';
+import { LanguageToggle } from '../../../components/layouts/LanguageToggle';
 
 export default function Footer({ dictionary }: { dictionary: Dictionary }) {
   return (
@@ -9,8 +10,10 @@ export default function Footer({ dictionary }: { dictionary: Dictionary }) {
         <p className='text-center text-sm leading-loose sm:text-left'>
           {dictionary.footer.builtBy}
         </p>
-
-        <ThemeToggle />
+        <div className='flex gap-1'>
+          <LanguageToggle />
+          <ThemeToggle />
+        </div>
       </div>
 
       <p>

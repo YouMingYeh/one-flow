@@ -56,52 +56,53 @@ export const EarlyAccessForm: FC = () => {
     setTimeout(() => {
       router.push(`/early-access/${earlyAccessId}`);
     }, 1000);
-   
+
     setIsLoading(false);
-    
   };
 
   return (
-    <AppForm defaultValues={
-      {
+    <AppForm
+      defaultValues={{
         name: '',
         email: '',
         country: '+86',
         company: '',
         phone: '',
-      }
-    } onSubmit={onSubmit} schema={earlyAccessFormSchema}>
-      <div className='flex flex-col gap-6 md:px-16 py-4'>
-      <div className='grid grid-cols-2 gap-3'>
-        <FormInputField<EarlyAccessFormValues>
-          label={dictionary.earlyAccess.form.name.label}
-          path='name'
-          placeholder={dictionary.earlyAccess.form.name.placeholder}
-        />
-        <FormInputField<EarlyAccessFormValues>
-          label={dictionary.earlyAccess.form.company.label}
-          path='company'
-          placeholder={dictionary.earlyAccess.form.company.placeholder}
-        />
-      </div>
-        <div className='grid grid-cols-4 gap-3'>
-        <FormSelect<EarlyAccessFormValues>
-          label={dictionary.earlyAccess.form.country.label}
-          options={[
-            { value: '+1', label: '🇺🇸 (+1)'},
-            { value: '+86', label: '🇨🇳 (+86)'}
-          ]}
-          path='country'
-          placeholder={dictionary.earlyAccess.form.country.placeholder}
-        />
-        <div className='grid col-span-3'>
-        <FormInputField<EarlyAccessFormValues>
-          label={dictionary.earlyAccess.form.phone.label}
-          path='phone'
-          placeholder={dictionary.earlyAccess.form.phone.placeholder}
-          type='tel'
-        />
+      }}
+      onSubmit={onSubmit}
+      schema={earlyAccessFormSchema}
+    >
+      <div className='flex flex-col gap-6 py-4 md:px-16'>
+        <div className='grid grid-cols-2 gap-3'>
+          <FormInputField<EarlyAccessFormValues>
+            label={dictionary.earlyAccess.form.name.label}
+            path='name'
+            placeholder={dictionary.earlyAccess.form.name.placeholder}
+          />
+          <FormInputField<EarlyAccessFormValues>
+            label={dictionary.earlyAccess.form.company.label}
+            path='company'
+            placeholder={dictionary.earlyAccess.form.company.placeholder}
+          />
         </div>
+        <div className='grid grid-cols-4 gap-3'>
+          <FormSelect<EarlyAccessFormValues>
+            label={dictionary.earlyAccess.form.country.label}
+            options={[
+              { value: '+1', label: '🇺🇸 (+1)' },
+              { value: '+86', label: '🇨🇳 (+86)' },
+            ]}
+            path='country'
+            placeholder={dictionary.earlyAccess.form.country.placeholder}
+          />
+          <div className='col-span-3 grid'>
+            <FormInputField<EarlyAccessFormValues>
+              label={dictionary.earlyAccess.form.phone.label}
+              path='phone'
+              placeholder={dictionary.earlyAccess.form.phone.placeholder}
+              type='tel'
+            />
+          </div>
         </div>
         <FormInputField<EarlyAccessFormValues>
           label={dictionary.earlyAccess.form.email.label}

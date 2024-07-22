@@ -34,7 +34,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 import createSupabaseClientClient from '../../../../../../../lib/supabase/client';
-import type { Type} from './mapping';
+import type { Type } from './mapping';
 import { templates, types } from './mapping';
 
 const RecentPage = () => {
@@ -108,7 +108,7 @@ const RecentPage = () => {
     );
   };
 
-  const templateOptions = templates[selectedType?.value || 'default']
+  const templateOptions = templates[selectedType?.value || 'default'];
 
   return (
     <div className='space-y-6 px-10'>

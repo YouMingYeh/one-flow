@@ -3,10 +3,10 @@
 import React, { forwardRef, useRef } from 'react';
 import { cn, Icons, AnimatedBeam } from 'ui';
 import Image from 'next/image';
-import LianLian from './lian-lian.png'
-import WorldFirst from './world-first.png'
-import PingPong from './ping-pong.png'
-import Payoneer from './payoneer.png'
+import LianLian from './lian-lian.png';
+import WorldFirst from './world-first.png';
+import PingPong from './ping-pong.png';
+import Payoneer from './payoneer.png';
 
 const Circle = forwardRef<
   HTMLDivElement,
@@ -15,7 +15,7 @@ const Circle = forwardRef<
   return (
     <div
       className={cn(
-        'z-10 flex size-12 items-center justify-center rounded-full border-2 bg-background p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]',
+        'size-12 bg-background z-10 flex items-center justify-center rounded-full border-2 p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]',
         className,
       )}
       ref={ref}
@@ -39,38 +39,51 @@ export function AnimatedBeamMultiple({ className }: { className?: string }) {
 
   return (
     <div
-      className={cn(
-        'bg-background relative w-full',
-        className,
-      )}
+      className={cn('bg-background relative w-full', className)}
       ref={containerRef}
     >
-      <div className='flex size-full max-w-lg flex-row items-stretch justify-between gap-10'>
+      <div className='size-full flex max-w-lg flex-row items-stretch justify-between gap-10'>
         <div className='flex flex-col justify-center'>
           <Circle className='size-12' ref={div7Ref}>
-            <Icons.User className='w-12 h-12'/>
+            <Icons.User className='h-12 w-12' />
           </Circle>
         </div>
         <div className='flex flex-col justify-center'>
           <Circle className='size-16' ref={div6Ref}>
-            <Icons.logo className='w-16 h-16' />
+            <Icons.logo className='h-16 w-16' />
           </Circle>
         </div>
         <div className='flex flex-col justify-center gap-2'>
           <Circle ref={div1Ref}>
-            <Image alt='LianLian' className='rounded-full w-12 h-12' src={LianLian} />
+            <Image
+              alt='LianLian'
+              className='h-12 w-12 rounded-full'
+              src={LianLian}
+            />
           </Circle>
           <Circle ref={div2Ref}>
-          <Image alt='WorldFirst' className='rounded-full w-12 h-12' src={WorldFirst} />
+            <Image
+              alt='WorldFirst'
+              className='h-12 w-12 rounded-full'
+              src={WorldFirst}
+            />
           </Circle>
           <Circle ref={div3Ref}>
-          <Image alt='PingPong' className='rounded-full w-12 h-12' src={PingPong} />
+            <Image
+              alt='PingPong'
+              className='h-12 w-12 rounded-full'
+              src={PingPong}
+            />
           </Circle>
           <Circle ref={div4Ref}>
-          <Image alt='Payoneer' className='rounded-full w-12 h-12' src={Payoneer} />
+            <Image
+              alt='Payoneer'
+              className='h-12 w-12 rounded-full'
+              src={Payoneer}
+            />
           </Circle>
           <Circle ref={div5Ref}>
-            <Icons.VerticalEllipsis className='rounded-full w-12 h-12'/>
+            <Icons.VerticalEllipsis className='h-12 w-12 rounded-full' />
           </Circle>
         </div>
       </div>

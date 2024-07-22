@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import { useEffect, useState, type ReactNode } from 'react';
 import { useSearchParams } from 'next/navigation';
 import type { User } from '@supabase/supabase-js';

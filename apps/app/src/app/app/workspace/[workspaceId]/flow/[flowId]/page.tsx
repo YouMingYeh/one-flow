@@ -21,7 +21,7 @@ const RecentPage = async ({
 
   const user = sessionData.session?.user;
   if (!user) {
-    return null
+    return null;
   }
 
   const { data } = await supabase.from('flow').select().eq('id', params.flowId);

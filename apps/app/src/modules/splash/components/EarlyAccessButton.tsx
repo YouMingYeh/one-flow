@@ -28,7 +28,6 @@ const EarlyAccessButton = () => {
         router.push('/early-access');
       }}
       subscribeStatus={false}
-
     />
   );
 };

@@ -18,7 +18,7 @@ export const CopyButton = ({ text, ...props }: CopyButtonProps) => {
     setCopied(true);
     clearTimeout(timeoutId);
     toast({
-      title: `${  text  } - Copied! `,
+      title: `${text} - Copied! `,
     });
     setTimeoutId(
       window.setTimeout(() => {
@@ -29,7 +29,13 @@ export const CopyButton = ({ text, ...props }: CopyButtonProps) => {
 
   return (
     <Button onClick={handleClick} {...props}>
-      {copied ? <div className='flex gap-2 justify-center items-center'><Icons.Check /> Copied!</div> : props.children}
+      {copied ? (
+        <div className='flex items-center justify-center gap-2'>
+          <Icons.Check /> Copied!
+        </div>
+      ) : (
+        props.children
+      )}
     </Button>
   );
 };

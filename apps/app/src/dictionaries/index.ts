@@ -3,7 +3,7 @@ import zh from './zh';
 
 export const dictionaries = {
   en,
-  zh
+  zh,
 };
 
 export type { Dictionary };

@@ -56,6 +56,7 @@ import {
   Rocket,
   PackageOpen,
   PiggyBank,
+  Languages,
 } from 'lucide-react';
 import { forwardRef } from 'react';
 
@@ -82,9 +83,9 @@ const VerticalEllipsis: LucideIcon = forwardRef((props: LucideProps, ref) => (
     viewBox='0 0 24 24'
     fill='none'
     stroke='currentColor'
-    stroke-width='2'
-    stroke-linecap='round'
-    stroke-linejoin='round'
+    strokeWidth='2'
+    strokeLinecap='round'
+    strokeLinejoin='round'
     className='lucide lucide-ellipsis-vertical'
     ref={ref}
     {...props}
@@ -156,6 +157,7 @@ export const Icons = {
   Rocket,
   PackageOpen,
   PiggyBank,
+  Languages,
 };
 
 export function nameToIcon(name: string) {

@@ -49,7 +49,12 @@ export function FormSelect<T extends FieldValues>({
 
   return (
     <FormFieldset<T> label={label} path={path}>
-      <Popover onOpenChange={(v)=>{ setOpen(v); }} open={open}>
+      <Popover
+        onOpenChange={v => {
+          setOpen(v);
+        }}
+        open={open}
+      >
         <PopoverTrigger asChild>
           <FormControl>
             <Button

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import React, { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 interface AnimatedSubscribeButtonProps {
   buttonColor: string;
@@ -27,18 +27,20 @@ export const AnimatedSubscribeButton: React.FC<
   const [isSubscribed, setIsSubscribed] = useState<boolean>(subscribeStatus);
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode='wait'>
       {isSubscribed ? (
         <motion.button
-          className="relative flex w-[200px] items-center justify-center overflow-hidden rounded-md bg-background p-[10px] outline outline-1 outline-black dark:bg-primary dark:text-primary-foreground"
-          onClick={() => { setIsSubscribed(false); }}
+          className='bg-background dark:bg-primary dark:text-primary-foreground relative flex w-[200px] items-center justify-center overflow-hidden rounded-md p-[10px] outline outline-1 outline-black'
+          onClick={() => {
+            setIsSubscribed(false);
+          }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           <motion.span
-            key="action"
-            className="relative block h-full w-full font-semibold"
+            key='action'
+            className='relative block h-full w-full font-semibold'
             initial={{ y: -50 }}
             animate={{ y: 0 }}
             // style={{ color: buttonColor }}
@@ -48,20 +50,21 @@ export const AnimatedSubscribeButton: React.FC<
         </motion.button>
       ) : (
         <motion.button
-          className="relative flex w-[200px] cursor-pointer items-center justify-center rounded-md border-none p-[10px] bg-primary text-primary-foreground"
+          className='bg-primary text-primary-foreground relative flex w-[200px] cursor-pointer items-center justify-center rounded-md border-none p-[10px]'
           // style={{ backgroundColor: buttonColor, color: buttonTextColor }}
-          onClick={() => { setIsSubscribed(true);
+          onClick={() => {
+            setIsSubscribed(true);
             setTimeout(() => {
               onClick();
-            } , delay);
-           }}
+            }, delay);
+          }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           <motion.span
-            key="reaction"
-            className="relative block font-semibold "
+            key='reaction'
+            className='relative block font-semibold'
             initial={{ x: 0 }}
             exit={{ x: 50, transition: { duration: 0.1 } }}
           >

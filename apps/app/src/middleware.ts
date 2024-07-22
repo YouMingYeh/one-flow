@@ -25,10 +25,16 @@ export async function middleware(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
     const url = request.nextUrl.clone();
-
+    const cookies = request.cookies;
     if (!searchParams.has('lang')) {
       const locale = getLocale(request);
       url.searchParams.set('lang', locale);
+    }
+
+    const langCookies = cookies.get('lang');
+    const langSearch = searchParams.get('lang');
+    if (langCookies && langCookies.value !== langSearch) {
+      url.searchParams.set('lang', langCookies.value);
     }
 
     // This `try/catch` block is only here for the interactive tutorial.
@@ -56,7 +62,7 @@ export async function middleware(request: NextRequest) {
     if (
       !user &&
       !request.nextUrl.pathname.startsWith('/auth') &&
-      request.nextUrl.pathname !== '/'
+      request.nextUrl.pathname.startsWith('/app')
     ) {
       // no user, potentially respond by redirecting the user to the login page
       url.pathname = '/auth/login';
@@ -72,7 +78,10 @@ export async function middleware(request: NextRequest) {
       url.pathname = '/app';
       return NextResponse.redirect(url);
     }
-    if (request.nextUrl.href === url.href) {
+    if (
+      request.nextUrl.pathname === url.pathname &&
+      request.nextUrl.search === url.search
+    ) {
       return response;
     }
 
