@@ -10,16 +10,16 @@ export default function GlobalError({
   reset: () => void;
 }) {
   return (
-    <html lang='en'>
+    <html lang='zh'>
       <body>
-        <h2>Something went wrong!</h2>
+        <h2>出了些问题 🤯</h2>
         <pre>{error.message}</pre>
         <Button
           onClick={() => {
             reset();
           }}
         >
-          Try again
+          重试
         </Button>
       </body>
     </html>

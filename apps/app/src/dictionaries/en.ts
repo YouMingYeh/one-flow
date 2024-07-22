@@ -158,6 +158,7 @@ const en = {
     privacyPolicy: 'Privacy Policy',
     termsOfService: 'Terms of Service',
     contactUs: 'Contact Us',
+    allRightsReserved: '© 2024 OneFlow. All rights reserved.',
   },
 };
 

@@ -55,7 +55,7 @@ export const metadata: Metadata = {
 
 // TODO: Add global providers over here
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
-  <html lang='en' suppressHydrationWarning>
+  <html lang='zh' suppressHydrationWarning>
     <link href='/manifest.json' rel='manifest' />
     <body className={inter.className}>
       <ThemeProvider

@@ -39,7 +39,7 @@ export default function Footer({ dictionary }: { dictionary: Dictionary }) {
         </Link>
       </p>
       <p className='text-muted-foreground text-sm'>
-        © 2024 OneFlow. All rights reserved.
+      {dictionary.footer.allRightsReserved}
       </p>
     </footer>
   );

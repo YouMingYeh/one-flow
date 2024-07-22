@@ -149,6 +149,7 @@ const zh = {
     privacyPolicy: '隐私政策',
     termsOfService: '服务条款',
     contactUs: '联系我们',
+    allRightsReserved: '© 2024 OneFlow. 保留所有权利。',
   },
 };
 
