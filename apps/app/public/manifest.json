@@ -1,6 +1,6 @@
 {
   "theme_color": "#ffffff",
-  "background_color": "#3597f2",
+  "background_color": "#ffffff",
   "icons": [
     {
       "purpose": "maskable",
@@ -22,5 +22,21 @@
   "name": "OneFlow",
   "short_name": "OneFlow",
   "start_url": "/",
-  "scope": "/"
+  "scope": "/",
+  "screenshots": [
+    {
+      "src": "screenshot1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Homescreen of OneFlow App"
+    },
+    {
+      "src": "screenshot2.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Homescreen of OneFlow App Mobile"
+    }
+  ]
 }
