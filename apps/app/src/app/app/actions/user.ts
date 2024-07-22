@@ -1,5 +1,6 @@
 'use server';
 
+import { redirect } from 'next/navigation';
 import createSupabaseServerClient from '../../../../lib/supabase/server';
 
 export async function getCurrentUser() {
@@ -10,7 +11,7 @@ export async function getCurrentUser() {
 
     return data.user;
   } catch (error) {
-    // cookies().delete('sb:token');
+    return null;
   }
 }
 
@@ -18,4 +19,6 @@ export async function signOut() {
   const supabase = await createSupabaseServerClient();
 
   await supabase.auth.signOut();
+
+  redirect('/auth/login');
 }

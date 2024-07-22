@@ -1,12 +1,73 @@
 const en = {
+  themeToggle: {
+    label: 'Theme Toggle',
+    light: 'Light Mode',
+    dark: 'Dark Mode',
+    system: 'System Mode',
+  },
   brand: 'OneFlow',
   buttons: {
     getStarted: 'Get Started',
     learnMore: 'Learn More',
     contactUs: 'Contact Us',
     login: 'Login',
+    earlyAccess: 'Early Access?',
+    earlyAccessOK: "Let's Go!",
+  },
+  earlyAccess: {
+    ok: {
+      title: 'Thank you for your interest!',
+      description:
+        'We will get back to you as soon as possible. Save this page to check your status later.',
+      information: {
+        title: 'Here is your submission information',
+        description: 'Please click the button below to save the page URL',
+        name: 'Name',
+        email: 'Email',
+        phone: 'Phone',
+        company: 'Company',
+        status: 'Status',
+      },
+      cta: 'Got it! Save the page URL',
+    },
+    note: 'Sorry! we are not ready for all users yet. Please fill out the form below to join our early access program.',
+    title: 'We invite you to join our early access program!',
+    description:
+      'We are looking for early access users to help us shape the future of OneFlow. You will have the opportunity to provide feedback and gain value directly from our team. Also, you will be the first to experience our new features and updates.  Nonetheless, you will have the potential to receive exclusive offers and discounts. If you are interested, please fill out the form below, and we will provide you a quick demo and get you started as soon as possible.',
+    form: {
+      name: {
+        label: 'Name',
+        placeholder: 'Your Name',
+      },
+      email: {
+        label: 'Email (required)',
+        placeholder: 'email@example.com',
+        invalid_type_error: 'Email is required',
+        required_error: 'Email is required.',
+        invalid_email_error: 'Invalid email.',
+      },
+      country: {
+        label: 'Country',
+        placeholder: 'Your Country',
+      },
+      company: {
+        label: 'Company',
+        placeholder: 'Your Company',
+      },
+      phone: {
+        label: 'Phone',
+        placeholder: 'Your Phone',
+      },
+      submit: 'Submit',
+      submit_success: 'Thank you for your interest! We will get back to you as soon as possible.',
+    },
   },
   landing: {
+    earlyAccess: {
+      title: 'We are looking for early access users!',
+      description:
+        'Click the button below, fill out the form, and we will get back to you as soon as possible.',
+    },
     splash: {
       header: 'your one-stop cross-border consolidated payment collection solution',
       subheader:
@@ -39,6 +100,16 @@ const en = {
 
         },
         cta: 'Get Started',
+        numberTicker: {
+          title: 'Collect over ...',
+          description: 'We collect over 15 payment gateways information and provide you with the best in real-time.',
+          footer: 'Payment Gateways Real-Time Information',
+        },
+        beamMultiple: {
+          title: 'Consolidated Payment Collection',
+          description:
+            'OneFlow handles all your payment collection needs in one place.',
+        },
       }
   },
   auth: {

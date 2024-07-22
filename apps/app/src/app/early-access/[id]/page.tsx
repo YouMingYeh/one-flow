@@ -1,0 +1,103 @@
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  Icons,
+} from 'ui';
+import { getDictionary } from '../../i18n';
+import createSupabaseServerClient from '../../../../lib/supabase/server';
+import CopyURLButton from './CopyURLButton';
+
+const Page = async ({
+  params,
+  searchParams,
+}: {
+  params: { id: string };
+  searchParams: { lang: string };
+}) => {
+  const dictionary = getDictionary(searchParams.lang);
+  const { id } = params;
+  const supabase = await createSupabaseServerClient();
+  const { data } = (await supabase
+    .from('early_access')
+    .select('*')
+    .eq('id', id)
+    .single()) as {
+    data: {
+      name: string;
+      email: string;
+      phone: string;
+      country: string;
+      company: string;
+      status: string;
+    };
+  };
+
+  const { name, email, phone, country, company, status } = data;
+
+  return (
+    <div className='mx-auto flex h-full w-full flex-col justify-center gap-6 sm:w-1/2 py-12'>
+      <div className='flex flex-col gap-y-2 text-center'>
+        <Icons.logo className='mx-auto h-6 w-6' />
+        <h1 className='text-2xl font-semibold tracking-tight'>
+          {dictionary.earlyAccess.ok.title}
+        </h1>
+        <p className='text-muted-foreground text-md'>
+          {dictionary.earlyAccess.ok.description}
+        </p>
+      </div>
+      <Card>
+        <CardHeader>
+          <CardTitle>{dictionary.earlyAccess.ok.information.title}</CardTitle>
+          <CardDescription>
+            {dictionary.earlyAccess.ok.information.description}
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className='flex flex-col gap-4'>
+            <div>
+              <span className='text-muted-foreground'>
+                {dictionary.earlyAccess.ok.information.name}:{' '}
+              </span>
+              <span>{name}</span>
+            </div>
+            <div>
+              <span className='text-muted-foreground'>
+                {dictionary.earlyAccess.ok.information.email}:{' '}
+              </span>
+              <span>{email}</span>
+            </div>
+            <div>
+              <span className='text-muted-foreground'>
+                {dictionary.earlyAccess.ok.information.phone}:{' '}
+              </span>
+              <span>{`${country} ${phone}`}</span>
+            </div>
+            <div>
+              <span className='text-muted-foreground'>
+                {dictionary.earlyAccess.ok.information.company}:{' '}
+              </span>
+              <span>{company}</span>
+            </div>
+            <div>
+              <span className='text-muted-foreground'>
+                {dictionary.earlyAccess.ok.information.status}:{' '}
+              </span>
+              <span>{status}</span>
+            </div>
+          </div>
+        </CardContent>
+        <CardFooter className='flex justify-center'>
+          <CopyURLButton>
+            <Icons.Save /> {dictionary.earlyAccess.ok.cta}
+          </CopyURLButton>
+        </CardFooter>
+      </Card>
+    </div>
+  );
+};
+
+export default Page;

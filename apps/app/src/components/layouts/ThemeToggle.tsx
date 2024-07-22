@@ -11,9 +11,13 @@ import {
   DropdownMenuTrigger,
   Icons,
 } from 'ui';
+import { useSearchParams } from 'next/navigation';
+import { getDictionary } from '../../app/i18n';
 
 export const ThemeToggle: FC = () => {
   const { setTheme } = useTheme();
+  const searchParams = useSearchParams();
+  const dictionaries = getDictionary(searchParams.get('lang') ?? 'en');
 
   return (
     <DropdownMenu>
@@ -21,7 +25,7 @@ export const ThemeToggle: FC = () => {
         <Button size='icon' variant='outline'>
           <Icons.Sun className='h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0' />
           <Icons.Moon className='absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100' />
-          <span className='sr-only'>Toggle theme</span>
+          <span className='sr-only'>{dictionaries.themeToggle.label}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end'>
@@ -30,21 +34,21 @@ export const ThemeToggle: FC = () => {
             setTheme('light');
           }}
         >
-          Light
+          {dictionaries.themeToggle.light}
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => {
             setTheme('dark');
           }}
         >
-          Dark
+          {dictionaries.themeToggle.dark}
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => {
             setTheme('system');
           }}
         >
-          System
+          {dictionaries.themeToggle.system}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -72,7 +72,7 @@ export function FormSelect<T extends FieldValues>({
         </PopoverTrigger>
         <PopoverContent className='w-[200px] p-0'>
           <Command>
-            <CommandInput className='h-9' placeholder='Search task...' />
+            <CommandInput className='h-9' placeholder={placeholder} />
             <CommandEmpty>No option found.</CommandEmpty>
             <CommandGroup>
               {options.map(option => (

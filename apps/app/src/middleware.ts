@@ -28,7 +28,7 @@ export async function middleware(request: NextRequest) {
 
     if (!searchParams.has('lang')) {
       const locale = getLocale(request);
-      url.searchParams.set('lang', locale)
+      url.searchParams.set('lang', locale);
     }
 
     // This `try/catch` block is only here for the interactive tutorial.
@@ -41,6 +41,18 @@ export async function middleware(request: NextRequest) {
       data: { user },
     } = await supabase.auth.getUser();
 
+    if (request.nextUrl.pathname.startsWith('/early-access')) {
+      if (request.nextUrl.searchParams.has('lang')) {
+        return response;
+      }
+      return NextResponse.redirect(url);
+    }
+
+    if (!user && request.nextUrl.pathname.startsWith('/auth')) {
+      // no user, potentially respond by redirecting the user to the login page
+      url.pathname = '/early-access';
+      return NextResponse.redirect(url);
+    }
     if (
       !user &&
       !request.nextUrl.pathname.startsWith('/auth') &&
@@ -50,19 +62,16 @@ export async function middleware(request: NextRequest) {
       url.pathname = '/auth/login';
       return NextResponse.redirect(url);
     }
-
     if (user && request.nextUrl.pathname === '/') {
       // user is logged in, potentially redirect to the app
       url.pathname = '/app';
       return NextResponse.redirect(url);
     }
-
     if (user && request.nextUrl.pathname.startsWith('/auth')) {
       // user is logged in, potentially redirect to the app
       url.pathname = '/app';
       return NextResponse.redirect(url);
     }
-
     if (request.nextUrl.href === url.href) {
       return response;
     }
@@ -89,6 +98,6 @@ export const config = {
      * - _next/image (image optimization files)
      */
 
-    '/((?!api|_next/static|_next/image).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
   ],
 };

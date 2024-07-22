@@ -31,5 +31,9 @@ export * from './src/components/ui/tabs';
 export * from './src/components/ui/parallax-scroll';
 export * from './src/components/ui/alert';
 export * from './src/components/ui/checkbox';
+export * from './src/components/ui/number-ticker';
+export * from './src/components/ui/animated-beam';
+export * from './src/components/ui/animated-subscribe-button'
+export * from './src/components/ui/copy-button';
 
 export { cn } from './src/lib/utils';
