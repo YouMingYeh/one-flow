@@ -12,11 +12,12 @@ import {
 } from 'ui';
 import { useSearchParams } from 'next/navigation';
 import { getCookie, setCookie } from 'cookies-next';
+import { defaultLanguage } from '../../app/i18n';
 
 export const LanguageToggle: FC = () => {
   const searchParams = useSearchParams();
 
-  const [lang, setLang] = React.useState(searchParams.get('lang') ?? 'en');
+  const [lang, setLang] = React.useState(searchParams.get('lang') ?? defaultLanguage);
   const handleLanguageChange = (language: string) => {
     setLang(language);
     setCookie('lang', language);

@@ -12,12 +12,12 @@ import {
   Icons,
 } from 'ui';
 import { useSearchParams } from 'next/navigation';
-import { getDictionary } from '../../app/i18n';
+import { defaultLanguage, getDictionary } from '../../app/i18n';
 
 export const ThemeToggle: FC = () => {
   const { setTheme } = useTheme();
   const searchParams = useSearchParams();
-  const dictionaries = getDictionary(searchParams.get('lang') ?? 'en');
+  const dictionaries = getDictionary(searchParams.get('lang') ?? defaultLanguage);
 
   return (
     <DropdownMenu>

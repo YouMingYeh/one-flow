@@ -11,8 +11,7 @@ const getLocale = (request: NextRequest) => {
   });
 
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
-
-  const defaultLocale = 'en';
+  const defaultLocale = i18n.defaultLanguage
   const locales: string[] = i18n.locales;
   try {
     return match(languages, locales, defaultLocale);

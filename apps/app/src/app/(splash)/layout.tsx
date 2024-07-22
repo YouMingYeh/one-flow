@@ -5,13 +5,13 @@ import type { User } from '@supabase/supabase-js';
 import { NavBar } from '../../components/layouts/Navbar';
 import { getCurrentUser } from '../app/actions/user';
 import Footer from '../../modules/splash/components/Footer';
-import { getDictionary } from '../i18n';
+import { defaultLanguage, getDictionary } from '../i18n';
 
 const LandingLayout = ({ children }: { children: ReactNode }) => {
   // const user = getCurrentUser();
   const [user, setUser] = useState<User | null>(null);
   const searchParams = useSearchParams();
-  const dictionary = getDictionary(searchParams.get('lang') || 'en');
+  const dictionary = getDictionary(searchParams.get('lang') || defaultLanguage);
 
   useEffect(() => {
     const fetchUser = async () => {

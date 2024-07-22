@@ -6,7 +6,7 @@ import { Button, buttonVariants, cn, Icons } from 'ui';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { ProfileIconMenu } from '../../modules/user/components/ProfileIconMenu';
-import { getDictionary } from '../../app/i18n';
+import { defaultLanguage, getDictionary } from '../../app/i18n';
 
 interface NavbarProps {
   userExists?: boolean;
@@ -16,7 +16,7 @@ interface NavbarProps {
 export const NavBar: FC<NavbarProps> = ({ userExists }) => {
   const { push } = useRouter();
   const searchParams = useSearchParams();
-  const lang = searchParams.get('lang') || 'en';
+  const lang = searchParams.get('lang') || defaultLanguage;
   const dictionary = getDictionary(lang);
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

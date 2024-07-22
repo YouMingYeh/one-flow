@@ -5,7 +5,7 @@ import { useState, type FC } from 'react';
 import { z } from 'zod';
 import { Button, useToast } from 'ui';
 import { v4 as uuidv4 } from 'uuid';
-import { getDictionary } from '../i18n';
+import { defaultLanguage, getDictionary } from '../i18n';
 import { AppForm } from '../../components/form/AppForm';
 import { FormInputField } from '../../components/form/FormInputField';
 import { FormSelect } from '../../components/form/FormSelect';
@@ -14,7 +14,7 @@ import createSupabaseClientClient from '../../../lib/supabase/client';
 export const EarlyAccessForm: FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const searchParams = useSearchParams();
-  const lang = searchParams.get('lang') ?? 'en';
+  const lang = searchParams.get('lang') ?? defaultLanguage;
   const dictionary = getDictionary(lang);
   const { toast } = useToast();
   const router = useRouter();

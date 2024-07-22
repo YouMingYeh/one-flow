@@ -7,7 +7,7 @@ export const i18n = {
 
 export const locales = Object.keys(i18n);
 
-export const defaultLanguage = 'en';
+export const defaultLanguage = 'zh';
 
 export function getDictionary(lang: string) {
   if (lang in i18n) {

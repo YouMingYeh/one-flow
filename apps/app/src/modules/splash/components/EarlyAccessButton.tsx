@@ -1,11 +1,11 @@
 'use client';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { AnimatedSubscribeButton, Icons } from 'ui';
-import { getDictionary } from '../../../app/i18n';
+import { defaultLanguage, getDictionary } from '../../../app/i18n';
 
 const EarlyAccessButton = () => {
   const searchParams = useSearchParams();
-  const dictionary = getDictionary(searchParams.get('lang') ?? 'en');
+  const dictionary = getDictionary(searchParams.get('lang') ?? defaultLanguage);
   const router = useRouter();
   return (
     <AnimatedSubscribeButton
