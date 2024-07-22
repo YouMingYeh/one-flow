@@ -80,6 +80,7 @@ const en = {
         'your one-stop cross-border consolidated payment collection solution',
       subheader:
         'provides A consolidated payment collection tool designed for cross-border e-merchants to find optimal collection gateway for each single transaction with a customizable, tailor-made solution to reach your best potential with seamless experience.',
+      slogan: "Your perfect match, effortlessly found.",
     },
     cta: 'Get Started',
     content: {
