@@ -39,7 +39,7 @@ export default function Footer({ dictionary }: { dictionary: Dictionary }) {
         </Link>
       </p>
       <p className='text-muted-foreground text-sm'>
-      {dictionary.footer.allRightsReserved}
+        {dictionary.footer.allRightsReserved}
       </p>
     </footer>
   );

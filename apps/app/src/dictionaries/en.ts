@@ -1,5 +1,5 @@
 const en = {
-  portal:{
+  portal: {
     title: 'OneFlow',
     description: 'OneFlow is a consolidated payment collection tool',
     contactUs: 'Contact Us',
@@ -41,6 +41,16 @@ const en = {
     description:
       'We are looking for early access users to help us shape the future of OneFlow. You will have the opportunity to provide feedback and gain value directly from our team. Also, you will be the first to experience our new features and updates.  Nonetheless, you will have the potential to receive exclusive offers and discounts. If you are interested, please fill out the form below, and we will provide you a quick demo and get you started as soon as possible.',
     form: {
+      basicInformation: {
+        title: 'Basic Information',
+        tooltip:
+          'We need some basic information to reach out to you in the future. We will not use your information for any other purposes or spam you.',
+      },
+      financialInformation: {
+        title: 'Financial Information',
+        tooltip:
+          'We need some information to provide you with the best payment collection service. We will not use your information for any other purposes.',
+      },
       name: {
         label: 'Name',
         placeholder: 'Your Name',
@@ -57,12 +67,57 @@ const en = {
         placeholder: 'Your Country',
       },
       company: {
-        label: 'Company',
-        placeholder: 'Your Company',
+        label: 'Company Name',
+        placeholder: 'ACME Inc.',
       },
       phone: {
         label: 'Phone',
-        placeholder: 'Your Phone',
+        placeholder: '1234567890',
+      },
+      businessType: {
+        label: 'Business Type',
+        placeholder: 'E-commerce, Online Education, etc.',
+        options: [
+          { value: 'ecommerce', label: 'E-commerce' },
+          { value: 'online_education', label: 'Online Education' },
+          { value: 'online_gaming', label: 'Online Gaming' },
+          { value: 'online_entertainment', label: 'Online Entertainment' },
+        ],
+      },
+      monthlyRevenue: {
+        label: 'How much is your monthly revenue?',
+        placeholder: '1,000,000',
+      },
+      minProcessingVolume: {
+        label: 'How much you want to collect at least today?',
+        placeholder: '100,000',
+      },
+      maxProcessingVolume: {
+        label: 'How much you want to collect at most today?',
+        placeholder: '200,000',
+      },
+      businessCoverage: {
+        label: 'Business Coverage',
+        placeholder: 'China, US, UK, etc.',
+        options: [
+          { value: 'china', label: 'China' },
+          { value: 'us', label: 'US' },
+          { value: 'uk', label: 'UK' },
+        ],
+      },
+      currency: {
+        label: 'Currency',
+        placeholder: 'USD, CNY, GBP, etc.',
+        options: [
+          { value: 'usd', label: 'USD' },
+          { value: 'cny', label: 'CNY' },
+          { value: 'gbp', label: 'GBP' },
+        ],
+      },
+      provideMoreInformation: {
+        title: 'Provide More Information',
+        tooltip:
+          'Please provide more information about your business so that we can better understand your needs and provide you with the more accurate service.',
       },
       submit: 'Submit',
       submit_success:
@@ -80,7 +135,7 @@ const en = {
         'your one-stop cross-border consolidated payment collection solution',
       subheader:
         'provides A consolidated payment collection tool designed for cross-border e-merchants to find optimal collection gateway for each single transaction with a customizable, tailor-made solution to reach your best potential with seamless experience.',
-      slogan: "Your perfect match, effortlessly found.",
+      slogan: 'Your perfect match, effortlessly found.',
     },
     cta: 'Get Started',
     content: {

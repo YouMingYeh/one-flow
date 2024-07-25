@@ -1,5 +1,5 @@
 const zh = {
-  portal:{
+  portal: {
     title: 'OneFlow',
     description: 'OneFlow 是一个整合的支付收款工具',
     contactUs: '联系我们',
@@ -40,31 +40,85 @@ const zh = {
     description:
       '我们正在寻找提前访问用户，帮助我们塑造 OneFlow 的未来。您将有机会提供反馈意见，并直接从我们的团队中获得价值。此外，您将第一个体验我们的新功能和更新。此外，您还有机会获得独家优惠和折扣。如果您感兴趣，请填写下面的表格，我们将为您提供快速演示，并尽快开始。',
     form: {
+      basicInformation: {
+        title: '基本信息',
+        tooltip:
+          '我们需要一些基本信息以便将来与您联系。我们不会将您的信息用于其他目的或向您发送垃圾邮件。',
+      },
+      financialInformation: {
+        title: '财务信息',
+        tooltip:
+          '我们需要一些信息，以便为您提供最佳的支付收款服务。我们不会将您的信息用于其他目的。',
+      },
       name: {
         label: '姓名',
         placeholder: '您的姓名',
       },
       email: {
-        label: '邮箱 (必填)',
+        label: '电子邮件（必填）',
         placeholder: 'email@example.com',
-        invalid_type_error: '邮箱是必填项',
-        required_error: '邮箱是必填项',
-        invalid_email_error: '无效的邮箱',
+        invalid_type_error: '电子邮件是必填项',
+        required_error: '电子邮件是必填项。',
+        invalid_email_error: '无效的电子邮件。',
       },
       country: {
         label: '国家',
         placeholder: '您的国家',
       },
       company: {
-        label: '公司',
-        placeholder: '您的公司',
+        label: '公司名称',
+        placeholder: 'ACME 公司',
       },
       phone: {
         label: '电话',
-        placeholder: '您的电话',
+        placeholder: '1234567890',
+      },
+      businessType: {
+        label: '业务类型',
+        placeholder: '电子商务、在线教育等',
+        options: [
+          { value: 'ecommerce', label: '电子商务' },
+          { value: 'online_education', label: '在线教育' },
+          { value: 'online_gaming', label: '在线游戏' },
+          { value: 'online_entertainment', label: '在线娱乐' },
+        ],
+      },
+      monthlyRevenue: {
+        label: '您的月收入是多少？',
+        placeholder: '1,000,000',
+      },
+      minProcessingVolume: {
+        label: '您今天希望至少收取多少？',
+        placeholder: '100,000',
+      },
+      maxProcessingVolume: {
+        label: '您今天希望最多收取多少？',
+        placeholder: '200,000',
+      },
+      businessCoverage: {
+        label: '业务覆盖范围',
+        placeholder: '中国、美国、英国等',
+        options: [
+          { value: 'china', label: '中国' },
+          { value: 'us', label: '美国' },
+          { value: 'uk', label: '英国' },
+        ],
+      },
+      currency: {
+        label: '货币',
+        placeholder: 'USD, CNY, GBP, 等',
+        options: [
+          { value: 'usd', label: 'USD' },
+          { value: 'cny', label: 'CNY' },
+          { value: 'gbp', label: 'GBP' },
+        ],
+      },
+      provideMoreInformation: {
+        title: '提供更多信息',
+        tooltip: '请提供有关您的业务的更多信息，以便我们更好地了解您的需求并为您提供更准确的服务。',
       },
       submit: '提交',
-      submit_success: '感谢您的关注！我们将尽快回复您。',
+      submit_success: '感谢您的关注！我们会尽快与您联系。',
     },
   },
   landing: {

@@ -30,7 +30,7 @@ export const NavBar: FC<NavbarProps> = ({ userExists }) => {
   };
 
   return (
-    <nav className='py-4 text-black md:py-6 dark:text-white'>
+    <nav className='py-4 text-black dark:text-white md:py-6'>
       <div className='mx-auto flex max-w-6xl items-center justify-between'>
         <a href='/'>
           <Icons.logo />
@@ -92,7 +92,10 @@ export const NavBar: FC<NavbarProps> = ({ userExists }) => {
                 {dictionary.portal.contactUs}
               </Link>
               <Link
-                className={cn(buttonVariants({ size: 'lg', variant: 'default' }), 'px-4 font-bold')}
+                className={cn(
+                  buttonVariants({ size: 'lg', variant: 'default' }),
+                  'px-4 font-bold',
+                )}
                 href='/early-access'
               >
                 {dictionary.portal.earlyAccess} <Icons.ChevronRight />

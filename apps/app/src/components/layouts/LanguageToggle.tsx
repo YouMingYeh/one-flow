@@ -17,7 +17,9 @@ import { defaultLanguage } from '../../app/i18n';
 export const LanguageToggle: FC = () => {
   const searchParams = useSearchParams();
 
-  const [lang, setLang] = React.useState(searchParams.get('lang') ?? defaultLanguage);
+  const [lang, setLang] = React.useState(
+    searchParams.get('lang') ?? defaultLanguage,
+  );
   const handleLanguageChange = (language: string) => {
     setLang(language);
     setCookie('lang', language);

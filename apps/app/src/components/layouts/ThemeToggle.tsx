@@ -17,7 +17,9 @@ import { defaultLanguage, getDictionary } from '../../app/i18n';
 export const ThemeToggle: FC = () => {
   const { setTheme } = useTheme();
   const searchParams = useSearchParams();
-  const dictionaries = getDictionary(searchParams.get('lang') ?? defaultLanguage);
+  const dictionaries = getDictionary(
+    searchParams.get('lang') ?? defaultLanguage,
+  );
 
   return (
     <DropdownMenu>
