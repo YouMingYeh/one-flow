@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
   Icons,
+  Textarea,
 } from 'ui';
 import { getDictionary } from '../../i18n';
 import createSupabaseServerClient from '../../../../lib/supabase/server';
@@ -27,16 +28,25 @@ const Page = async ({
     .eq('id', id)
     .single()) as {
     data: {
+      id: string;
       name: string;
       email: string;
       phone: string;
       country: string;
       company: string;
       status: string;
+      average_monthly_cash_flow: string;
+      withdraw_fee_range: string;
+      withdraw_speed_range: string;
+      customer_services: string;
+      the_most_concerned: string;
+      business_type: string;
+      business_coverage: string;
+      currency: string;
     };
   };
 
-  const { name, email, phone, country, company, status } = data;
+  const { name, email, phone, country, company, status, ...rest } = data;
 
   return (
     <div className='mx-auto flex h-full w-full flex-col justify-center gap-6 py-12 sm:w-1/2'>
@@ -87,6 +97,9 @@ const Page = async ({
                 {dictionary.earlyAccess.ok.information.status}:{' '}
               </span>
               <span>{status}</span>
+            </div>
+            <div>
+              <Textarea className='h-32' readOnly value={JSON.stringify(rest, null, 2)}/>
             </div>
           </div>
         </CardContent>

@@ -121,7 +121,7 @@ export function AnimatedBeamMultiple({ className }: { className?: string }) {
       />
       <AnimatedBeam
         containerRef={containerRef}
-        duration={1}
+        duration={6}
         fromRef={div6Ref}
         toRef={div7Ref}
       />
