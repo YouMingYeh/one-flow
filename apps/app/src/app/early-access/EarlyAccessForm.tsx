@@ -94,6 +94,7 @@ export const EarlyAccessForm: FC = () => {
     if (error) {
       toast({
         title: dictionary.earlyAccess.form.submit_error,
+        description: JSON.stringify(error),
       });
       setIsLoading(false);
       return;

@@ -3,10 +3,10 @@ export default function Loading() {
     <div className='flex h-screen items-center justify-center'>
       <div className='space-y-6'>
         <div className='flex items-center justify-center'>
-          <div className='h-32 w-32 animate-spin rounded-full border-b-2 border-t-2 border-gray-900' />
+          <div className='h-32 w-32 animate-spin rounded-full border-b-2 border-t-2 border-muted-foreground' />
         </div>
         <div className='flex items-center justify-center'>
-          <p className='text-lg font-semibold text-gray-900'>请稍等..</p>
+          <p className='text-lg font-semibold text-muted-foreground'>请稍等..</p>
         </div>
       </div>
     </div>
