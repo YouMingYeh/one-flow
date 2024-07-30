@@ -37,5 +37,6 @@ export * from './src/components/ui/animated-subscribe-button';
 export * from './src/components/ui/copy-button';
 export * from './src/components/ui/slider';
 export * from './src/components/ui/progress';
+export * from './src/components/ui/animated-circular-progress-bar';
 
 export { cn } from './src/lib/utils';

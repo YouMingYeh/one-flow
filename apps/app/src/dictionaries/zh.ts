@@ -21,6 +21,57 @@ const zh = {
     earlyAccessOK: '我们开始吧！',
   },
   earlyAccess: {
+    questionnaire: {
+      submit: '提交',
+      title: '调查问卷',
+      description: '我们希望了解更多关于您的业务，以便为您提供最佳解决方案。',
+      help: '您认为 OneFlow 在一定程度上有助于您的业务吗？',
+      how: {
+        title: '在做生意时，您如何选择第三方支付提供商？',
+        options: [
+          { value: 'platform', label: '基于平台上的可用选项' },
+          { value: 'research', label: '基于市场调查和比较' },
+          { value: 'recommendation', label: '基于朋友或合作伙伴的推荐' },
+          { value: 'sales', label: '与销售人员沟通' },
+          { value: 'others', label: '其他' },
+        ],
+      },
+      experience: {
+        title: '如果是，您对 OneFlow 的体验如何？（1-5）',
+        mapping: {
+          1: '非常糟糕',
+          2: '糟糕',
+          3: '一般',
+          4: '好',
+          5: '非常好',
+        },
+      },
+      pay: '您愿意为 OneFlow 付费吗？',
+      amount: {
+        title: '如果是，您愿意为 OneFlow 付费吗？（人民币／月）',
+        options: [
+          { value: '20', label: '少于 20' },
+          { value: '40', label: '少于 40' },
+          { value: '60', label: '少于 60' },
+          { value: 'above', label: '超过 60' },
+        ],
+      },
+      additional: '您希望在 OneFlow 上看到哪些额外服务？我们如何进一步改进？',
+    },
+    results: {
+      title: '结果',
+      description: '这是最适合您的解决方案！',
+      youShouldChoose: '您应该选择',
+      asYourPaymentGateway: '作为您的支付网关',
+      youWillPay: '您将支付',
+      ofWithdrawalFee: '的提款费用',
+      andWait: '并等待',
+      forWithdrawal: '天提款',
+      youWillGet: '您将获得',
+      customerService: '客户服务',
+      enjoyYourBusiness: '享受您的业务！',
+      goOn: '继续',
+    },
     ok: {
       title: '感谢您的关注！',
       description: '我们将尽快回复您。保存此页面以稍后检查您的状态。',
@@ -34,6 +85,10 @@ const zh = {
         status: '状态',
       },
       cta: '明白了！保存页面链接',
+    },
+    run: {
+      checkResults: '检查结果',
+      letsGo: '开始吧！',
     },
     note: '抱歉！我们还没有准备好接受所有用户。请填写下面的表格，加入我们的提前访问计划。',
     title: '我们邀请您加入我们的提前访问计划！',
@@ -87,7 +142,8 @@ const zh = {
         placeholderMin: '0',
         placeholderMax: '2.5',
         unit: '%',
-        tooltip: '您可以接受的提款费用范围為何？我们将根据您的需求为您提供最佳解决方案。',
+        tooltip:
+          '您可以接受的提款费用范围為何？我们将根据您的需求为您提供最佳解决方案。',
       },
       withdrawSpeedRange: {
         label: '可接受的提款速度范围（必填）',
@@ -122,7 +178,6 @@ const zh = {
           { value: 'other', label: '其他' },
         ],
       },
-
 
       businessCoverage: {
         label: '业务覆盖范围',

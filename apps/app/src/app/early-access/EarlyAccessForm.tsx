@@ -102,7 +102,7 @@ export const EarlyAccessForm: FC = () => {
       title: dictionary.earlyAccess.form.submit_success,
     });
     setTimeout(() => {
-      router.push(`/early-access/${earlyAccessId}`);
+      router.push(`/early-access/run/${earlyAccessId}`);
     }, 1000);
 
     setIsLoading(false);
@@ -120,13 +120,6 @@ export const EarlyAccessForm: FC = () => {
 
   return (
     <AppForm
-      defaultValues={{
-        name: '',
-        email: '',
-        country: '+86',
-        company: '',
-        phone: '',
-      }}
       onSubmit={onSubmit}
       schema={earlyAccessFormSchema}
     >
@@ -323,6 +316,7 @@ export const EarlyAccessForm: FC = () => {
             className='p-8 text-xl font-semibold'
             onClick={handleNextStep}
             type='button'
+            key='next'
           >
             {dictionary.earlyAccess.form.next}
           </Button>

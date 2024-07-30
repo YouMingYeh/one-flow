@@ -21,6 +21,70 @@ const en = {
     earlyAccessOK: "Let's Go!",
   },
   earlyAccess: {
+    questionnaire: {
+      submit: 'Submit',
+      title: 'Questionnaire',
+      description:
+        'We would like to know more about your business to provide you with the best solution.',
+      help: 'Do you think OneFlow help with your business to some extent?',
+      how: {
+        title:
+          'How do you select your Third Party Payment Provider when doing business?',
+        options: [
+          {
+            value: 'platform',
+            label: 'Based on availability options on the platform',
+          },
+          {
+            value: 'research',
+            label: 'Based on market research and comparison',
+          },
+          {
+            value: 'recommendation',
+            label: 'Based on recommendation from friends or partners',
+          },
+          { value: 'sales', label: 'Communicate with sales' },
+          { value: 'others', label: 'Others' },
+        ],
+      },
+      experience: {
+        title: 'If Yes, Rate Your Experience with OneFlow (1-5)',
+        mapping: {
+          1: 'Very Bad',
+          2: 'Bad',
+          3: 'Average',
+          4: 'Good',
+          5: 'Very Good',
+        }
+      },
+      pay: 'Are you willing to pay for OneFlow?',
+      amount: {
+        title:
+          'If Yes, How much are you willing to pay for OneFlow? (CNY/month)',
+        options: [
+          { value: '20', label: 'less than $20' },
+          { value: '40', label: 'less than $40' },
+          { value: '60', label: 'less than $60' },
+          { value: 'above', label: 'above $60' },
+        ],
+      },
+      additional:
+        'What additional service do you want to see on OneFlow? How can we further improve?',
+    },
+    results: {
+      title: 'Results',
+      description: 'Here is the best solution for you!',
+      youShouldChoose: 'You should choose',
+      asYourPaymentGateway: 'as your payment gateway',
+      youWillPay: 'You will pay',
+      ofWithdrawalFee: 'of withdrawal fee',
+      andWait: 'and wait',
+      forWithdrawal: 'days for withdrawal',
+      youWillGet: 'You will get',
+      customerService: 'customer service',
+      enjoyYourBusiness: 'Enjoy your business!',
+      goOn: 'Go On',
+    },
     ok: {
       title: 'Thank you for your interest!',
       description:
@@ -35,6 +99,10 @@ const en = {
         status: 'Status',
       },
       cta: 'Got it! Save the page URL',
+    },
+    run: {
+      checkResults: 'Check Results!',
+      letsGo: "Let's Go!",
     },
     note: 'Sorry! we are not ready for all users yet. Please fill out the form below to join our early access program.',
     title: 'We invite you to join our early access program!',
@@ -88,7 +156,8 @@ const en = {
         placeholderMin: '0',
         placeholderMax: '2.5',
         unit: '%',
-        tooltip: 'How much percentage of the withdrawal fee are you willing to pay?',
+        tooltip:
+          'How much percentage of the withdrawal fee are you willing to pay?',
       },
       withdrawSpeedRange: {
         label: 'Acceptable Withdraw Speed Range (required)',
@@ -145,7 +214,6 @@ const en = {
           { value: 'mx', label: 'Mexico 🇲🇽' },
           { value: 'au', label: 'Australia 🇦🇺' },
           { value: 'other', label: 'Other' },
-
         ],
       },
       currency: {
@@ -179,8 +247,9 @@ const en = {
       submit: 'Submit',
       submit_success:
         'Thank you for your interest! We will get back to you as soon as possible.',
-      submit_error: 'Failed to submit the form. Please make sure all fields are filled out correctly and try again later.',
-      next: 'Next Step'
+      submit_error:
+        'Failed to submit the form. Please make sure all fields are filled out correctly and try again later.',
+      next: 'Next Step',
     },
   },
   landing: {

@@ -11,6 +11,7 @@ import {
 import { getDictionary } from '../../i18n';
 import createSupabaseServerClient from '../../../../lib/supabase/server';
 import CopyURLButton from './CopyURLButton';
+import { QuestionnaireForm } from './QuestionnaireForm';
 
 const Page = async ({
   params,
@@ -59,6 +60,7 @@ const Page = async ({
           {dictionary.earlyAccess.ok.description}
         </p>
       </div>
+      <QuestionnaireForm dictionary={dictionary}/>
       <Card>
         <CardHeader>
           <CardTitle>{dictionary.earlyAccess.ok.information.title}</CardTitle>
@@ -109,6 +111,7 @@ const Page = async ({
           </CopyURLButton>
         </CardFooter>
       </Card>
+      
     </div>
   );
 };
