@@ -18,6 +18,7 @@ const EarlyAccessButton = () => {
           <Icons.Spinner className='ml-2 animate-spin' />
         </span>
       }
+      delay={200}
       initialText={
         <span className='group inline-flex items-center justify-center'>
           <Icons.Rocket className='mr-2' />

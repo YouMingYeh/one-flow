@@ -204,6 +204,7 @@ export default function RunProgress({
               <Icons.Spinner className='ml-2 animate-spin' />
             </span>
           }
+          delay={300}
           initialText={
             <span className='group inline-flex items-center justify-center'>
               <Icons.Rocket className='mr-2' />

@@ -11,13 +11,14 @@ import {
 } from 'ui';
 import Link from 'next/link';
 import type { Dictionary } from '../../../dictionaries';
-import { AnimatedBeamMultiple } from './AnimatedBeamMultiple';
+import { Solution1 } from './Solution1';
 import EarlyAccessButton from './EarlyAccessButton';
+import { Solution2 } from './Solution2';
 
 export default function Content({ dictionary }: { dictionary: Dictionary }) {
   return (
     <>
-      <h2 className='text-3xl font-bold tracking-tight'>
+      <h2 className='text-4xl font-bold tracking-tight'>
         {dictionary.landing.content.title}
       </h2>
       <p className='text-muted-foreground'>
@@ -98,30 +99,41 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
           </CardFooter>
         </Card>
       </div>
-      <div className='grid w-full grid-cols-1 gap-6 md:grid-cols-2'>
+      <div>
+        <h2 className='text-4xl font-semibold leading-none tracking-tight'>
+          {dictionary.landing.content.numberTicker.title}
+        </h2>
+        <h3 className='text-muted-foreground text-xl'>
+          {dictionary.landing.content.numberTicker.description}
+        </h3>
+        <p className='mt-4 whitespace-pre-wrap text-8xl font-medium tracking-tighter'>
+          <NumberTicker value={15} /> +
+        </p>
+        <h2 className='mt-2 text-6xl font-semibold leading-none tracking-tight'>
+          {dictionary.landing.content.numberTicker.footer}
+        </h2>
+      </div>
+      <p className='mt-32 text-4xl font-semibold'>{dictionary.landing.content.howWeHelp}</p>
+      <div className='grid w-full grid-cols-1 gap-6 md:grid-cols-2 mt-8'>
         <div>
-          <h2 className='text-4xl font-semibold leading-none tracking-tight'>
-            {dictionary.landing.content.numberTicker.title}
+          <h2 className='text-3xl font-semibold leading-none tracking-tight'>
+            {dictionary.landing.content.solution1.title}
           </h2>
           <h3 className='text-muted-foreground text-xl'>
-            {dictionary.landing.content.numberTicker.description}
-          </h3>
-          <p className='mt-4 whitespace-pre-wrap text-8xl font-medium tracking-tighter'>
-            <NumberTicker value={15} /> +
-          </p>
-          <h2 className='mt-2 text-6xl font-semibold leading-none tracking-tight'>
-            {dictionary.landing.content.numberTicker.footer}
-          </h2>
-        </div>
-        <div>
-          <h2 className='text-4xl font-semibold leading-none tracking-tight'>
-            {dictionary.landing.content.beamMultiple.title}
-          </h2>
-          <h3 className='text-muted-foreground text-xl'>
-            {dictionary.landing.content.beamMultiple.description}
+            {dictionary.landing.content.solution1.description}
           </h3>
 
-          <AnimatedBeamMultiple />
+          <Solution1 />
+        </div>
+        <div>
+          <h2 className='text-3xl font-semibold leading-none tracking-tight'>
+            {dictionary.landing.content.solution2.title}
+          </h2>
+          <h3 className='text-muted-foreground text-xl'>
+            {dictionary.landing.content.solution2.description}
+          </h3>
+
+          <Solution2 />
         </div>
       </div>
       <h2 className='text-4xl font-semibold leading-none tracking-tight'>

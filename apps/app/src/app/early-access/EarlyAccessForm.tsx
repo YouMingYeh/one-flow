@@ -64,6 +64,8 @@ export const EarlyAccessForm: FC = () => {
         dictionary.earlyAccess.form.averageMonthlyCashFlow.required_error,
     }),
     theMostConcerned: z.string().optional().nullable(),
+    currentGateway: z.string().optional().nullable(),
+    currentRate: z.string().optional().nullable(),
   });
 
   type EarlyAccessFormValues = z.infer<typeof earlyAccessFormSchema>;
@@ -89,12 +91,14 @@ export const EarlyAccessForm: FC = () => {
         the_most_concerned: data.theMostConcerned,
         business_coverage: businessCoverage.join(','),
         currency: currency.join(','),
+        current_gateway: data.currentGateway,
+        current_rate: data.currentRate,
       },
     ]);
     if (error) {
       toast({
         title: dictionary.earlyAccess.form.submit_error,
-        description: JSON.stringify(error),
+        description: JSON.stringify(error.message),
       });
       setIsLoading(false);
       return;
@@ -272,6 +276,20 @@ export const EarlyAccessForm: FC = () => {
                 <AccordionContent>
                   <div className='flex flex-col gap-6 px-1'>
                     <FormInputField<EarlyAccessFormValues>
+                      label={dictionary.earlyAccess.form.currentGateway.label}
+                      path='currentGateway'
+                      placeholder={
+                        dictionary.earlyAccess.form.currentGateway.placeholder
+                      }
+                    />
+                    <FormInputField<EarlyAccessFormValues>
+                      label={dictionary.earlyAccess.form.currentRate.label}
+                      path='currentRate'
+                      placeholder={
+                        dictionary.earlyAccess.form.currentRate.placeholder
+                      }
+                    />
+                    <FormInputField<EarlyAccessFormValues>
                       label={dictionary.earlyAccess.form.businessType.label}
                       path='businessType'
                       placeholder={
@@ -315,9 +333,9 @@ export const EarlyAccessForm: FC = () => {
         {step < 2 ? (
           <Button
             className='p-8 text-xl font-semibold'
+            key='next'
             onClick={handleNextStep}
             type='button'
-            key='next'
           >
             {dictionary.earlyAccess.form.next}
           </Button>

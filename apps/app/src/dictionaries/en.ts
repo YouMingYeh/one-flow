@@ -1,15 +1,15 @@
 const en = {
   portal: {
     title: 'OneFlow',
-    description: 'OneFlow is a consolidated payment collection tool',
+    description: 'OneFlow is an integrated cross-border payment tool',
     contactUs: 'Contact Us',
     earlyAccess: 'Early Access',
   },
   themeToggle: {
     label: 'Theme Toggle',
-    light: 'Light Mode',
-    dark: 'Dark Mode',
-    system: 'System Mode',
+    light: 'Light Theme',
+    dark: 'Dark Theme',
+    system: 'System Theme',
   },
   brand: 'OneFlow',
   buttons: {
@@ -18,22 +18,22 @@ const en = {
     contactUs: 'Contact Us',
     login: 'Login',
     earlyAccess: 'Early Access?',
-    earlyAccessOK: "Let's Go!",
+    earlyAccessOK: 'Let’s Start!',
   },
   earlyAccess: {
     questionnaire: {
       submit: 'Submit',
       title: 'Questionnaire',
       description:
-        'We would like to know more about your business to provide you with the best solution.',
-      help: 'Do you think OneFlow help with your business to some extent?',
+        'We would like to know more about your business to provide you with tailored solutions.',
+      help: 'Do you think OneFlow helps your business to some extent?',
       how: {
         title:
-          'How do you select your Third Party Payment Provider when doing business?',
+          'How do you choose a third-party payment provider when doing business?',
         options: [
           {
             value: 'platform',
-            label: 'Based on availability options on the platform',
+            label: 'Based on available options on the platform',
           },
           {
             value: 'research',
@@ -41,35 +41,35 @@ const en = {
           },
           {
             value: 'recommendation',
-            label: 'Based on recommendation from friends or partners',
+            label: 'Based on recommendations from friends or partners',
           },
-          { value: 'sales', label: 'Communicate with sales' },
+          { value: 'sales', label: 'Communicating with salespeople' },
           { value: 'others', label: 'Others' },
         ],
       },
       experience: {
-        title: 'If Yes, Rate Your Experience with OneFlow (1-5)',
+        title: 'If so, how would you rate your experience with OneFlow? (1-5)',
         mapping: {
-          1: 'Very Bad',
+          1: 'Very bad',
           2: 'Bad',
           3: 'Average',
           4: 'Good',
-          5: 'Very Good',
-        }
+          5: 'Very good',
+        },
       },
       pay: 'Are you willing to pay for OneFlow?',
       amount: {
         title:
-          'If Yes, How much are you willing to pay for OneFlow? (CNY/month)',
+          'If yes, how much would you be willing to pay for OneFlow? (RMB/month)',
         options: [
-          { value: '20', label: 'less than $20' },
-          { value: '40', label: 'less than $40' },
-          { value: '60', label: 'less than $60' },
-          { value: 'above', label: 'above $60' },
+          { value: '20', label: 'Less than 20' },
+          { value: '40', label: 'Less than 40' },
+          { value: '60', label: 'Less than 60' },
+          { value: 'above', label: 'More than 60' },
         ],
       },
       additional:
-        'What additional service do you want to see on OneFlow? How can we further improve?',
+        'What additional services would you like to see on OneFlow? How can we further improve?',
     },
     results: {
       title: 'Results',
@@ -83,41 +83,55 @@ const en = {
       youWillGet: 'You will get',
       customerService: 'customer service',
       enjoyYourBusiness: 'Enjoy your business!',
-      goOn: 'Go On',
+      goOn: 'Go on',
     },
     ok: {
       title: 'Thank you for your interest!',
       description:
-        'We will get back to you as soon as possible. Save this page to check your status later.',
+        'We will get back to you soon. Save this page to check your status later.',
       information: {
         title: 'Here is your submission information',
-        description: 'Please click the button below to save the page URL',
+        description: 'Click the button below to save the page link',
         name: 'Name',
         email: 'Email',
         phone: 'Phone',
         company: 'Company',
         status: 'Status',
       },
-      cta: 'Got it! Save the page URL',
+      cta: 'Got it! Save the page link',
     },
     run: {
-      checkResults: 'Check Results!',
-      letsGo: "Let's Go!",
+      checkResults: 'Check Results',
+      letsGo: 'Let’s Go!',
     },
-    note: 'Sorry! we are not ready for all users yet. Please fill out the form below to join our early access program.',
-    title: 'We invite you to join our early access program!',
+    note: 'OneFlow is currently in product development stage! We are publicly looking for first-stage internal testers to help shape the future of OneFlow.',
+    title: 'We invite you to join our Early Access Program!',
     description:
-      'We are looking for early access users to help us shape the future of OneFlow. You will have the opportunity to provide feedback and gain value directly from our team. Also, you will be the first to experience our new features and updates.  Nonetheless, you will have the potential to receive exclusive offers and discounts. If you are interested, please fill out the form below, and we will provide you a quick demo and get you started as soon as possible.',
+      'Please fill in the information below, and you will have the chance to become one of the first batch of internal testers of OneFlow.',
+    benefits: {
+      title: 'Benefits of Being a Beta Tester',
+      list: [
+        'Free access to OneFlow products and more exclusive offers',
+        'First-time updates on each new feature',
+        'Free consultation from experts in the cross-border payment field',
+      ],
+    },
+    responsibilities: {
+      title: 'Responsibilities of Beta Testers',
+      list: ['Provide honest and reliable feedback for product demos'],
+    },
+    interested:
+      'If you are interested, please fill out the form below. We will provide a quick product demo. What are you waiting for?',
     form: {
       basicInformation: {
         title: 'Basic Information',
         tooltip:
-          'We need some basic information to reach out to you in the future. We will not use your information for any other purposes or spam you.',
+          'We need some basic information to contact you in the future. We will not use your information for other purposes or send you spam.',
       },
       financialInformation: {
         title: 'Financial Information',
         tooltip:
-          'We need some information to provide you with the best payment collection service. We will not use your information for any other purposes.',
+          'We need some information to provide you with tailored cross-border payment services. We will not use your information for other purposes.',
       },
       name: {
         label: 'Name',
@@ -136,71 +150,82 @@ const en = {
       },
       company: {
         label: 'Company Name',
-        placeholder: 'ACME Inc.',
+        placeholder: 'ACME Company',
       },
       phone: {
         label: 'Phone',
         placeholder: '1234567890',
       },
-      businessType: {
-        label: 'Business Type',
-        placeholder: 'E-commerce, Online Education, etc.',
-      },
       averageMonthlyCashFlow: {
         label: 'Average Monthly Cash Flow (required)',
         placeholder: '100,000',
-        required_error: 'Average Monthly Cash Flow is required.',
+        required_error: 'Average monthly cash flow is required.',
       },
       withdrawFeeRange: {
-        label: 'Acceptable Withdraw Fee Range (required)',
+        label: 'Acceptable Withdrawal Fee Range (required)',
         placeholderMin: '0',
         placeholderMax: '2.5',
         unit: '%',
         tooltip:
-          'How much percentage of the withdrawal fee are you willing to pay?',
+          'What range of withdrawal fees can you accept? We will provide you with tailored solutions based on your needs.',
       },
       withdrawSpeedRange: {
-        label: 'Acceptable Withdraw Speed Range (required)',
+        label: 'Acceptable Withdrawal Speed Range (required)',
         placeholderMin: '1',
         placeholderMax: '7',
         unit: 'days',
-        tooltip: 'How many days are you willing to wait for the withdrawal?',
+        tooltip: 'How many days do you expect to receive withdrawals?',
       },
       customerServices: {
-        label: 'Customer Service',
-        placeholder: '24/7 Support, etc.',
+        label: 'Customer Services',
+        placeholder: '24/7 support, etc.',
         options: [
           { value: '24/7', label: '24/7 Support' },
-          { value: '9/5', label: '9/5 Support' },
-          { value: 'response-time', label: 'Response Time' },
-          { value: 'analytics', label: 'Analytics and Reporting Tools' },
-          { value: 'loyalty', label: 'Loyalty Programs' },
-          { value: 'integration', label: 'Integration Support' },
-          { value: 'security', label: 'Security Risk Management' },
-          { value: 'compliance', label: 'Compliance Management' },
+          { value: 'fx', label: 'FX Exchange' },
+          { value: 'marketing-tools', label: 'Marketing Tools' },
+          { value: 'tax-refund', label: 'Export Tax Refund' },
+          { value: 'business-card-service', label: 'Business Card Service' },
+          { value: 'payment-tracking', label: 'Payment Tracking' },
+          { value: 'overseas-logistics', label: 'Overseas Logistics' },
+          { value: 'vat-service', label: 'VAT Service' },
+          { value: 'loyalty-rewards', label: 'Loyalty Rewards' },
+          { value: 'financing-service', label: 'Financing Service' },
+          { value: 'product-sourcing', label: 'Product Sourcing' },
         ],
       },
       theMostConcerned: {
-        label: 'Which of the following is your most concerned?',
-        placeholder: 'Cost, Speed, Security, etc.',
+        label: 'What do you care about most?',
+        placeholder: 'Cost, speed, security, etc.',
         options: [
-          { value: 'cost', label: 'Cost (Fees)' },
-          { value: 'speed', label: 'Speed (Withdrawal Time)' },
+          { value: 'cost', label: 'Cost (Withdrawal Fee)' },
+          { value: 'speed', label: 'Speed (Withdrawal Speed)' },
           { value: 'security', label: 'Security (Risk Management)' },
           { value: 'customer-service', label: 'Customer Service' },
-          { value: 'compliance', label: 'Compliance' },
-          { value: 'other', label: 'Other' },
+          { value: 'compliance', label: 'Compliance Management' },
+          { value: 'other', label: 'Others' },
         ],
+      },
+      currentGateway: {
+        label: 'What payment channels are you currently using?',
+        placeholder: 'PayPal, Alipay, etc.',
+      },
+      currentRate: {
+        label: 'What is your current cross-border payment rate?',
+        placeholder: '2.9% + $0.30',
+      },
+      businessType: {
+        label: 'Business Type',
+        placeholder: 'E-commerce, online education, etc.',
       },
       businessCoverage: {
         label: 'Business Coverage',
-        placeholder: 'China, US, UK, etc.',
+        placeholder: 'China, USA, UK, etc.',
         options: [
           { value: 'china', label: 'China 🇨🇳' },
-          { value: 'us', label: 'US 🇺🇸' },
+          { value: 'us', label: 'USA 🇺🇸' },
           { value: 'uk', label: 'UK 🇬🇧' },
           { value: 'jp', label: 'Japan 🇯🇵' },
-          { value: 'kr', label: 'Korea 🇰🇷' },
+          { value: 'kr', label: 'South Korea 🇰🇷' },
           { value: 'sg', label: 'Singapore 🇸🇬' },
           { value: 'my', label: 'Malaysia 🇲🇾' },
           { value: 'id', label: 'Indonesia 🇮🇩' },
@@ -213,7 +238,7 @@ const en = {
           { value: 'ca', label: 'Canada 🇨🇦' },
           { value: 'mx', label: 'Mexico 🇲🇽' },
           { value: 'au', label: 'Australia 🇦🇺' },
-          { value: 'other', label: 'Other' },
+          { value: 'other', label: 'Others' },
         ],
       },
       currency: {
@@ -237,76 +262,81 @@ const en = {
           { value: 'nzd', label: 'NZD' },
           { value: 'cad', label: 'CAD' },
           { value: 'mxn', label: 'MXN' },
+          { value: 'other', label: 'Others' },
         ],
       },
       provideMoreInformation: {
         title: 'Provide More Information',
         tooltip:
-          'Please provide more information about your business so that we can better understand your needs and provide you with the more accurate service.',
+          'Please provide more information about your business so that we can better understand your needs and provide you with more accurate services.',
       },
       submit: 'Submit',
-      submit_success:
-        'Thank you for your interest! We will get back to you as soon as possible.',
+      submit_success: 'Thank you for your interest! We will contact you soon.',
       submit_error:
-        'Failed to submit the form. Please make sure all fields are filled out correctly and try again later.',
-      next: 'Next Step',
+        'Submission failed, please make sure all fields are filled correctly and try again.',
+      next: 'Next',
     },
   },
   landing: {
     earlyAccess: {
-      title: 'We are looking for early access users!',
+      title: 'We are looking for Early Access users!',
       description:
-        'Click the button below, fill out the form, and we will get back to you as soon as possible.',
+        'Click the button below, fill out the form, and we will get back to you soon.',
     },
     splash: {
-      header:
-        'your one-stop cross-border consolidated payment collection solution',
+      header: 'One-stop Cross-border Integrated Payment Tool',
       subheader:
-        'provides A consolidated payment collection tool designed for cross-border e-merchants to find optimal collection gateway for each single transaction with a customizable, tailor-made solution to reach your best potential with seamless experience.',
-      slogan: 'Your perfect match, effortlessly found.',
+        'OneFlow is dedicated to solving various pain points encountered in cross-border payment for cross-border merchants. With our OneFlow payment assistant, you can recommend the most suitable payment gateway based on your business situation, characteristics, and preferences, and provide customized solutions. Through powerful APIs and models, we provide an extremely smooth payment experience for many merchants.',
+      slogan: 'Find the most suitable payment channel for you',
     },
     cta: 'Get Started',
     content: {
-      title: 'Say Goodbye to Payment Collection Overwhelm.',
+      title: 'Say Goodbye to Cross-border Payment Troubles',
       description:
-        'Unlock your unknown potential of your business with OneFlow.',
+        'Unlock the unknown potential of your business with OneFlow.',
       cards: {
         findYourBestMatch: {
-          title: 'Find Your Perfect Match for Every Collection in Real-Time',
+          title: 'Find the Best Match for Each Payment in Real Time',
           description:
-            'There are too many choices and complex pricing and service plans. Stop struggling with the right payment collection method.',
+            'No more headaches about choosing the right cross-border payment method with numerous options and complex pricing and service plans.',
           content:
-            'Choosing the right payment collection method can be complex with countless options and intricate pricing plans. OneFlow simplifies this process by providing personalized insights and recommendations. Our extensive database and advanced algorithms help you make informed financial decisions tailored to your unique needs.',
+            'Facing countless options and complex pricing plans. OneFlow simplifies this process by providing personalized insights and recommendations. Our extensive database and advanced algorithms help you make wise financial decisions that suit your unique needs.',
           cta: 'Learn More',
         },
         itJustWorks: {
-          title:
-            "Discover the Growth Potential You Didn't Know Existed Straightforwardly",
+          title: 'Intuitively Discover Growth Potential You Never Knew Existed',
           description:
-            'Do not miss out on business growth opportunities that you might not have realized.',
+            'Don’t miss out on potential business growth opportunities you may not have realized.',
           content:
-            'Think your current payment collection methods are sufficient? Think again. OneFlow uncovers opportunities for business growth that you might not have realized. Our tool is designed to optimize your payment collection process and unlock new avenues for efficiency and success. Trust in OneFlow to reveal the untapped potential and transform the way you handle payments.',
+            'Think your current cross-border payment method is enough? Think again. OneFlow reveals business growth opportunities you may not have realized. Our tools are designed to optimize your cross-border payment process, opening new avenues for efficiency and success. Trust OneFlow to uncover untapped potential and change the way you handle payments.',
           cta: 'Learn More',
         },
         howMuch: {
-          title: 'Affordable and Cost-Effective – Save More with OneFlow',
-          description: 'Save money with OneFlow',
+          title: 'Affordable – Save More with OneFlow',
+          description: 'Save Costs with OneFlow',
           content:
-            'OneFlow offers an affordable SaaS solution designed to provide exceptional value. We ensure that our tool not only fits within your budget but also helps you save money. With transparent pricing and cost-saving features, OneFlow is an investment that pays off by optimizing your payment collection process and reducing unnecessary expenses.',
+            'OneFlow offers an affordable SaaS solution aimed at providing exceptional value. We ensure our tools not only fit your budget but also help you save costs. With transparent pricing and cost-saving features, OneFlow is a worthwhile investment that reduces unnecessary expenses by optimizing the cross-border payment process.',
           cta: 'Learn More',
         },
       },
       cta: 'Get Started',
       numberTicker: {
-        title: 'Collect over ...',
+        title: 'Collecting Over ...',
         description:
-          'We collect over 15 payment gateways information and provide you with the best in real-time.',
-        footer: 'Payment Gateways Real-Time Information',
+          'We collect information from over 15 payment gateways and provide you with the best real-time choices.',
+        footer: 'Real-time Payment Gateway Information',
       },
-      beamMultiple: {
-        title: 'Consolidated Payment Collection',
+      howWeHelp: 'How OneFlow Helps You?',
+
+      solution1: {
+        title: 'Discover the Best You Never Knew',
         description:
-          'OneFlow handles all your payment collection needs in one place.',
+          'OneFlow helps you discover the best payment gateway for your business among the countless options available.',
+      },
+      solution2: {
+        title: 'Integrate Cross-border Payments',
+        description:
+          'OneFlow handles all your cross-border payment needs in one place.',
       },
     },
   },
@@ -317,28 +347,28 @@ const en = {
       confirmPassword: 'Confirm Password',
       signIn: 'Sign In',
       signUp: 'Sign Up',
-      forgotPassword: 'Forgot Your Password?',
-      orContinueWith: 'Or continue with',
+      forgotPassword: 'Forgot Password?',
+      orContinueWith: 'Or Continue With',
     },
     login: {
-      header: 'Welcome back',
-      subheader: 'Enter your email to sign in to your account',
-      createAccount: "Don't have an account? Sign Up",
+      header: 'Welcome Back',
+      subheader: 'Enter your email to sign into your account',
+      createAccount: 'Don’t have an account? Sign Up',
     },
     register: {
-      header: 'Register now!',
-      subheader: 'Enter your email to sign in to your account',
-      haveAccount: 'Have an account? Sign In',
+      header: 'Sign Up Now!',
+      subheader: 'Enter your email to create your account',
+      haveAccount: 'Already have an account? Sign In',
     },
     forgotPassword: {
-      header: 'Forgot your password?',
+      header: 'Forgot Password?',
       subheader: 'Enter your email to reset your password',
-      rememberPassword: 'Remember your password?',
-      signInHere: 'Sign in here',
+      rememberPassword: 'Remembered your password?',
+      signInHere: 'Sign In Here',
     },
   },
   footer: {
-    builtBy: 'Built by OneFlow Team',
+    builtBy: 'Built by the OneFlow team',
     privacyPolicy: 'Privacy Policy',
     termsOfService: 'Terms of Service',
     contactUs: 'Contact Us',

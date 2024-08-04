@@ -17,6 +17,25 @@ const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
         <p className='text-muted-foreground text-md'>
           {dictionary.earlyAccess.description}
         </p>
+        <p className='text-muted-foreground text-md md:px-32 text-left'>
+          {dictionary.earlyAccess.benefits.title}: <br />
+          <ul className='my-6 ml-6 list-disc [&>li]:mt-2'>
+            {dictionary.earlyAccess.benefits.list.map(benefit => (
+              <li key={benefit}>{benefit}</li>
+            ))}
+          </ul>
+        </p>
+        <p className='text-muted-foreground text-md md:px-32 text-left'>
+          {dictionary.earlyAccess.responsibilities.title}: <br />
+          <ul className='my-6 ml-6 list-disc [&>li]:mt-2'>
+            {dictionary.earlyAccess.responsibilities.list.map(responsibility => (
+              <li key={responsibility}>{responsibility}</li>
+            ))}
+          </ul>
+        </p>
+        <p className='text-muted-foreground text-md'>
+          {dictionary.earlyAccess.interested}
+        </p>
       </div>
       <EarlyAccessForm />
     </div>

@@ -1,7 +1,7 @@
 const zh = {
   portal: {
     title: 'OneFlow',
-    description: 'OneFlow 是一个整合的支付收款工具',
+    description: 'OneFlow 是一个整合的跨境收款工具',
     contactUs: '联系我们',
     earlyAccess: '提前访问',
   },
@@ -24,7 +24,7 @@ const zh = {
     questionnaire: {
       submit: '提交',
       title: '调查问卷',
-      description: '我们希望了解更多关于您的业务，以便为您提供最佳解决方案。',
+      description: '我们希望了解更多关于您的业务，以便为您提供专属解决方案。',
       help: '您认为 OneFlow 在一定程度上有助于您的业务吗？',
       how: {
         title: '在做生意时，您如何选择第三方支付提供商？',
@@ -90,10 +90,25 @@ const zh = {
       checkResults: '检查结果',
       letsGo: '开始吧！',
     },
-    note: '抱歉！我们还没有准备好接受所有用户。请填写下面的表格，加入我们的提前访问计划。',
+    note: 'OneFlow目前仍在产品研发阶段！我们正在公开寻找第一阶段的内部测试用户，帮助我们一同塑造 OneFlow 的未来。',
     title: '我们邀请您加入我们的提前访问计划！',
     description:
-      '我们正在寻找提前访问用户，帮助我们塑造 OneFlow 的未来。您将有机会提供反馈意见，并直接从我们的团队中获得价值。此外，您将第一个体验我们的新功能和更新。此外，您还有机会获得独家优惠和折扣。如果您感兴趣，请填写下面的表格，我们将为您提供快速演示，并尽快开始。',
+      '请填写以下信息，您将有机会成为 OneFlow 的第一批内测用户。',
+    benefits: {
+      title: '内测用户的好处',
+      list: [
+        'OneFlow 产品的免费使用权及更多独家优惠',
+        '第一时间提供每次新功能的更新',
+        '获得来自跨境支付领域专家的免费咨询'
+      ],
+    },
+    responsibilities: {
+      title: '内测用户的责任',
+      list: [
+        '为产品 demo 提供真实可靠的意见'
+      ],
+    },
+    interested: '如果您感兴趣，请填写以下表格，我们将提供快速产品演示，还在等什么呢？',
     form: {
       basicInformation: {
         title: '基本信息',
@@ -103,7 +118,7 @@ const zh = {
       financialInformation: {
         title: '财务信息',
         tooltip:
-          '我们需要一些信息，以便为您提供最佳的支付收款服务。我们不会将您的信息用于其他目的。',
+          '我们需要一些信息，以便为您提供专属您的跨境收款服务。我们不会将您的信息用于其他目的。',
       },
       name: {
         label: '姓名',
@@ -128,14 +143,10 @@ const zh = {
         label: '电话',
         placeholder: '1234567890',
       },
-      businessType: {
-        label: '业务类型',
-        placeholder: '电子商务、在线教育等',
-      },
       averageMonthlyCashFlow: {
-        label: '平均每月现金流（必填）',
+        label: '平均月流水（必填）',
         placeholder: '100,000',
-        required_error: '平均每月现金流是必填项。',
+        required_error: '平均月流水是必填项。',
       },
       withdrawFeeRange: {
         label: '可接受的提款费用范围（必填）',
@@ -143,27 +154,30 @@ const zh = {
         placeholderMax: '2.5',
         unit: '%',
         tooltip:
-          '您可以接受的提款费用范围為何？我们将根据您的需求为您提供最佳解决方案。',
+          '您可以接受的提款费用范围为何？我们将根据您的需求为您提供专属解决方案。',
       },
       withdrawSpeedRange: {
         label: '可接受的提款速度范围（必填）',
         placeholderMin: '1',
         placeholderMax: '7',
         unit: '天',
-        tooltip: '您希望幾天内收到提款？',
+        tooltip: '您希望几天内收到提款？',
       },
       customerServices: {
         label: '客户服务',
         placeholder: '24/7 支持等',
         options: [
           { value: '24/7', label: '24/7 支持' },
-          { value: '9/5', label: '9/5 支持' },
-          { value: 'response-time', label: '响应时间' },
-          { value: 'analytics', label: '分析和报告工具' },
-          { value: 'loyalty', label: '忠诚计划' },
-          { value: 'integration', label: '集成支持' },
-          { value: 'security', label: '安全风险管理' },
-          { value: 'compliance', label: '合规管理' },
+          { value: 'fx', label: 'FX 换汇' },
+          { value: 'marketing-tools', label: '营销工具' },
+          { value: 'tax-refund', label: '出口退税' },
+          { value: 'business-card-service', label: '商务卡服务' },
+          { value: 'payment-tracking', label: '付款追踪' },
+          { value: 'overseas-logistics', label: '海外物流' },
+          { value: 'vat-service', label: '增值税服务' },
+          { value: 'loyalty-rewards', label: '忠诚奖励' },
+          { value: 'financing-service', label: '融资服务' },
+          { value: 'product-sourcing', label: '选品工具' },
         ],
       },
       theMostConcerned: {
@@ -178,7 +192,18 @@ const zh = {
           { value: 'other', label: '其他' },
         ],
       },
-
+      currentGateway: {
+        label: '你目前在使用的收款渠道是？',
+        placeholder: 'PayPal、Alipay 等',
+      },
+      currentRate: {
+        label: '您目前支付的跨境收款利率是多少？',
+        placeholder: '2.9% + $0.30',
+      },
+      businessType: {
+        label: '业务类型',
+        placeholder: '电子商务、在线教育等',
+      },
       businessCoverage: {
         label: '业务覆盖范围',
         placeholder: '中国、美国、英国等',
@@ -244,48 +269,53 @@ const zh = {
       description: '点击下面的按钮，填写表格，我们会尽快回复您。',
     },
     splash: {
-      header: '一站式跨境整合支付收款解决方案',
+      header: '一站式跨境整合收款工具',
       subheader:
-        '提供专为跨境电子商户设计的整合支付收款工具，帮助您为每一笔交易找到最佳收款网关，提供可定制的量身解决方案，实现无缝体验，挖掘您的最佳潜力。',
-      slogan: '解锁您业务的未知潜力',
+        'OneFlow 致力于为跨境店商用户解决跨境收款端遇到的各种痛点，通过我们打造的 OneFlow 收款小助手，可根据您的业务情况、特点、偏好，推荐最适合的收款网关，更可提供定制化的解决方案，通过强大的 API 与模型，为众多商户提供极致的流畅收款体验。',
+      slogan: '帮你找到最适合你的收款渠道',
     },
     cta: '开始使用',
     content: {
-      title: '告别支付收款的困扰',
+      title: '告别跨境收款的困扰',
       description: '用 OneFlow 解锁您业务的未知潜力。',
       cards: {
         findYourBestMatch: {
           title: '实时找到每笔收款的最佳匹配',
           description:
-            '面对众多选择和复杂的定价及服务计划，不再为选择合适的支付收款方式而烦恼。',
+            '面对众多选择和复杂的定价及服务计划，不再为选择合适的跨境收款方式而烦恼。',
           content:
-            '选择合适的支付收款方式可能很复杂，面对无数的选项和复杂的定价计划。OneFlow 通过提供个性化的见解和建议简化这一过程。我们的广泛数据库和先进算法帮助您做出符合您独特需求的明智财务决策。',
+            '面对无数的选项和复杂的定价计划。OneFlow 通过提供个性化的见解和建议简化这一过程。我们的广泛数据库和先进算法帮助您做出符合您独特需求的明智财务决策。',
           cta: '了解更多',
         },
         itJustWorks: {
           title: '直观发现您未曾意识到的增长潜力',
           description: '不要错过可能未曾意识到的业务增长机会。',
           content:
-            '认为您当前的支付收款方式足够了吗？再想想。OneFlow 揭示了您可能未曾意识到的业务增长机会。我们的工具旨在优化您的支付收款过程，开辟新的效率和成功途径。相信 OneFlow，将揭示未开发的潜力，改变您处理支付的方式。',
+            '认为您当前的跨境收款方式足够了吗？再想想。OneFlow 揭示了您可能未曾意识到的业务增长机会。我们的工具旨在优化您的跨境收款过程，开辟新的效率和成功途径。相信 OneFlow，将揭示未开发的潜力，改变您处理支付的方式。',
           cta: '了解更多',
         },
         howMuch: {
           title: '价格实惠 – 用 OneFlow 节省更多',
           description: '用 OneFlow 节省开支',
           content:
-            'OneFlow 提供了一个价格实惠的 SaaS 解决方案，旨在提供卓越的价值。我们确保我们的工具不仅符合您的预算，还能帮助您节省开支。凭借透明的定价和节省成本的功能，OneFlow 是一个值得投资的工具，通过优化支付收款过程来减少不必要的开支。',
+            'OneFlow 提供了一个价格实惠的 SaaS 解决方案，旨在提供卓越的价值。我们确保我们的工具不仅符合您的预算，还能帮助您节省开支。凭借透明的定价和节省成本的功能，OneFlow 是一个值得投资的工具，通过优化跨境收款过程来减少不必要的开支。',
           cta: '了解更多',
         },
       },
       cta: '开始使用',
+      howWeHelp: '我们如何帮助您',
       numberTicker: {
         title: '收集超过 ...',
         description: '我们收集超过 15 种支付网关信息，并为您提供实时最佳选择。',
         footer: '支付网关实时信息',
       },
-      beamMultiple: {
-        title: '整合支付收款',
-        description: 'OneFlow 在一个地方处理您的所有支付收款需求。',
+      solution1: {
+        title: '发现您从未意识到的最佳选择',
+        description: 'OneFlow 帮助您从无数的选择中找到最适合您业务的支付网关。',
+      },
+      solution2: {
+        title: '整合跨境收款',
+        description: 'OneFlow 在一个地方处理您的所有跨境收款需求。',
       },
     },
   },
