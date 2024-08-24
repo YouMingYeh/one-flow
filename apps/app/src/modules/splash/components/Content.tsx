@@ -11,7 +11,6 @@ import {
 } from 'ui';
 import Link from 'next/link';
 import type { Dictionary } from '../../../dictionaries';
-import { Solution1 } from './Solution1';
 import EarlyAccessButton from './EarlyAccessButton';
 import { Solution2 } from './Solution2';
 
@@ -114,18 +113,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
         </h2>
       </div>
       <p className='mt-32 text-4xl font-semibold'>{dictionary.landing.content.howWeHelp}</p>
-      <div className='grid w-full grid-cols-1 gap-6 md:grid-cols-2 mt-8'>
-        <div>
-          <h2 className='text-3xl font-semibold leading-none tracking-tight'>
-            {dictionary.landing.content.solution1.title}
-          </h2>
-          <h3 className='text-muted-foreground text-xl'>
-            {dictionary.landing.content.solution1.description}
-          </h3>
-
-          <Solution1 />
-        </div>
-        <div>
+      <div className='grid w-full grid-cols-1 gap-6 place-content-center mt-8'>
           <h2 className='text-3xl font-semibold leading-none tracking-tight'>
             {dictionary.landing.content.solution2.title}
           </h2>
@@ -134,9 +122,8 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
           </h3>
 
           <Solution2 />
-        </div>
       </div>
-      <h2 className='text-4xl font-semibold leading-none tracking-tight'>
+      <h2 className='text-4xl font-semibold leading-none tracking-tight mt-8'>
         {dictionary.landing.earlyAccess.title}
       </h2>
       <h3 className='text-muted-foreground text-xl'>

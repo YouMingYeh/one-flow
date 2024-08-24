@@ -63,7 +63,7 @@ export function Solution1({ className }: { className?: string }) {
             src={WorldFirst}
           />
         </Circle>
-        <Circle className='absolute left-1/3 bottom-4' ref={div3Ref}>
+        <Circle className='absolute left-1/3 bottom-0' ref={div3Ref}>
           <Image
             alt='PingPong'
             className='h-8 w-8 rounded-full'
@@ -77,7 +77,7 @@ export function Solution1({ className }: { className?: string }) {
             src={Payoneer}
           />
         </Circle>
-        <Circle className='absolute left-1/4 bottom-1/2' ref={div5Ref}>
+        <Circle className='absolute left-1/4 bottom-2/3' ref={div5Ref}>
           <Icons.VerticalEllipsis className='h-8 w-8 rounded-full' />
         </Circle>
       </div>
@@ -93,9 +93,9 @@ export function Solution1({ className }: { className?: string }) {
       />
 
       {/* Label */}
-      <div className='absolute top-1/4 right-1/3 z-20 flex gap-1 font-bold text-xl'>
+      {/* <div className='absolute top-1/4 right-1/3 z-20 flex gap-1 font-bold text-xl'>
       <Icons.logo /> OneFlow
-      </div>
+      </div> */}
     </div>
   );
 }
