@@ -3,7 +3,7 @@ import type { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://oneflow.co',
+      url: 'https://one-flow.cn',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1,
@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: 'https://oneflow.co/home',
+      url: 'https://one-flow.cn/home',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
@@ -27,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: 'https://oneflow.co/pricing',
+      url: 'https://one-flow.cn/pricing',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.5,
@@ -39,7 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
     {
-      url: 'https://oneflow.co/terms',
+      url: 'https://one-flow.cn/terms',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.3,
@@ -51,7 +51,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.3,
     },
     {
-      url: 'https://oneflow.co/privacy',
+      url: 'https://one-flow.cn/privacy',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.3,

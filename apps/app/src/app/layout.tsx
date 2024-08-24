@@ -11,34 +11,33 @@ const inter = Merriweather({ weight: ['400', '700'], subsets: ['latin'] });
 
 // TODO: update the site metadata
 export const metadata: Metadata = {
-  title: 'OneFlow | Your One-stop Automated Financial Workflow.',
+  title: 'OneFlow | 您的一站式自动化金融工作流程。',
   description:
-    'OneFlow is your one-stop automated financial workflow. It helps you manage and optimize your financial processes, and find your best financial solutions. From accepting payments to processing transactions, all in one place.',
+    'OneFlow 是您的一站式自动化金融工作流程。它帮助您管理和优化金融流程，找到最佳的金融解决方案。从接受付款到处理交易，一切都在一个地方完成。',
   keywords: [
     'OneFlow',
-    'Financial Workflow',
-    'Automated Financial Workflow',
-    'Financial Management',
-    'Financial Processes',
-    'Financial Transactions',
-    'Financial Automation',
-    'Financial Services',
-    'Financial Technology',
-    'Fintech',
-    'Financial Software',
+    '金融工作流程',
+    '自动化金融工作流程',
+    '金融管理',
+    '金融流程',
+    '金融交易',
+    '金融自动化',
+    '金融服务',
+    '金融科技',
+    '金融软件',
   ],
   openGraph: {
-    title: 'OneFlow | Your One-stop Automated Financial Workflow.',
+    title: 'OneFlow | 您的一站式自动化金融工作流程。',
     description:
-      'OneFlow is your one-stop automated financial workflow. It helps you manage and optimize your financial processes, and find your best financial solutions. From accepting payments to processing transactions, all in one place.',
+      'OneFlow 是您的一站式自动化金融工作流程。它帮助您管理和优化金融流程，找到最佳的金融解决方案。从接受付款到处理交易，一切都在一个地方完成。',
     type: 'website',
     siteName: 'OneFlow',
     images: [
       {
-        url: 'https://oneflow.co/icon512_rounded.png',
+        url: 'https://one-flow.cn/icon512_rounded.png',
         width: 1200,
         height: 630,
-        alt: 'OneFlow | Your One-stop Automated Financial Workflow.',
+        alt: 'OneFlow | 您的一站式自动化金融工作流程。',
       },
     ],
   },
@@ -50,8 +49,9 @@ export const metadata: Metadata = {
   },
   applicationName: 'OneFlow',
   appleWebApp: true,
-  metadataBase: new URL('https://oneflow.co'),
+  metadataBase: new URL('https://one-flow.cn'),
 };
+
 
 // TODO: Add global providers over here
 const RootLayout = ({ children }: { children: React.ReactNode }) => (

@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: ['/', '/home', '/pricing', '/terms', '/privacy'],
     },
-    sitemap: 'https://oneflow.co/sitemap.xml',
+    sitemap: 'https://one-flow.cn/sitemap.xml',
   };
 }

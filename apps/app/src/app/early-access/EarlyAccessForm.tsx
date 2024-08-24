@@ -184,7 +184,7 @@ export const EarlyAccessForm: FC = () => {
           </>
         )}
         {step >= 2 && (
-          <>
+          <Suspense>
             <h2 className='flex items-center justify-center gap-1 text-2xl font-semibold'>
               2️⃣ {dictionary.earlyAccess.form.financialInformation.title}
               <Tooltip>
@@ -327,7 +327,7 @@ export const EarlyAccessForm: FC = () => {
                 </AccordionItem>
               </Accordion>
             </Suspense>
-          </>
+          </Suspense>
         )}
 
         <Separator className='mt-6' />
