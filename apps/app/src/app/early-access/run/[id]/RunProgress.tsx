@@ -22,14 +22,14 @@ import {
 
 export default function RunProgress({
   id,
-  dictionary, 
+  dictionary,
   averageMonthlyCashFlow,
   withdrawFeeRange,
   withdrawSpeedRange,
   customerServices,
   theMostConcerned,
 }: {
-  id: string
+  id: string;
   dictionary: Dictionary;
   averageMonthlyCashFlow: number;
   withdrawFeeRange: string;
@@ -109,119 +109,123 @@ export default function RunProgress({
           <AccordionTrigger className='text-xl'>
             {step === 1 ? (
               <p className='flex gap-2 font-bold'>
-                Collecting Realtime Data
+                获取实时数据
                 <Icons.Spinner className='animate-spin' />
               </p>
             ) : (
               <p className='flex gap-2'>
-                Collecting Realtime Data {step > 1 && <Icons.Check className='text-green-500' />}
+                获取实时数据{' '}
+                {step > 1 && <Icons.Check className='text-green-500' />}
               </p>
             )}
-            
           </AccordionTrigger>
-          <AccordionContent>
-            Collecting Real Time Data from databases and APIs.
-          </AccordionContent>
+          <AccordionContent>从资料库和 APIs 获取实时数据</AccordionContent>
         </AccordionItem>
         <AccordionItem value='step-2'>
           <AccordionTrigger className='text-xl'>
             {step === 2 ? (
               <p className='flex gap-2 font-bold'>
-                Calculating Total Fee
+                计算最适合您的收费
                 <Icons.Spinner className='animate-spin' />
               </p>
             ) : (
               <p className='flex gap-2'>
-                Calculating Total Fee {step > 2 && <Icons.Check className='text-green-500' />}
+                计算最适合您的收费{' '}
+                {step > 2 && <Icons.Check className='text-green-500' />}
               </p>
             )}
           </AccordionTrigger>
           <AccordionContent>
-            Calculating the total fee for each solution.
+            从所有解决方案中计算最适合您需求的收费
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value='step-3'>
           <AccordionTrigger className='text-xl'>
             {step === 3 ? (
               <p className='flex gap-2 font-bold'>
-                Calculating Total Speed
+                计算最适合您的的收款天数
                 <Icons.Spinner className='animate-spin' />
               </p>
             ) : (
               <p className='flex gap-2'>
-                Calculating Total Speed {step > 3 && <Icons.Check className='text-green-500' />}
+                计算最适合您的的收款天数{' '}
+                {step > 3 && <Icons.Check className='text-green-500' />}
               </p>
             )}
           </AccordionTrigger>
           <AccordionContent>
-            Calculating the total speed for each solution.
+            从所有解决方案中找到最适合您需求的收款天数
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value='step-4'>
           <AccordionTrigger className='text-xl'>
             {step === 4 ? (
               <p className='flex gap-2 font-bold'>
-                Getting Customer Services
+                您的客户服务需求
                 <Icons.Spinner className='animate-spin' />
               </p>
             ) : (
               <p className='flex gap-2'>
-                Getting Customer Services {step > 4 && <Icons.Check className='text-green-500' />}
+                您的客户服务需求{' '}
+                {step > 4 && <Icons.Check className='text-green-500' />}
               </p>
             )}
           </AccordionTrigger>
-          <AccordionContent>
-            Getting the customer services for each solution.
-          </AccordionContent>
+          <AccordionContent>根据您的客户服务需求调整解决方案</AccordionContent>
         </AccordionItem>
         <AccordionItem value='step-5'>
           <AccordionTrigger className='text-xl'>
             {step === 5 ? (
               <p className='flex gap-2 font-bold'>
-                Finding Best Solution
+                就快好了！立马找到最适合您的解决方案
                 <Icons.Spinner className='animate-spin' />
               </p>
             ) : (
               <p className='flex gap-2'>
-                Finding Best Solution {step > 5 && <Icons.Check className='text-green-500' />}
+                就快好了！立马找到最适合您的解决方案{' '}
+                {step > 5 && <Icons.Check className='text-green-500' />}
               </p>
             )}
           </AccordionTrigger>
           <AccordionContent>
-            Finding the best solution based on the most concerned factor.
+            透过了解您的需求与喜好，我们帮您找到最适合的解决方案
           </AccordionContent>
         </AccordionItem>
       </Accordion>
       <div className='self-center'>
-      {step === 6 && (
-        <AnimatedSubscribeButton
-          buttonColor='#000000'
-          buttonTextColor='#ffffff'
-          changeText={
-            <span className='group inline-flex items-center justify-center'>
-              <Icons.Check className='mr-2' />
-              {dictionary.earlyAccess.run.letsGo}
-              <Icons.Spinner className='ml-2 animate-spin' />
-            </span>
-          }
-          delay={300}
-          initialText={
-            <span className='group inline-flex items-center justify-center'>
-              <Icons.Rocket className='mr-2' />
-              {dictionary.earlyAccess.run.checkResults}
-            </span>
-          }
-          onClick={() => {
-            router.push(`/early-access/results/${id}`);
-          }}
-          subscribeStatus={false}
-        />
-      )}
+        {step === 6 && (
+          <AnimatedSubscribeButton
+            buttonColor='#000000'
+            buttonTextColor='#ffffff'
+            changeText={
+              <span className='group inline-flex items-center justify-center'>
+                <Icons.Check className='mr-2' />
+                {dictionary.earlyAccess.run.letsGo}
+                <Icons.Spinner className='ml-2 animate-spin' />
+              </span>
+            }
+            delay={300}
+            initialText={
+              <span className='group inline-flex items-center justify-center'>
+                <Icons.Rocket className='mr-2' />
+                {dictionary.earlyAccess.run.checkResults}
+              </span>
+            }
+            onClick={() => {
+              router.push(`/early-access/results/${id}`);
+            }}
+            subscribeStatus={false}
+          />
+        )}
       </div>
       <div>
-        {
-          averageMonthlyCashFlow && withdrawFeeRange && withdrawSpeedRange && customerServices && theMostConcerned ? <div /> : null
-        }
+        {averageMonthlyCashFlow &&
+        withdrawFeeRange &&
+        withdrawSpeedRange &&
+        customerServices &&
+        theMostConcerned ? (
+          <div />
+        ) : null}
       </div>
     </>
   );

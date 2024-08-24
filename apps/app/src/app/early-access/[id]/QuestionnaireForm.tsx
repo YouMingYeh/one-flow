@@ -61,8 +61,8 @@ export const QuestionnaireForm = ({
     }
 
     toast({
-      title: 'Success',
-      description: 'Your questionnaire has been submitted',
+      title: '成功提交',
+      description: '感谢您填写问卷，OneFlow 会把最好的服务提供给您',
     });
     setIsLoading(false);
   };

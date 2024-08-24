@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useState, type FC } from 'react';
+import { Suspense, useState, type FC } from 'react';
 import { z } from 'zod';
 import {
   Accordion,
@@ -124,10 +124,7 @@ export const EarlyAccessForm: FC = () => {
   };
 
   return (
-    <AppForm
-      onSubmit={onSubmit}
-      schema={earlyAccessFormSchema}
-    >
+    <AppForm onSubmit={onSubmit} schema={earlyAccessFormSchema}>
       <div className='flex flex-col gap-6 py-4 md:px-16'>
         <Separator className='mt-6' />
         {step >= 1 && (
@@ -265,65 +262,71 @@ export const EarlyAccessForm: FC = () => {
                 dictionary.earlyAccess.form.theMostConcerned.placeholder
               }
             />
-            <Accordion collapsible type='single'>
-              <AccordionItem value='item-1'>
-                <AccordionTrigger
-                  className='flex justify-start gap-1 text-xl'
-                  type='button'
-                >
-                  {dictionary.earlyAccess.form.provideMoreInformation.title}
-                </AccordionTrigger>
-                <AccordionContent>
-                  <div className='flex flex-col gap-6 px-1'>
-                    <FormInputField<EarlyAccessFormValues>
-                      label={dictionary.earlyAccess.form.currentGateway.label}
-                      path='currentGateway'
-                      placeholder={
-                        dictionary.earlyAccess.form.currentGateway.placeholder
-                      }
-                    />
-                    <FormInputField<EarlyAccessFormValues>
-                      label={dictionary.earlyAccess.form.currentRate.label}
-                      path='currentRate'
-                      placeholder={
-                        dictionary.earlyAccess.form.currentRate.placeholder
-                      }
-                    />
-                    <FormInputField<EarlyAccessFormValues>
-                      label={dictionary.earlyAccess.form.businessType.label}
-                      path='businessType'
-                      placeholder={
-                        dictionary.earlyAccess.form.businessType.placeholder
-                      }
-                    />
+            <Suspense
+              fallback={<Icons.Spinner className='mx-auto animate-spin' />}
+            >
+              <Accordion collapsible type='single'>
+                <AccordionItem value='item-1'>
+                  <AccordionTrigger
+                    className='flex justify-start gap-1 text-xl'
+                    type='button'
+                  >
+                    {dictionary.earlyAccess.form.provideMoreInformation.title}
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <div className='flex flex-col gap-6 px-1'>
+                      <FormInputField<EarlyAccessFormValues>
+                        label={dictionary.earlyAccess.form.currentGateway.label}
+                        path='currentGateway'
+                        placeholder={
+                          dictionary.earlyAccess.form.currentGateway.placeholder
+                        }
+                      />
+                      <FormInputField<EarlyAccessFormValues>
+                        label={dictionary.earlyAccess.form.currentRate.label}
+                        path='currentRate'
+                        placeholder={
+                          dictionary.earlyAccess.form.currentRate.placeholder
+                        }
+                      />
+                      <FormInputField<EarlyAccessFormValues>
+                        label={dictionary.earlyAccess.form.businessType.label}
+                        path='businessType'
+                        placeholder={
+                          dictionary.earlyAccess.form.businessType.placeholder
+                        }
+                      />
 
-                    <Label>
-                      {dictionary.earlyAccess.form.businessCoverage.label}
-                    </Label>
-                    <MultipleSelectButtonGroup
-                      options={
-                        dictionary.earlyAccess.form.businessCoverage.options
-                      }
-                      setValues={setBusinessCoverage}
-                      values={businessCoverage}
-                    />
-                    <Label>{dictionary.earlyAccess.form.currency.label}</Label>
-                    <MultipleSelectButtonGroup
-                      options={dictionary.earlyAccess.form.currency.options}
-                      setValues={setCurrency}
-                      values={currency}
-                    />
-                    <p className='text-muted-foreground mt-6'>
-                      {
-                        dictionary.earlyAccess.form.provideMoreInformation
-                          .tooltip
-                      }{' '}
-                      👇
-                    </p>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+                      <Label>
+                        {dictionary.earlyAccess.form.businessCoverage.label}
+                      </Label>
+                      <MultipleSelectButtonGroup
+                        options={
+                          dictionary.earlyAccess.form.businessCoverage.options
+                        }
+                        setValues={setBusinessCoverage}
+                        values={businessCoverage}
+                      />
+                      <Label>
+                        {dictionary.earlyAccess.form.currency.label}
+                      </Label>
+                      <MultipleSelectButtonGroup
+                        options={dictionary.earlyAccess.form.currency.options}
+                        setValues={setCurrency}
+                        values={currency}
+                      />
+                      <p className='text-muted-foreground mt-6'>
+                        {
+                          dictionary.earlyAccess.form.provideMoreInformation
+                            .tooltip
+                        }{' '}
+                        👇
+                      </p>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </Suspense>
           </>
         )}
 

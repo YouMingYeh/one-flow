@@ -1,6 +1,7 @@
 import { Icons } from 'ui';
 import { getDictionary } from '../i18n';
 import { EarlyAccessForm } from './EarlyAccessForm';
+import { Suspense } from 'react';
 
 const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
   const dictionary = getDictionary(searchParams.lang);
@@ -17,7 +18,7 @@ const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
         <p className='text-muted-foreground text-md'>
           {dictionary.earlyAccess.description}
         </p>
-        <p className='text-muted-foreground text-md md:px-32 text-left'>
+        <p className='text-muted-foreground text-md text-left md:px-32'>
           {dictionary.earlyAccess.benefits.title}: <br />
           <ul className='my-6 ml-6 list-disc [&>li]:mt-2'>
             {dictionary.earlyAccess.benefits.list.map(benefit => (
@@ -25,19 +26,23 @@ const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
             ))}
           </ul>
         </p>
-        <p className='text-muted-foreground text-md md:px-32 text-left'>
+        <p className='text-muted-foreground text-md text-left md:px-32'>
           {dictionary.earlyAccess.responsibilities.title}: <br />
           <ul className='my-6 ml-6 list-disc [&>li]:mt-2'>
-            {dictionary.earlyAccess.responsibilities.list.map(responsibility => (
-              <li key={responsibility}>{responsibility}</li>
-            ))}
+            {dictionary.earlyAccess.responsibilities.list.map(
+              responsibility => (
+                <li key={responsibility}>{responsibility}</li>
+              ),
+            )}
           </ul>
         </p>
         <p className='text-muted-foreground text-md'>
           {dictionary.earlyAccess.interested}
         </p>
       </div>
-      <EarlyAccessForm />
+      <Suspense fallback={<Icons.Spinner className='mx-auto animate-spin' />}>
+        <EarlyAccessForm />
+      </Suspense>
     </div>
   );
 };
