@@ -19,7 +19,7 @@ export function AppNavigationMenu() {
     <NavigationMenu className='hidden md:block' id='onborda-step1'>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link href='/home' legacyBehavior passHref>
+          <Link href='/' legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Home
             </NavigationMenuLink>
@@ -68,7 +68,7 @@ export function AppNavigationMenu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href='/pricing' legacyBehavior passHref>
+          <Link href='/' legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Pricing
             </NavigationMenuLink>

@@ -33,7 +33,7 @@ export const ProfileIconMenu: FC = () => {
         <DropdownMenuGroup>
           <DropdownMenuItem
             onClick={() => {
-              push('/home');
+              push('/');
             }}
           >
             Home

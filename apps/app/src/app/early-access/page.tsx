@@ -1,7 +1,7 @@
 import { Icons } from 'ui';
+import { Suspense } from 'react';
 import { getDictionary } from '../i18n';
 import { EarlyAccessForm } from './EarlyAccessForm';
-import { Suspense } from 'react';
 
 const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
   const dictionary = getDictionary(searchParams.lang);

@@ -177,7 +177,7 @@ export default function Content() {
       </Link>
 
       <h2 className='mt-16 text-3xl font-bold tracking-tight'>Pricing</h2>
-      <Link className='underline' href='/pricing'>
+      <Link className='underline' href='/'>
         Learn more about our pricing?
       </Link>
       <PricingCards />

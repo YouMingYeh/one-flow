@@ -8,11 +8,11 @@ import {
   Icons,
   Textarea,
 } from 'ui';
+import { Suspense } from 'react';
 import { getDictionary } from '../../i18n';
 import createSupabaseServerClient from '../../../../lib/supabase/server';
 import CopyURLButton from './CopyURLButton';
 import { QuestionnaireForm } from './QuestionnaireForm';
-import { Suspense } from 'react';
 
 const Page = async ({
   params,

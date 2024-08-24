@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import { buttonVariants, cn, Icons } from 'ui';
+import { Suspense } from 'react';
 import { Header } from '../../../modules/splash/components/Header';
 import { Subheader } from '../../../modules/splash/components/Subheader';
 import { getDictionary } from '../../i18n';
 import Content from '../../../modules/splash/components/Content';
 import { ThemeToggle } from '../../../components/layouts/ThemeToggle';
 import { LanguageToggle } from '../../../components/layouts/LanguageToggle';
-import { Suspense } from 'react';
 import { Solution1 } from '../../../modules/splash/components/Solution1';
 
 const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
