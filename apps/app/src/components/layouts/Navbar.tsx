@@ -33,7 +33,7 @@ export const NavBar: FC<NavbarProps> = ({ userExists }) => {
     <nav className='py-4 text-black dark:text-white md:py-6'>
       <div className='mx-auto flex max-w-6xl items-center justify-between'>
         <a href='/'>
-          <Icons.logo />
+          <Icons.logo className='h-16 w-16' />
         </a>
         {userExists ? (
           <div className='hidden items-center space-x-6 md:flex'>
@@ -69,7 +69,7 @@ export const NavBar: FC<NavbarProps> = ({ userExists }) => {
           <div className='flex h-full flex-col justify-between'>
             <div className='flex flex-col gap-6'>
               <div className='flex flex-col gap-y-2 text-center'>
-                <Icons.logo className='mx-auto h-6 w-6' />
+                <Icons.logo className='mx-auto h-12 w-12' />
                 <h2 className='text-xl font-semibold tracking-tight'>
                   {dictionary.portal.title}
                 </h2>
@@ -87,7 +87,7 @@ export const NavBar: FC<NavbarProps> = ({ userExists }) => {
               </Button>
               <Link
                 className={cn(buttonVariants({ size: 'lg' }), 'px-4')}
-                href='mailto:b10705052@ntu.edu.tw'
+                href='mailto:team@one-flow.cn'
               >
                 {dictionary.portal.contactUs}
               </Link>

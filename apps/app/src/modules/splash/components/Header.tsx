@@ -2,11 +2,12 @@ import type { Dictionary } from '../../../dictionaries';
 
 export function Header({ dictionary }: { dictionary: Dictionary }) {
   return (
-    <h1 className='font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl'>
-      <strong className='decoration-primary underline'>
-        {dictionary.brand}
+    <h1 className='font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl'>
+      <strong className='relative'>
+        <span className='bg-muted absolute -bottom-0.5 -left-1.5 -right-2 -top-0.5 -z-10 -rotate-2 bg-opacity-90' />
+        <span className='leading-loose'>{dictionary.brand}</span>
       </strong>
-      , {dictionary.landing.splash.header}
+      {dictionary.landing.splash.header}
     </h1>
   );
 }

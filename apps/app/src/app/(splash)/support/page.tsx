@@ -15,7 +15,7 @@ const Page: NextPage = () => {
           Feel free to reach out to us at{' '}
           <Link
             className='text-primary underline'
-            href='mailto:b10705052@ntu.edu.tw'
+            href='mailto:team@one-flow.cn'
           >
             our support email
           </Link>
@@ -38,7 +38,7 @@ const Page: NextPage = () => {
                 If you have tried all of the above and the payment is still not successful, please contact us at{' '}
                 <Link
                   className='text-primary underline'
-                  href='mailto:b10705052@ntu.edu.tw'
+                  href='mailto:team@one-flow.cn'
                 >
                   {' '}
                   our support email

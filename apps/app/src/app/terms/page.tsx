@@ -25,10 +25,8 @@ const TermsOfService: NextPage = () => {
           2. Description of Service
         </h2>
         <p className='mb-6'>
-          OneFlow is an all-in-one platform for converting textual content into
-          audio, including voiceovers, podcasts, and translations. Our services
-          include text-to-speech, speech-to-text, and translation features with
-          customizable voices and multi-language support.
+          OneFlow is an SaaS helping cross-border online business to choose the
+          best payment solution.
         </p>
 
         <h2 className='mb-4 text-2xl font-semibold'>3. User Accounts</h2>
@@ -53,16 +51,7 @@ const TermsOfService: NextPage = () => {
         </p>
 
         <h2 className='mb-4 text-2xl font-semibold'>
-          5. AI Voice Announcement
-        </h2>
-        <p className='mb-6'>
-          The TTS is powered by OpenAI. According to OpenAI&apos;s API TTS
-          policy, users must announce that AI voices are being used to end
-          users.
-        </p>
-
-        <h2 className='mb-4 text-2xl font-semibold'>
-          6. Intellectual Property
+          5. Intellectual Property
         </h2>
         <p className='mb-4'>
           <strong>Ownership:</strong> All content and materials on OneFlow,
@@ -76,7 +65,7 @@ const TermsOfService: NextPage = () => {
           use in accordance with these Terms of Service.
         </p>
 
-        <h2 className='mb-4 text-2xl font-semibold'>7. Termination</h2>
+        <h2 className='mb-4 text-2xl font-semibold'>6. Termination</h2>
         <p className='mb-6'>
           We reserve the right to terminate or suspend your account and access
           to our services at our sole discretion, without notice, for conduct
@@ -85,7 +74,7 @@ const TermsOfService: NextPage = () => {
         </p>
 
         <h2 className='mb-4 text-2xl font-semibold'>
-          8. Limitation of Liability
+          7. Limitation of Liability
         </h2>
         <p className='mb-6'>
           OneFlow is provided &quot;as is&quot; and &quot;as available&quot;
@@ -93,38 +82,32 @@ const TermsOfService: NextPage = () => {
           will be uninterrupted, error-free, or secure.
         </p>
 
-        <h2 className='mb-4 text-2xl font-semibold'>9. Governing Law</h2>
+        <h2 className='mb-4 text-2xl font-semibold'>8. Governing Law</h2>
         <p className='mb-6'>
           These Terms of Service are governed by and construed in accordance
           with the laws of [Insert Jurisdiction].
         </p>
 
-        <h2 className='mb-4 text-2xl font-semibold'>10. Contact Us</h2>
+        <h2 className='mb-4 text-2xl font-semibold'>9. Contact Us</h2>
         <p className='mb-4'>
           If you have any questions or concerns about these Terms of Service,
           please contact us at:
         </p>
         <p className='mb-4'>
           Email:{' '}
-          <a
-            className='text-blue-500 underline'
-            href='mailto:b10705052@ntu.edu.tw'
-          >
-            b10705052@ntu.edu.tw
+          <a className='text-blue-500 underline' href='mailto:team@one-flow.cn'>
+            team@one-flow.cn
           </a>
         </p>
         <p className='mb-6'>
           Email:{' '}
-          <a
-            className='text-blue-500 underline'
-            href='mailto:ym911216@gmail.com'
-          >
-            ym911216@gmail.com
+          <a className='text-blue-500 underline' href='mailto:team@one-flow.cn'>
+            team@one-flow.cn
           </a>
         </p>
 
         <h2 className='mb-4 text-2xl font-semibold'>
-          11. Changes to These Terms
+          10. Changes to These Terms
         </h2>
         <p className='mb-4'>
           We may update these Terms of Service from time to time. Any changes

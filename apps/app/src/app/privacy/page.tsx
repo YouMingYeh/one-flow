@@ -48,8 +48,7 @@ const PrivacyPolicy: NextPage = () => {
         <ul className='mb-6 list-inside list-disc'>
           <li>
             <strong>Service Provision:</strong> To facilitate your login and
-            provide access to our text-to-speech, speech-to-text, and
-            translation services.
+            provide services.
           </li>
           <li>
             <strong>Communication:</strong> To send you updates, notifications,
@@ -105,18 +104,12 @@ const PrivacyPolicy: NextPage = () => {
         </ul>
         <p className='mb-6'>
           To exercise these rights, please contact us at{' '}
-          <a
-            className='text-blue-500 underline'
-            href='mailto:b10705052@ntu.edu.tw'
-          >
-            b10705052@ntu.edu.tw
+          <a className='text-blue-500 underline' href='mailto:team@one-flow.cn'>
+            team@one-flow.cn
           </a>{' '}
           or{' '}
-          <a
-            className='text-blue-500 underline'
-            href='mailto:ym911216@gmail.com'
-          >
-            ym911216@gmail.com
+          <a className='text-blue-500 underline' href='mailto:team@one-flow.cn'>
+            team@one-flow.cn
           </a>
           .
         </p>
@@ -128,20 +121,8 @@ const PrivacyPolicy: NextPage = () => {
         </p>
         <p className='mb-4'>
           Email:{' '}
-          <a
-            className='text-blue-500 underline'
-            href='mailto:b10705052@ntu.edu.tw'
-          >
-            b10705052@ntu.edu.tw
-          </a>
-        </p>
-        <p className='mb-6'>
-          Email:{' '}
-          <a
-            className='text-blue-500 underline'
-            href='mailto:ym911216@gmail.com'
-          >
-            ym911216@gmail.com
+          <a className='text-blue-500 underline' href='mailto:team@one-flow.cn'>
+            team@one-flow.cn
           </a>
         </p>
 

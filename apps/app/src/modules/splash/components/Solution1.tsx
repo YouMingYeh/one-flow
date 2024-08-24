@@ -15,7 +15,7 @@ const Circle = forwardRef<
   return (
     <div
       className={cn(
-        'bg-background z-10 flex size-12 items-center justify-center rounded-full border-2 p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]',
+        'bg-background size-12 z-10 flex items-center justify-center rounded-full border-2 p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]',
         className,
       )}
       ref={ref}
@@ -39,45 +39,51 @@ export function Solution1({ className }: { className?: string }) {
 
   return (
     <div
-      className={cn('bg-background relative w-full h-96', className)}
+      className={cn('bg-background relative h-96 w-full', className)}
       ref={containerRef}
     >
-      <div className='relative flex size-full h-full max-w-lg flex-row items-stretch justify-between gap-10'>
-        <Circle className='absolute aspect-square left-1/4 bottom-24 z-20' ref={div7Ref}>
+      <div className='size-full relative flex h-full max-w-lg flex-row items-stretch justify-between gap-10'>
+        <Circle
+          className='absolute bottom-24 left-1/4 z-20 aspect-square'
+          ref={div7Ref}
+        >
           <Icons.User className='h-12 w-12' />
         </Circle>
-        <Circle className='absolute aspect-square right-8 top-4 z-20' ref={div6Ref}>
+        <Circle
+          className='absolute right-8 top-4 z-20 aspect-square'
+          ref={div6Ref}
+        >
           <Icons.Sparkles className='h-12 w-12' />
         </Circle>
-        <Circle className='absolute left-0 bottom-32' ref={div1Ref}>
+        <Circle className='absolute bottom-32 left-0' ref={div1Ref}>
           <Image
             alt='LianLian'
             className='h-8 w-8 rounded-full'
             src={LianLian}
           />
         </Circle>
-        <Circle className='absolute left-4 bottom-0' ref={div2Ref}>
+        <Circle className='absolute bottom-0 left-4' ref={div2Ref}>
           <Image
             alt='WorldFirst'
             className='h-8 w-8 rounded-full'
             src={WorldFirst}
           />
         </Circle>
-        <Circle className='absolute left-1/3 bottom-0' ref={div3Ref}>
+        <Circle className='absolute bottom-0 left-1/3' ref={div3Ref}>
           <Image
             alt='PingPong'
             className='h-8 w-8 rounded-full'
             src={PingPong}
           />
         </Circle>
-        <Circle className='absolute left-1/2 bottom-1/4' ref={div4Ref}>
+        <Circle className='absolute bottom-1/4 left-1/2' ref={div4Ref}>
           <Image
             alt='Payoneer'
             className='h-8 w-8 rounded-full'
             src={Payoneer}
           />
         </Circle>
-        <Circle className='absolute left-1/4 bottom-2/3' ref={div5Ref}>
+        <Circle className='absolute bottom-2/3 left-1/4' ref={div5Ref}>
           <Icons.VerticalEllipsis className='h-8 w-8 rounded-full' />
         </Circle>
       </div>

@@ -53,7 +53,7 @@ const Page = async ({
   return (
     <div className='mx-auto flex h-full w-full flex-col justify-center gap-6 py-12 sm:w-1/2'>
       <div className='flex flex-col gap-y-2 text-center'>
-        <Icons.logo className='mx-auto h-6 w-6' />
+        <Icons.logo className='mx-auto h-12 w-12' />
         <h1 className='text-2xl font-semibold tracking-tight'>
           {dictionary.earlyAccess.ok.title}
         </h1>

@@ -112,18 +112,20 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
           {dictionary.landing.content.numberTicker.footer}
         </h2>
       </div>
-      <p className='mt-32 text-4xl font-semibold'>{dictionary.landing.content.howWeHelp}</p>
-      <div className='grid w-full grid-cols-1 gap-6 place-content-center mt-8'>
-          <h2 className='text-3xl font-semibold leading-none tracking-tight'>
-            {dictionary.landing.content.solution2.title}
-          </h2>
-          <h3 className='text-muted-foreground text-xl'>
-            {dictionary.landing.content.solution2.description}
-          </h3>
+      <p className='mt-32 text-4xl font-semibold'>
+        {dictionary.landing.content.howWeHelp}
+      </p>
+      <div className='mt-8 grid w-full grid-cols-1 place-content-center gap-6'>
+        <h2 className='text-3xl font-semibold leading-none tracking-tight'>
+          {dictionary.landing.content.solution2.title}
+        </h2>
+        <h3 className='text-muted-foreground text-xl'>
+          {dictionary.landing.content.solution2.description}
+        </h3>
 
-          <Solution2 />
+        <Solution2 />
       </div>
-      <h2 className='text-4xl font-semibold leading-none tracking-tight mt-8'>
+      <h2 className='mt-8 text-4xl font-semibold leading-none tracking-tight'>
         {dictionary.landing.earlyAccess.title}
       </h2>
       <h3 className='text-muted-foreground text-xl'>

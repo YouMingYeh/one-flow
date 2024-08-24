@@ -33,7 +33,7 @@ export default function Footer({ dictionary }: { dictionary: Dictionary }) {
         <span className='mx-2'>|</span>
         <Link
           className='text-muted-foreground text-sm underline-offset-4 hover:underline'
-          href='mailto:b10705052@ntu.edu.tw'
+          href='mailto:team@one-flow.cn'
         >
           {dictionary.footer.contactUs}
         </Link>

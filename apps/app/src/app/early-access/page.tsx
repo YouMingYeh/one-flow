@@ -8,7 +8,7 @@ const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
   return (
     <div className='mx-auto flex h-full w-full flex-col justify-center gap-6 py-12 sm:w-1/2'>
       <div className='flex flex-col gap-y-2 text-center'>
-        <Icons.logo className='mx-auto h-6 w-6' />
+        <Icons.logo className='mx-auto h-20 w-20' />
         <p className='text-muted-foreground text-sm'>
           {dictionary.earlyAccess.note}
         </p>

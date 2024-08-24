@@ -16,7 +16,7 @@ const Circle = forwardRef<
   return (
     <div
       className={cn(
-        'bg-background z-10 flex size-12 items-center justify-center rounded-full border-2 p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]',
+        'bg-background size-12 z-10 flex items-center justify-center rounded-full border-2 p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]',
         className,
       )}
       ref={ref}
@@ -41,12 +41,12 @@ export function Solution2({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'bg-background relative flex flex-col md:flex-row w-full justify-center md:scale-100',
+        'bg-background relative flex w-full flex-col justify-center md:scale-100 md:flex-row',
         className,
       )}
       ref={containerRef}
     >
-      <div className='flex size-full max-w-lg flex-row items-stretch justify-between md:gap-24'>
+      <div className='size-full flex max-w-lg flex-row items-stretch justify-between md:gap-24'>
         <div className='flex flex-col justify-center'>
           <Circle className='size-12' ref={div7Ref}>
             <Icons.User className='h-12 w-12' />
@@ -90,24 +90,22 @@ export function Solution2({ className }: { className?: string }) {
             <Icons.VerticalEllipsis className='h-12 w-12 rounded-full' />
           </Circle>
         </div>
-        
       </div>
-      <div className='flex flex-row md:flex-col items-center md:gap-8 justify-center mt-4'>
-            {['实时', '直观', '省时', '省钱', '精准'].map(
-              (item, index) => (
-                <motion.div
-                  animate={{ opacity: 1 }}
-                  className='w-16 md:w-32'
-                  initial={{ opacity: 0 }}
-                  key={index}
-                  transition={{ delay: 1 + index * 0.5, duration: 1 }}
-                >
-                  <h3 className='text-primary text-xl md:text-3xl font-bold'>{item}</h3>
-                </motion.div>
-              ),
-            )}
-            
-        </div>
+      <div className='mt-4 flex flex-row items-center justify-center md:flex-col md:gap-8'>
+        {['实时', '直观', '省时', '省钱', '精准'].map((item, index) => (
+          <motion.div
+            className='w-16 md:w-32'
+            initial={{ opacity: 0 }}
+            key={index}
+            transition={{ delay: 1 + index * 0.5, duration: 1 }}
+            whileInView={{ opacity: 1 }}
+          >
+            <h3 className='text-primary text-xl font-bold md:text-3xl'>
+              {item}
+            </h3>
+          </motion.div>
+        ))}
+      </div>
 
       {/* AnimatedBeams */}
       <AnimatedBeam

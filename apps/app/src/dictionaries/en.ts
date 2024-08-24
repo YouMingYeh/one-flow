@@ -287,7 +287,11 @@ const en = {
       header: 'One-stop Cross-border Integrated Payment Tool',
       subheader:
         'is dedicated to solving various pain points encountered in cross-border payment for cross-border merchants. With our OneFlow payment assistant, you can recommend the most suitable payment gateway based on your business situation, characteristics, and preferences, and provide customized solutions. Through powerful APIs and models, we provide an extremely smooth payment experience for many merchants.',
-      slogan: ['Your payment assistant','Find the most suitable payment channel for you', 'Save costs, time, and energy'],
+      slogan: [
+        'Your payment assistant',
+        'Find the most suitable payment channel for you',
+        'Save costs, time, and energy',
+      ],
     },
     cta: 'Get Started',
     content: {
