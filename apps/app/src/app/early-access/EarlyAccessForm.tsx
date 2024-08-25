@@ -33,11 +33,11 @@ export const EarlyAccessForm: FC = () => {
   const [currency, setCurrency] = useState<string[]>([]);
   const [customerServices, setCustomerServices] = useState<string[]>([]);
   const [withdrawFeeRange, setWithdrawFeeRange] = useState<[number, number]>([
-    0.5, 1.5,
+    0.1, 1,
   ]);
   const [withdrawSpeedRange, setWithdrawSpeedRange] = useState<
     [number, number]
-  >([3, 7]);
+  >([0, 4]);
   const searchParams = useSearchParams();
   const lang = searchParams.get('lang') ?? defaultLanguage;
   const dictionary = getDictionary(lang);
@@ -234,7 +234,7 @@ export const EarlyAccessForm: FC = () => {
               <RangeInput
                 label={dictionary.earlyAccess.form.withdrawSpeedRange.unit}
                 max={14}
-                min={1}
+                min={0}
                 setValues={setWithdrawSpeedRange}
                 step={1}
                 values={withdrawSpeedRange}

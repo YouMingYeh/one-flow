@@ -87,7 +87,7 @@ const zh = {
       cta: '明白了！保存页面链接',
     },
     run: {
-      checkResults: '检查结果',
+      checkResults: '查看结果',
       letsGo: '开始吧！',
     },
     note: 'OneFlow 目前仍在产品研发阶段！我们正在公开寻找第一阶段的内部测试用户，帮助我们一同塑造 OneFlow 的未来。',
@@ -256,7 +256,7 @@ const zh = {
           '请提供有关您的业务的更多信息，以便我们更好地了解您的需求并为您提供更准确的服务。',
       },
       submit: '提交',
-      submit_success: '感谢您的关注！我们会尽快与您联系。',
+      submit_success: '感谢您的关注！我们会尽快与您联系。立马来看看结果吧',
       submit_error: '提交失败，请确保所有字段填写正确后再试。',
       next: '下一步',
     },

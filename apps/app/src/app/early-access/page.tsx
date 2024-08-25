@@ -18,24 +18,26 @@ const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
         <p className='text-muted-foreground text-md'>
           {dictionary.earlyAccess.description}
         </p>
-        <p className='text-muted-foreground text-md text-left md:px-32'>
-          {dictionary.earlyAccess.benefits.title}: <br />
-          <ul className='my-6 ml-6 list-disc [&>li]:mt-2'>
-            {dictionary.earlyAccess.benefits.list.map(benefit => (
-              <li key={benefit}>{benefit}</li>
-            ))}
-          </ul>
-        </p>
-        <p className='text-muted-foreground text-md text-left md:px-32'>
-          {dictionary.earlyAccess.responsibilities.title}: <br />
-          <ul className='my-6 ml-6 list-disc [&>li]:mt-2'>
-            {dictionary.earlyAccess.responsibilities.list.map(
-              responsibility => (
-                <li key={responsibility}>{responsibility}</li>
-              ),
-            )}
-          </ul>
-        </p>
+        <Suspense>
+          <p className='text-muted-foreground text-md text-left md:px-32'>
+            {dictionary.earlyAccess.benefits.title}: <br />
+            <ul className='my-6 ml-6 list-disc [&>li]:mt-2'>
+              {dictionary.earlyAccess.benefits.list.map(benefit => (
+                <li key={benefit}>{benefit}</li>
+              ))}
+            </ul>
+          </p>
+          <p className='text-muted-foreground text-md text-left md:px-32'>
+            {dictionary.earlyAccess.responsibilities.title}: <br />
+            <ul className='my-6 ml-6 list-disc [&>li]:mt-2'>
+              {dictionary.earlyAccess.responsibilities.list.map(
+                responsibility => (
+                  <li key={responsibility}>{responsibility}</li>
+                ),
+              )}
+            </ul>
+          </p>
+        </Suspense>
         <p className='text-muted-foreground text-md'>
           {dictionary.earlyAccess.interested}
         </p>
