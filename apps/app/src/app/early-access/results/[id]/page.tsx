@@ -62,7 +62,7 @@ const Page = async ({
   }
 
   // Step 2: Filter PSPs based on fee and speed preferences
-  const suitablePSPs = Object.entries(tier)
+  let suitablePSPs = Object.entries(tier)
     .filter(([, fee]) => {
       if (typeof fee !== 'number') return false;
       return fee >= minWithdrawFee && fee <= maxWithdrawFee;
@@ -76,7 +76,7 @@ const Page = async ({
     });
 
   if (suitablePSPs.length === 0) {
-    return null;
+    suitablePSPs = Object.entries(tier);
   }
 
   // Step 3: Select the best PSP, for simplicity we'll take the one with the lowest fee
