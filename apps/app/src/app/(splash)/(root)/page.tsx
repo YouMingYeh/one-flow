@@ -12,10 +12,10 @@ import { Solution1 } from '../../../modules/splash/components/Solution1';
 const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
   const dictionary = getDictionary(searchParams.lang);
   return (
-    <section className='space-y-6 pb-8 pt-6'>
-      <div className='container mb-8 flex max-w-[76rem] flex-col items-center gap-4 text-center'>
-        <div className='grid grid-rows-2 place-content-center md:max-w-6xl md:grid-cols-2 md:grid-rows-1 md:gap-8 md:px-8'>
-          <div className='order-2 flex flex-col md:order-1'>
+    <section className=''>
+      <div className='mb-8 flex flex-col items-center gap-4 text-center'>
+        <div className='grid grid-rows-2 place-content-center space-x-4 bg-gradient-to-t from-indigo-500/20 from-10% via-sky-500/20 via-50% to-transparent to-100% py-8 md:grid-cols-2 md:grid-rows-1 md:gap-8 px-8'>
+          <div className='flex flex-col'>
             <Header dictionary={dictionary} />
             <Subheader dictionary={dictionary} />
             <Suspense fallback={null}>
@@ -34,7 +34,7 @@ const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
               </div>
             </Suspense>
           </div>
-          <div className='order-1 flex h-full items-center justify-center md:order-2'>
+          <div className='hidden h-full items-center justify-center md:flex'>
             <Solution1 />
           </div>
         </div>

@@ -41,7 +41,7 @@ export function Solution2({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'bg-background relative flex w-full flex-col justify-center md:scale-100 md:flex-row',
+        'relative flex w-full flex-col justify-center md:scale-100 md:flex-row',
         className,
       )}
       ref={containerRef}

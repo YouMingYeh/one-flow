@@ -36,7 +36,7 @@ export const LanguageToggle: FC = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button size='icon' variant='outline'>
+        <Button className='bg-background' size='icon' variant='outline'>
           <Icons.Languages className='h-[1.2rem] w-[1.2rem]' />
           <span className='sr-only'>{lang}</span>
         </Button>
