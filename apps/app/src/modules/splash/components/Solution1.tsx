@@ -15,7 +15,7 @@ const Circle = forwardRef<
   return (
     <div
       className={cn(
-        'bg-background z-10 flex size-12 items-center justify-center rounded-full border-2 p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]',
+        'bg-background size-12 z-10 flex items-center justify-center rounded-full border-2 p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]',
         className,
       )}
       ref={ref}
@@ -42,7 +42,7 @@ export function Solution1({ className }: { className?: string }) {
       className={cn('relative h-64 w-full md:h-96', className)}
       ref={containerRef}
     >
-      <div className='relative flex size-full h-full max-w-lg flex-row items-stretch justify-between gap-10'>
+      <div className='size-full relative flex h-full max-w-lg flex-row items-stretch justify-between gap-10'>
         <Circle
           className='absolute bottom-24 left-1/4 z-20 aspect-square'
           ref={div7Ref}

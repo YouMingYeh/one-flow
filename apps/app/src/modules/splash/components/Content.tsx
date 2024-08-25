@@ -17,14 +17,14 @@ import { Solution2 } from './Solution2';
 
 export default function Content({ dictionary }: { dictionary: Dictionary }) {
   return (
-    <div className='flex flex-col gap-4 w-full'>
+    <div className='flex w-full flex-col gap-4'>
       <h2 className='mt-8 text-4xl font-bold tracking-tight'>
         {dictionary.landing.content.title}
       </h2>
       <p className='text-muted-foreground'>
         {dictionary.landing.content.description}
       </p>
-      <div className='mb-16 w-full grid grid-cols-1 gap-6 px-8 sm:grid-cols-3'>
+      <div className='mb-16 grid w-full grid-cols-1 gap-6 px-8 sm:grid-cols-3'>
         <Card className='flex flex-col justify-between bg-indigo-50'>
           <CardHeader>
             <CardTitle className='flex flex-col items-center justify-center gap-1'>
@@ -99,7 +99,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
           </CardFooter>
         </Card>
       </div>
-      <div className='flex overflow-hidden flex-col gap-4 relative'>
+      <div className='relative flex flex-col gap-4 overflow-hidden px-8'>
         <h2 className='text-4xl font-semibold leading-none tracking-tight'>
           {dictionary.landing.content.numberTicker.title}
         </h2>
@@ -122,16 +122,14 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
             'Skyee',
             'Payoneer',
             'Paypal',
-          ].map((item
-            
-          ) => (
-            <span className='text-xl text-muted-foreground' key={item}>
+          ].map(item => (
+            <span className='text-muted-foreground text-xl' key={item}>
               {item}
             </span>
           ))}
         </Marquee>
       </div>
-      <div className='bg-gradient-to-t from-indigo-500/20 from-10% via-sky-500/20 via-50% to-transparent to-100% py-8'>
+      <div className='bg-gradient-to-t from-indigo-500/20 from-10% via-sky-500/20 via-50% to-transparent to-100% px-8 py-8'>
         <p className='mt-32 text-4xl font-semibold'>
           {dictionary.landing.content.howWeHelp}
         </p>
@@ -146,7 +144,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
           <Solution2 />
         </div>
       </div>
-      <div className='flex flex-col items-center justify-center gap-4'>
+      <div className='flex flex-col items-center justify-center gap-4 px-8'>
         <h2 className='mt-8 text-4xl font-semibold leading-none tracking-tight'>
           {dictionary.landing.earlyAccess.title}
         </h2>

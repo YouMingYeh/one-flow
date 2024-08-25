@@ -52,7 +52,6 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://one-flow.cn'),
 };
 
-
 // TODO: Add global providers over here
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
   <html lang='zh' suppressHydrationWarning>
