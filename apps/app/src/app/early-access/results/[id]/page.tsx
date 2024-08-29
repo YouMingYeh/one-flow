@@ -85,24 +85,24 @@ const Page = async ({
   // Select the top three PSPs if available
   const [bestPSP, secondPSP, thirdPSP] = sortedPSPs;
 
-  const bestPSPName = nameMapping[bestPSP?.[0] as keyof typeof nameMapping];
-  const bestPSPFee = bestPSP?.[1];
+  const bestPSPName = nameMapping[bestPSP[0] as keyof typeof nameMapping];
+  const bestPSPFee = bestPSP[1];
   const bestPSPDuration =
-    withdrawDuration[bestPSP?.[0] as keyof typeof withdrawDuration];
+    withdrawDuration[bestPSP[0] as keyof typeof withdrawDuration];
 
   const secondPSPName = secondPSP
     ? nameMapping[secondPSP[0] as keyof typeof nameMapping]
     : null;
-  const secondPSPFee = secondPSP?.[1];
+  const secondPSPFee = secondPSP[1];
   const secondPSPDuration =
-    withdrawDuration[secondPSP?.[0] as keyof typeof withdrawDuration];
+    withdrawDuration[secondPSP[0] as keyof typeof withdrawDuration];
 
   const thirdPSPName = thirdPSP
     ? nameMapping[thirdPSP[0] as keyof typeof nameMapping]
     : null;
-  const thirdPSPFee = thirdPSP?.[1];
+  const thirdPSPFee = thirdPSP[1];
   const thirdPSPDuration =
-    withdrawDuration[thirdPSP?.[0] as keyof typeof withdrawDuration];
+    withdrawDuration[thirdPSP[0] as keyof typeof withdrawDuration];
 
   return (
     <div className='mx-auto flex h-full w-full flex-col justify-center gap-6 py-12 sm:w-2/3'>
