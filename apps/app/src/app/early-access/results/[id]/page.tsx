@@ -79,20 +79,35 @@ const Page = async ({
     suitablePSPs = Object.entries(tier);
   }
 
-  // Step 3: Select the best PSP, for simplicity we'll take the one with the lowest fee
-  const [bestPSP, bestFee] = suitablePSPs.reduce((prev, current) =>
-    prev[1] < current[1] ? prev : current,
-  );
+  // Step 3: Sort suitable PSPs based on fee, from lowest to highest
+  const sortedPSPs = suitablePSPs.sort((a, b) => Number(a[1]) - Number(b[1]));
 
-  const bestPSPName = nameMapping[bestPSP as keyof typeof nameMapping];
-  const bestPSPFee = bestFee;
+  // Select the top three PSPs if available
+  const [bestPSP, secondPSP, thirdPSP] = sortedPSPs;
+
+  const bestPSPName = nameMapping[bestPSP?.[0] as keyof typeof nameMapping];
+  const bestPSPFee = bestPSP?.[1];
   const bestPSPDuration =
-    withdrawDuration[bestPSP as keyof typeof withdrawDuration];
+    withdrawDuration[bestPSP?.[0] as keyof typeof withdrawDuration];
+
+  const secondPSPName = secondPSP
+    ? nameMapping[secondPSP[0] as keyof typeof nameMapping]
+    : null;
+  const secondPSPFee = secondPSP?.[1];
+  const secondPSPDuration =
+    withdrawDuration[secondPSP?.[0] as keyof typeof withdrawDuration];
+
+  const thirdPSPName = thirdPSP
+    ? nameMapping[thirdPSP[0] as keyof typeof nameMapping]
+    : null;
+  const thirdPSPFee = thirdPSP?.[1];
+  const thirdPSPDuration =
+    withdrawDuration[thirdPSP?.[0] as keyof typeof withdrawDuration];
 
   return (
     <div className='mx-auto flex h-full w-full flex-col justify-center gap-6 py-12 sm:w-2/3'>
       <div className='flex flex-col gap-y-2 text-center'>
-        <Icons.logo className='mx-auto h-12 w-12' />
+        <Icons.logo className='mx-auto h-20 w-20' />
         <h1 className='text-2xl font-semibold tracking-tight'>
           {dictionary.earlyAccess.results.title}
         </h1>
@@ -101,7 +116,7 @@ const Page = async ({
         </p>
       </div>
       <p>
-        {dictionary.earlyAccess.results.youShouldChoose}{' '}
+        1️⃣ {dictionary.earlyAccess.results.youShouldChoose}{' '}
         <span className='font-semibold'>{bestPSPName}</span>{' '}
         {dictionary.earlyAccess.results.asYourPaymentGateway}
       </p>
@@ -114,12 +129,43 @@ const Page = async ({
         {dictionary.earlyAccess.results.forWithdrawal}
       </p>
       <p>
-        {dictionary.earlyAccess.results.youWillGet}{' '}
-        <span className='font-semibold'>
-          {bestPSP === 'Lianlian' || bestPSP === 'Pingpong' ? '24/7' : '9-5'}
-        </span>{' '}
-        {dictionary.earlyAccess.results.customerService}
+        {dictionary.earlyAccess.results.servicesProvided}:{' '}
+        {serviceMap[bestPSP[0]].join(', ')}
       </p>
+      {secondPSP ? (
+        <>
+          <p>
+            2️⃣ {dictionary.earlyAccess.results.secondChoice}{' '}
+            <span className='font-semibold'>{secondPSPName}</span>{' '}
+            {dictionary.earlyAccess.results.youWillPay}{' '}
+            <span className='font-semibold'>{secondPSPFee}%</span>{' '}
+            {dictionary.earlyAccess.results.andWait}{' '}
+            <span className='font-semibold'>{secondPSPDuration}</span>{' '}
+            {dictionary.earlyAccess.results.forWithdrawal}
+          </p>
+          <p>
+            {dictionary.earlyAccess.results.servicesProvided}:{' '}
+            {serviceMap[secondPSP[0]].join(', ')}
+          </p>
+        </>
+      ) : null}
+      {thirdPSP ? (
+        <>
+          <p>
+            3️⃣ {dictionary.earlyAccess.results.thirdChoice}{' '}
+            <span className='font-semibold'>{thirdPSPName}</span>{' '}
+            {dictionary.earlyAccess.results.youWillPay}{' '}
+            <span className='font-semibold'>{thirdPSPFee}%</span>{' '}
+            {dictionary.earlyAccess.results.andWait}{' '}
+            <span className='font-semibold'>{thirdPSPDuration}</span>{' '}
+            {dictionary.earlyAccess.results.forWithdrawal}
+          </p>
+          <p>
+            {dictionary.earlyAccess.results.servicesProvided}:{' '}
+            {serviceMap[thirdPSP[0]].join(', ')}
+          </p>
+        </>
+      ) : null}
       <p>{dictionary.earlyAccess.results.enjoyYourBusiness}</p>
       <Link href={`/early-access/${id}`}>
         <Button size='lg'>
@@ -148,7 +194,7 @@ type TierPricing = {
 
 const pricingData: TierPricing[] = [
   {
-    tier: '<0.5w USD',
+    tier: '<0.5w 美元',
     Pingpong: 1.0,
     Lianlian: 0.7,
     Worldfirst: 0.3,
@@ -160,7 +206,7 @@ const pricingData: TierPricing[] = [
     Paypal: 3.0,
   },
   {
-    tier: '0.5w - 1w',
+    tier: '0.5w - 1w 美元',
     Pingpong: 0.9,
     Lianlian: 0.7,
     Worldfirst: 0.3,
@@ -172,7 +218,7 @@ const pricingData: TierPricing[] = [
     Paypal: 3.0,
   },
   {
-    tier: '1w ~ 2w',
+    tier: '1w ~ 2w 美元',
     Pingpong: 0.8,
     Lianlian: 0.7,
     Worldfirst: 0.3,
@@ -184,7 +230,7 @@ const pricingData: TierPricing[] = [
     Paypal: 3.0,
   },
   {
-    tier: '2w ~ 5w',
+    tier: '2w ~ 5w 美元',
     Pingpong: 0.7,
     Lianlian: 0.7,
     Worldfirst: 0.3,
@@ -196,7 +242,7 @@ const pricingData: TierPricing[] = [
     Paypal: 3.0,
   },
   {
-    tier: '5w ~ 10w',
+    tier: '5w ~ 10w 美元',
     Pingpong: 0.6,
     Lianlian: 0.6,
     Worldfirst: 0.3,
@@ -208,7 +254,7 @@ const pricingData: TierPricing[] = [
     Paypal: 3.0,
   },
   {
-    tier: '10w ~ 20w',
+    tier: '10w ~ 20w 美元',
     Pingpong: 0.5,
     Lianlian: 0.6,
     Worldfirst: 0.3,
@@ -220,7 +266,7 @@ const pricingData: TierPricing[] = [
     Paypal: 3.0,
   },
   {
-    tier: '20w ~ 40w',
+    tier: '20w ~ 40w 美元',
     Pingpong: 0.4,
     Lianlian: 0.5,
     Worldfirst: 0.3,
@@ -232,7 +278,7 @@ const pricingData: TierPricing[] = [
     Paypal: 3.0,
   },
   {
-    tier: '40w ~ 80w',
+    tier: '40w ~ 80w 美元',
     Pingpong: 0.3,
     Lianlian: 0.4,
     Worldfirst: 0.3,
@@ -244,7 +290,7 @@ const pricingData: TierPricing[] = [
     Paypal: 3.0,
   },
   {
-    tier: '80w ~ 150w',
+    tier: '80w ~ 150w 美元',
     Pingpong: 0.2,
     Lianlian: 0.35,
     Worldfirst: 0.3,
@@ -256,7 +302,7 @@ const pricingData: TierPricing[] = [
     Paypal: 3.0,
   },
   {
-    tier: '>150w',
+    tier: '>150w 美元',
     Pingpong: 0.1,
     Lianlian: 0.3,
     Worldfirst: 0.3,
@@ -269,17 +315,15 @@ const pricingData: TierPricing[] = [
   },
 ];
 
-
 const withdrawDuration = {
-  Pingpong: 'T+0 (Before 6pm)',
-  Lianlian: 'T+0 (Before 5pm), flexible methods after that',
-  Worldfirst:
-    'T+ 1~2days (2~5days for foreign currency) (real time if withdraw through Alipay)',
+  Pingpong: 'T+0 (18:00前)',
+  Lianlian: 'T+0 (17:00前)，之后提供灵活的提现方式',
+  Worldfirst: 'T+ 1~2天 (外币2~5天)（通过支付宝实时提现）',
   HSBC_Merchants_box: 'T+0～1',
-  Zhihui_E: 'T+0 (Before 6pm)',
-  Airwallex: 'T+0 (Before 5pm)',
-  Skyee: 'T+0 (Before 6pm)',
-  Payoneer: 'T+ 1~2days',
+  Zhihui_E: 'T+0 (18:00前)',
+  Airwallex: 'T+0 (17:00前)',
+  Skyee: 'T+0 (18:00前)',
+  Payoneer: 'T+ 1~2天',
   Paypal: null,
 };
 
@@ -293,4 +337,16 @@ const nameMapping = {
   Skyee: 'Payoneer',
   Payoneer: 'Paypal',
   Paypal: 'Paypal',
+};
+
+const serviceMap: Record<string, string[]> = {
+  Pingpong: ['2024-07-24 00:00:00'], // 日期相關的服務數據，可根據需要調整
+  Lianlian: ['2024-07-24 00:00:00'], // 日期相關的服務數據，可根據需要調整
+  Worldfirst: ['2024年07月24日 无专属客服经理，除非月流水达100k人民币'], // 服務條件說明
+  HSBC_Merchants_box: ['工作日 9:00-18:00', 'Phone Call 尚未成功过'], // 工作日服務時間
+  Zhihui_E: ['工作日 10:00-18:00'], // 標準工作日支持時間
+  Airwallex: ['工作日 10:00-18:00，只有前六个月有专属客服经理'], // 初期提供专属客服经理
+  Skyee: ['服务信息不可用'], // 未找到具体数据
+  Payoneer: ['工作日 9:00-18:00', 'Phone Call 尚未成功过'], // 工作日服務時間
+  Paypal: ['24/7 客服支持', '国际支付', '较高的费用'], // 通用服务说明
 };

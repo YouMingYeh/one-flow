@@ -69,7 +69,7 @@ export const NavBar: FC<NavbarProps> = ({ userExists }) => {
           <div className='flex h-full flex-col justify-between'>
             <div className='flex flex-col gap-6'>
               <div className='flex flex-col gap-y-2 text-center'>
-                <Icons.logo className='mx-auto h-12 w-12' />
+                <Icons.logo className='mx-auto h-20 w-20' />
                 <h2 className='text-xl font-semibold tracking-tight'>
                   {dictionary.portal.title}
                 </h2>

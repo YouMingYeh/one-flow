@@ -75,6 +75,8 @@ const en = {
       title: 'Results',
       description: 'Here is the best solution for you!',
       youShouldChoose: 'You should choose',
+      secondChoice: 'Or you can choose',
+      thirdChoice: 'Or you can also choose',
       asYourPaymentGateway: 'as your payment gateway',
       youWillPay: 'You will pay',
       ofWithdrawalFee: 'of withdrawal fee',
@@ -82,8 +84,10 @@ const en = {
       forWithdrawal: 'days for withdrawal',
       youWillGet: 'You will get',
       customerService: 'customer service',
+      servicesProvided: 'service provided',
       enjoyYourBusiness: 'Enjoy your business!',
       goOn: 'Go on',
+      
     },
     ok: {
       title: 'Thank you for your interest!',
@@ -208,6 +212,19 @@ const en = {
       currentGateway: {
         label: 'What payment channels are you currently using?',
         placeholder: 'PayPal, Alipay, etc.',
+        options: [
+          // Pingpong	Lianlian	Worldfirst	HSBC Merchants box	智汇鹅	Airwallex	Skyee	Payoneer	Paypal
+          { value: 'pingpong', label: 'Pingpong' },
+          { value: 'lianlian', label: 'Lianlian' },
+          { value: 'worldfirst', label: 'Worldfirst' },
+          { value: 'hsbc_merchants_box', label: 'HSBC Merchants box' },
+          { value: 'zhihui_e', label: '智汇鹅' },
+          { value: 'airwallex', label: 'Airwallex' },
+          { value: 'skyee', label: 'Skyee' },
+          { value: 'payoneer', label: 'Payoneer' },
+          { value: 'paypal', label: 'Paypal' },
+          { value: 'other', label: 'Others' },
+        ]
       },
       currentRate: {
         label: 'What is your current cross-border payment rate?',
