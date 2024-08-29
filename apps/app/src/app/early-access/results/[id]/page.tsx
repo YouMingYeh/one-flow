@@ -90,16 +90,13 @@ const Page = async ({
   const bestPSPDuration =
     withdrawDuration[bestPSP[0] as keyof typeof withdrawDuration];
 
-  const secondPSPName = secondPSP
-    ? nameMapping[secondPSP[0] as keyof typeof nameMapping]
-    : null;
+  const secondPSPName = nameMapping[secondPSP[0] as keyof typeof nameMapping];
+
   const secondPSPFee = secondPSP[1];
   const secondPSPDuration =
     withdrawDuration[secondPSP[0] as keyof typeof withdrawDuration];
 
-  const thirdPSPName = thirdPSP
-    ? nameMapping[thirdPSP[0] as keyof typeof nameMapping]
-    : null;
+  const thirdPSPName = nameMapping[thirdPSP[0] as keyof typeof nameMapping];
   const thirdPSPFee = thirdPSP[1];
   const thirdPSPDuration =
     withdrawDuration[thirdPSP[0] as keyof typeof withdrawDuration];
@@ -132,40 +129,32 @@ const Page = async ({
         {dictionary.earlyAccess.results.servicesProvided}:{' '}
         {serviceMap[bestPSP[0]].join(', ')}
       </p>
-      {secondPSP ? (
-        <>
-          <p>
-            2️⃣ {dictionary.earlyAccess.results.secondChoice}{' '}
-            <span className='font-semibold'>{secondPSPName}</span>{' '}
-            {dictionary.earlyAccess.results.youWillPay}{' '}
-            <span className='font-semibold'>{secondPSPFee}%</span>{' '}
-            {dictionary.earlyAccess.results.andWait}{' '}
-            <span className='font-semibold'>{secondPSPDuration}</span>{' '}
-            {dictionary.earlyAccess.results.forWithdrawal}
-          </p>
-          <p>
-            {dictionary.earlyAccess.results.servicesProvided}:{' '}
-            {serviceMap[secondPSP[0]].join(', ')}
-          </p>
-        </>
-      ) : null}
-      {thirdPSP ? (
-        <>
-          <p>
-            3️⃣ {dictionary.earlyAccess.results.thirdChoice}{' '}
-            <span className='font-semibold'>{thirdPSPName}</span>{' '}
-            {dictionary.earlyAccess.results.youWillPay}{' '}
-            <span className='font-semibold'>{thirdPSPFee}%</span>{' '}
-            {dictionary.earlyAccess.results.andWait}{' '}
-            <span className='font-semibold'>{thirdPSPDuration}</span>{' '}
-            {dictionary.earlyAccess.results.forWithdrawal}
-          </p>
-          <p>
-            {dictionary.earlyAccess.results.servicesProvided}:{' '}
-            {serviceMap[thirdPSP[0]].join(', ')}
-          </p>
-        </>
-      ) : null}
+      <p>
+        2️⃣ {dictionary.earlyAccess.results.secondChoice}{' '}
+        <span className='font-semibold'>{secondPSPName}</span>{' '}
+        {dictionary.earlyAccess.results.youWillPay}{' '}
+        <span className='font-semibold'>{secondPSPFee}%</span>{' '}
+        {dictionary.earlyAccess.results.andWait}{' '}
+        <span className='font-semibold'>{secondPSPDuration}</span>{' '}
+        {dictionary.earlyAccess.results.forWithdrawal}
+      </p>
+      <p>
+        {dictionary.earlyAccess.results.servicesProvided}:{' '}
+        {serviceMap[secondPSP[0]].join(', ')}
+      </p>
+      <p>
+        3️⃣ {dictionary.earlyAccess.results.thirdChoice}{' '}
+        <span className='font-semibold'>{thirdPSPName}</span>{' '}
+        {dictionary.earlyAccess.results.youWillPay}{' '}
+        <span className='font-semibold'>{thirdPSPFee}%</span>{' '}
+        {dictionary.earlyAccess.results.andWait}{' '}
+        <span className='font-semibold'>{thirdPSPDuration}</span>{' '}
+        {dictionary.earlyAccess.results.forWithdrawal}
+      </p>
+      <p>
+        {dictionary.earlyAccess.results.servicesProvided}:{' '}
+        {serviceMap[thirdPSP[0]].join(', ')}
+      </p>
       <p>{dictionary.earlyAccess.results.enjoyYourBusiness}</p>
       <Link href={`/early-access/${id}`}>
         <Button size='lg'>

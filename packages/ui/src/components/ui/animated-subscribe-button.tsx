@@ -16,9 +16,7 @@ interface AnimatedSubscribeButtonProps {
 export const AnimatedSubscribeButton: React.FC<
   AnimatedSubscribeButtonProps
 > = ({
-  buttonColor,
   subscribeStatus,
-  buttonTextColor,
   changeText,
   initialText,
   onClick,
