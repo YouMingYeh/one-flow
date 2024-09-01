@@ -22,13 +22,13 @@ import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 export default function Content({ dictionary }: { dictionary: Dictionary }) {
   return (
     <div className='flex w-full flex-col items-center justify-center gap-4'>
-      <h2 className='mt-8 text-4xl font-bold tracking-tight'>
+      <h2 className='mt-8 text-5xl font-bold tracking-tight'>
         {dictionary.landing.splash.header}
       </h2>
       <p className='text-muted-foreground max-w-2xl px-8 text-lg'>
         {dictionary.landing.splash.subheader}
       </p>
-      <h2 className='mt-16 text-4xl font-bold tracking-tight'>
+      <h2 className='mt-16 text-5xl font-bold tracking-tight'>
         {dictionary.landing.content.title}
       </h2>
       <p className='text-muted-foreground'>
@@ -146,8 +146,8 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
           </CardFooter>
         </Card>
       </div>
-      <div className='relative flex flex-col gap-4 overflow-hidden px-8'>
-        <h2 className='text-4xl font-semibold leading-none tracking-tight'>
+      <div className='relative flex flex-col gap-4 overflow-hidden'>
+        <h2 className='text-5xl font-semibold leading-none tracking-tight'>
           {dictionary.landing.content.numberTicker.title}
         </h2>
         <h3 className='text-muted-foreground text-xl'>
@@ -159,7 +159,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
         <h2 className='mt-2 text-2xl font-semibold leading-none tracking-tight'>
           {dictionary.landing.content.numberTicker.footer}
         </h2>
-        <Marquee className='[--duration:20s]' pauseOnHover>
+        <Marquee className='[--duration:20s] overflow-clip w-screen' pauseOnHover>
           {[
             'Pingpong',
             'Lianlian',
@@ -176,8 +176,8 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
           ))}
         </Marquee>
       </div>
-      <div className='w-full bg-gradient-to-tr from-indigo-500/20 from-10% via-sky-500/20 via-50% to-transparent to-100% px-8 py-8'>
-        <p className='mt-32 text-4xl font-semibold'>
+      <div className='w-full bg-gradient-to-tr from-indigo-500/20 from-10% via-sky-500/20 via-50% to-transparent to-100% py-8'>
+        <p className='mt-32 text-5xl font-semibold'>
           {dictionary.landing.content.howWeHelp}
         </p>
         <div className='mt-8 grid w-full grid-cols-1 place-content-center gap-6'>
@@ -192,7 +192,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
         </div>
       </div>
       <div className='flex flex-col items-center justify-center gap-4 px-8'>
-        <h2 className='mt-8 text-4xl font-semibold leading-none tracking-tight'>
+        <h2 className='mt-8 text-5xl font-semibold leading-none tracking-tight'>
           {dictionary.landing.earlyAccess.title}
         </h2>
         <h3 className='text-muted-foreground text-xl'>

@@ -70,7 +70,7 @@ export function DrawerDialogButton({
     return (
       <Dialog onOpenChange={setOpen} open={open}>
         <DialogTrigger asChild>
-          <Button variant='default'>{buttonText}</Button>
+          <Button>{buttonText}</Button>
         </DialogTrigger>
         <DialogContent className='sm:max-w-[425px]'>
           <DialogHeader>
@@ -86,9 +86,9 @@ export function DrawerDialogButton({
   return (
     <Drawer onOpenChange={setOpen} open={open}>
       <DrawerTrigger asChild>
-        <Button variant='outline'>{buttonText}</Button>
+        <Button>{buttonText}</Button>
       </DrawerTrigger>
-      <DrawerContent>
+      <DrawerContent className='px-4'>
         <DrawerHeader className='text-left'>
           <DrawerTitle>{title}</DrawerTitle>
           <DrawerDescription>{description}</DrawerDescription>
@@ -96,7 +96,7 @@ export function DrawerDialogButton({
         {children}
         <DrawerFooter className='pt-2'>
           <DrawerClose asChild>
-            <Button variant='outline'>Close</Button>
+            <Button variant='outline'>OK!</Button>
           </DrawerClose>
         </DrawerFooter>
       </DrawerContent>
