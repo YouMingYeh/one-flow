@@ -276,7 +276,9 @@ export const EarlyAccessForm: FC = () => {
                   <AccordionContent>
                     <div className='flex flex-col gap-6 px-1'>
                       <MultipleSelectButtonGroup
-                        options={dictionary.earlyAccess.form.currentGateway.options}
+                        options={
+                          dictionary.earlyAccess.form.currentGateway.options
+                        }
                         setValues={setCurrentGateways}
                         values={currentGateways}
                       />

@@ -28,7 +28,13 @@ const Circle = forwardRef<
 
 Circle.displayName = 'Circle';
 
-export function Solution2({ className }: { className?: string }) {
+export function Solution2({
+  className,
+  features,
+}: {
+  className?: string;
+  features: string[];
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const div1Ref = useRef<HTMLDivElement>(null);
   const div2Ref = useRef<HTMLDivElement>(null);
@@ -91,10 +97,10 @@ export function Solution2({ className }: { className?: string }) {
           </Circle>
         </div>
       </div>
-      <div className='mt-4 flex flex-row items-center justify-center md:flex-col md:gap-8'>
-        {['实时', '直观', '省时', '省钱', '精准'].map((item, index) => (
+      <div className='mt-4 flex flex-row items-center justify-center md:ml-4 md:flex-col md:gap-8'>
+        {features.map((item, index) => (
           <motion.div
-            className='w-16 md:w-32'
+            className='w-20 md:w-full'
             initial={{ opacity: 0 }}
             key={index}
             transition={{ delay: 1 + index * 0.5, duration: 1 }}

@@ -17,7 +17,7 @@ const en = {
     learnMore: 'Learn More',
     contactUs: 'Contact Us',
     login: 'Login',
-    earlyAccess: 'Early Access?',
+    earlyAccess: 'Get Early Access',
     earlyAccessOK: 'Let’s Start!',
   },
   earlyAccess: {
@@ -87,7 +87,6 @@ const en = {
       servicesProvided: 'service provided',
       enjoyYourBusiness: 'Enjoy your business!',
       goOn: 'Go on',
-      
     },
     ok: {
       title: 'Thank you for your interest!',
@@ -224,7 +223,7 @@ const en = {
           { value: 'payoneer', label: 'Payoneer' },
           { value: 'paypal', label: 'Paypal' },
           { value: 'other', label: 'Others' },
-        ]
+        ],
       },
       currentRate: {
         label: 'What is your current cross-border payment rate?',
@@ -296,47 +295,45 @@ const en = {
   },
   landing: {
     earlyAccess: {
-      title: 'We are looking for Early Access users!',
+      title: 'Join our Early Access Program!',
       description:
-        'Click the button below, fill out the form, and we will get back to you soon.',
+        'Click below, complete the form, and we’ll be in touch shortly.',
     },
     splash: {
-      header: 'One-stop Cross-border Integrated Payment Tool',
+      header: 'Your One-stop Solution for Cross-border Collection',
       subheader:
-        'is dedicated to solving various pain points encountered in cross-border payment for cross-border merchants. With our OneFlow payment assistant, you can recommend the most suitable payment gateway based on your business situation, characteristics, and preferences, and provide customized solutions. Through powerful APIs and models, we provide an extremely smooth payment experience for many merchants.',
+        'At OneFlow, we are committed to addressing the challenges faced by cross-border merchants. Our innovative payment assistant helps you identify the most appropriate payment gateway tailored to your specific business needs, characteristics, and preferences. Leveraging our powerful APIs and advanced algorithms, we ensure a seamless and efficient collection experience for all our clients.',
       slogan: [
-        'Your payment assistant',
-        'Find the most suitable payment channel for you',
-        'Save costs, time, and energy',
+        'Personalized payment assistant',
+        'Discover the best payment channel for your business',
+        'Reduce Costs, save time, and maximize efficiency',
       ],
     },
     cta: 'Get Started',
     content: {
-      title: 'Say Goodbye to Cross-border Payment Troubles',
-      description:
-        'Unlock the unknown potential of your business with OneFlow.',
+      title: 'Eliminate cross-border collection challenges',
+      description: 'Unlock your business’s hidden potential with OneFlow',
       cards: {
         findYourBestMatch: {
-          title: 'Find the Best Match for Each Payment in Real Time',
+          title: 'Real-Time Matching for Optimal Collection Solutions',
           description:
-            'No more headaches about choosing the right cross-border payment method with numerous options and complex pricing and service plans.',
+            'No more stress over selecting the right cross-border payment method - simplified and tailored to your needs.',
           content:
-            'Facing countless options and complex pricing plans. OneFlow simplifies this process by providing personalized insights and recommendations. Our extensive database and advanced algorithms help you make wise financial decisions that suit your unique needs.',
+            'Navigating endless payment options and pricing plans can be overwhelming. OneFlow strealines this process by offering personalized insights and recommendations. Our robust database and sophisticated algorithms ensure you make informed financial decisions that meet your unique business needs',
           cta: 'Learn More',
         },
         itJustWorks: {
-          title: 'Intuitively Discover Growth Potential You Never Knew Existed',
-          description:
-            'Don’t miss out on potential business growth opportunities you may not have realized.',
+          title: 'Cost-Effective solutions with OneFlow',
+          description: 'Maximize savings with OneFlow',
           content:
-            'Think your current cross-border payment method is enough? Think again. OneFlow reveals business growth opportunities you may not have realized. Our tools are designed to optimize your cross-border payment process, opening new avenues for efficiency and success. Trust OneFlow to uncover untapped potential and change the way you handle payments.',
+            'OneFlow delivers an affordable SaaS solution that offers exceptional value. Our tools are designed to fit your budget while driving significant cost savings. With transparent pricing and efficiency-boosting features, OneFlow is a smart investment that minimizes unnecessary expenses by optimizing your cross-border payment process.',
           cta: 'Learn More',
         },
         howMuch: {
-          title: 'Affordable – Save More with OneFlow',
-          description: 'Save Costs with OneFlow',
+          title: 'Uncover Hidden Growth Opportunities with OneFlow',
+          description: 'Unlock growth opportunities you never knew existed',
           content:
-            'OneFlow offers an affordable SaaS solution aimed at providing exceptional value. We ensure our tools not only fit your budget but also help you save costs. With transparent pricing and cost-saving features, OneFlow is a worthwhile investment that reduces unnecessary expenses by optimizing the cross-border payment process.',
+            'Think your current cross-border collection method is sufficient? Think again. OneFlow identifies untapped business growth opportunities. Our tools are designed to enhance your collection process, paving the way for greater efficiency and success. Rely on OneFlow to uncover hidden potential and revolutionize your approach to payments.',
           cta: 'Learn More',
         },
       },
@@ -347,7 +344,7 @@ const en = {
           'We collect information from over 15 payment gateways and provide you with the best real-time choices.',
         footer: 'Real-time Payment Gateway Information',
       },
-      howWeHelp: 'How OneFlow Helps You?',
+      howWeHelp: 'How OneFlow empowers you?',
 
       solution1: {
         title: 'Discover the Best You Never Knew',
@@ -355,9 +352,16 @@ const en = {
           'OneFlow helps you discover the best payment gateway for your business among the countless options available.',
       },
       solution2: {
-        title: 'Integrate Cross-border Payments',
+        title: 'Seamless integration for cross-border collections',
         description:
-          'OneFlow handles all your cross-border payment needs in one place.',
+          'OneFlow matches all your cross-border collection flow with the optimal solutions, all in one place.',
+        features: [
+          'Real-Time',
+          'Intuitive',
+          'Time-Saving',
+          'Cost-Efficient',
+          'Accurate',
+        ],
       },
     },
   },

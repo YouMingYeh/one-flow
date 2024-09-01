@@ -15,13 +15,7 @@ interface AnimatedSubscribeButtonProps {
 
 export const AnimatedSubscribeButton: React.FC<
   AnimatedSubscribeButtonProps
-> = ({
-  subscribeStatus,
-  changeText,
-  initialText,
-  onClick,
-  delay = 1000,
-}) => {
+> = ({ subscribeStatus, changeText, initialText, onClick, delay = 1000 }) => {
   const [isSubscribed, setIsSubscribed] = useState<boolean>(subscribeStatus);
 
   return (

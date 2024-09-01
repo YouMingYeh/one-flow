@@ -1,5 +1,4 @@
 import {
-  Button,
   Card,
   CardContent,
   CardDescription,
@@ -10,92 +9,140 @@ import {
   Marquee,
   NumberTicker,
 } from 'ui';
-import Link from 'next/link';
+import Image from 'next/image';
 import type { Dictionary } from '../../../dictionaries';
+import { DrawerDialogButton } from '../../../components/layouts/DrawerDialogButton';
 import EarlyAccessButton from './EarlyAccessButton';
 import { Solution2 } from './Solution2';
+import ChooseCard from './choose-card.svg';
+import Analysis from './analysis.svg';
+import Predict from './predict.svg';
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
 export default function Content({ dictionary }: { dictionary: Dictionary }) {
   return (
-    <div className='flex w-full flex-col gap-4'>
+    <div className='flex w-full flex-col items-center justify-center gap-4'>
       <h2 className='mt-8 text-4xl font-bold tracking-tight'>
+        {dictionary.landing.splash.header}
+      </h2>
+      <p className='text-muted-foreground max-w-2xl px-8 text-lg'>
+        {dictionary.landing.splash.subheader}
+      </p>
+      <h2 className='mt-16 text-4xl font-bold tracking-tight'>
         {dictionary.landing.content.title}
       </h2>
       <p className='text-muted-foreground'>
         {dictionary.landing.content.description}
       </p>
       <div className='mb-16 grid w-full grid-cols-1 gap-6 px-8 sm:grid-cols-3'>
-        <Card className='flex flex-col justify-between bg-indigo-50'>
+        <Card className='flex flex-col justify-between bg-gradient-to-tr from-indigo-500/20 from-10% via-sky-500/20 via-50% to-transparent to-100%'>
           <CardHeader>
-            <CardTitle className='flex flex-col items-center justify-center gap-1'>
+            <CardTitle className='flex flex-col items-center justify-center gap-1 text-xl'>
               <Icons.Rocket />
               {dictionary.landing.content.cards.findYourBestMatch.title}
             </CardTitle>
-            <CardDescription>
+            <CardDescription className='text-lg'>
               {dictionary.landing.content.cards.findYourBestMatch.description}
             </CardDescription>
           </CardHeader>
-          <CardContent className='item-center'>
-            <p className='text-sm'>
-              {dictionary.landing.content.cards.findYourBestMatch.content}
-            </p>
+          <CardContent className='flex items-center justify-center'>
+            <Image
+              alt='choose-card'
+              className='w-2/3'
+              src={ChooseCard as StaticImport}
+            />
           </CardContent>
           <CardFooter className='flex justify-end'>
-            <Link href='/'>
-              <Button>
-                {dictionary.landing.content.cards.findYourBestMatch.cta}{' '}
-                <Icons.ChevronRight />
-              </Button>
-            </Link>
+            <DrawerDialogButton
+              buttonText={
+                dictionary.landing.content.cards.findYourBestMatch.cta
+              }
+              description={
+                dictionary.landing.content.cards.findYourBestMatch.description
+              }
+              title={dictionary.landing.content.cards.findYourBestMatch.title}
+            >
+              <p className='text-sm'>
+                {dictionary.landing.content.cards.findYourBestMatch.content}
+              </p>
+              <Image
+                alt='choose-card'
+                className='w-2/3'
+                src={ChooseCard as StaticImport}
+              />
+            </DrawerDialogButton>
           </CardFooter>
         </Card>
-        <Card className='flex flex-col justify-between bg-sky-50'>
+        <Card className='flex flex-col justify-between bg-gradient-to-tr from-indigo-500/20 from-10% via-sky-500/20 via-50% to-transparent to-100%'>
           <CardHeader>
-            <CardTitle className='flex flex-col items-center justify-center gap-1'>
+            <CardTitle className='flex flex-col items-center justify-center gap-1 text-xl'>
               <Icons.PackageOpen />
               {dictionary.landing.content.cards.itJustWorks.title}
             </CardTitle>
-            <CardDescription>
+            <CardDescription className='text-lg'>
               {dictionary.landing.content.cards.itJustWorks.description}
             </CardDescription>
           </CardHeader>
-          <CardContent className='item-center'>
-            <p className='text-sm'>
-              {dictionary.landing.content.cards.itJustWorks.content}
-            </p>
+          <CardContent className='flex items-center justify-center'>
+            <Image
+              alt='analysis'
+              className='w-2/3'
+              src={Analysis as StaticImport}
+            />
           </CardContent>
+
           <CardFooter className='flex justify-end'>
-            <Link href='/'>
-              <Button>
-                {dictionary.landing.content.cards.itJustWorks.cta}{' '}
-                <Icons.ChevronRight />
-              </Button>
-            </Link>
+            <DrawerDialogButton
+              buttonText={dictionary.landing.content.cards.itJustWorks.cta}
+              description={
+                dictionary.landing.content.cards.itJustWorks.description
+              }
+              title={dictionary.landing.content.cards.itJustWorks.title}
+            >
+              <p className='text-sm'>
+                {dictionary.landing.content.cards.itJustWorks.content}
+              </p>
+              <Image
+                alt='analysis'
+                className='w-2/3'
+                src={Analysis as StaticImport}
+              />
+            </DrawerDialogButton>
           </CardFooter>
         </Card>
 
-        <Card className='flex flex-col justify-between bg-indigo-50'>
+        <Card className='flex flex-col justify-between bg-gradient-to-tr from-indigo-500/20 from-10% via-sky-500/20 via-50% to-transparent to-100%'>
           <CardHeader>
-            <CardTitle className='flex flex-col items-center justify-center gap-1'>
+            <CardTitle className='flex flex-col items-center justify-center gap-1 text-xl'>
               <Icons.PiggyBank />
               {dictionary.landing.content.cards.howMuch.title}
             </CardTitle>
-            <CardDescription>
+            <CardDescription className='text-lg'>
               {dictionary.landing.content.cards.howMuch.description}
             </CardDescription>
           </CardHeader>
-          <CardContent className='item-center'>
-            <p className='text-sm'>
-              {dictionary.landing.content.cards.howMuch.content}
-            </p>
+          <CardContent className='flex justify-center'>
+            <Image
+              alt='predict'
+              className='w-2/3'
+              src={Predict as StaticImport}
+            />
           </CardContent>
           <CardFooter className='flex justify-end'>
-            <Link href='/'>
-              <Button>
-                {dictionary.landing.content.cards.howMuch.cta}{' '}
-                <Icons.ChevronRight />
-              </Button>
-            </Link>
+            <DrawerDialogButton
+              buttonText={dictionary.landing.content.cards.howMuch.cta}
+              description={dictionary.landing.content.cards.howMuch.description}
+              title={dictionary.landing.content.cards.howMuch.title}
+            >
+              <p className='text-sm'>
+                {dictionary.landing.content.cards.howMuch.content}
+              </p>
+              <Image
+                alt='predict'
+                className='w-2/3'
+                src={Predict as StaticImport}
+              />
+            </DrawerDialogButton>
           </CardFooter>
         </Card>
       </div>
@@ -109,7 +156,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
         <p className='mt-4 whitespace-pre-wrap text-8xl font-medium tracking-tighter'>
           <NumberTicker value={15} /> +
         </p>
-        <h2 className='mt-2 text-6xl font-semibold leading-none tracking-tight'>
+        <h2 className='mt-2 text-2xl font-semibold leading-none tracking-tight'>
           {dictionary.landing.content.numberTicker.footer}
         </h2>
         <Marquee className='[--duration:20s]' pauseOnHover>
@@ -129,7 +176,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
           ))}
         </Marquee>
       </div>
-      <div className='bg-gradient-to-t from-indigo-500/20 from-10% via-sky-500/20 via-50% to-transparent to-100% px-8 py-8'>
+      <div className='w-full bg-gradient-to-tr from-indigo-500/20 from-10% via-sky-500/20 via-50% to-transparent to-100% px-8 py-8'>
         <p className='mt-32 text-4xl font-semibold'>
           {dictionary.landing.content.howWeHelp}
         </p>
@@ -141,7 +188,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
             {dictionary.landing.content.solution2.description}
           </h3>
 
-          <Solution2 />
+          <Solution2 features={dictionary.landing.content.solution2.features} />
         </div>
       </div>
       <div className='flex flex-col items-center justify-center gap-4 px-8'>
