@@ -7,8 +7,8 @@ import {
   TableBody,
   TableCaption,
   TableCell,
-  TableHead,
-  TableHeader,
+  // TableHead,
+  // TableHeader,
   TableRow,
 } from 'ui';
 import Link from 'next/link';
@@ -264,7 +264,7 @@ const Page = async ({
             </TableCell>
             <TableCell className='border bg-muted'>
               <ul className='list-disc list-inside'>
-                <li>费率: {secondPSP}%</li>
+                <li>费率: {secondPSPFee}%</li>
                 <li>提现时间: {secondPSPDuration}</li>
                 <li>客服时间: {customerServiceMap[secondPSP[0]].join(', ')}</li>
               </ul>

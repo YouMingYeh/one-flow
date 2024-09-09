@@ -6,7 +6,6 @@ import {
   CardHeader,
   CardTitle,
   Icons,
-  Textarea,
 } from 'ui';
 import { Suspense } from 'react';
 import { getDictionary } from '../../i18n';
@@ -48,7 +47,7 @@ const Page = async ({
     };
   };
 
-  const { name, email, phone, country, company, status, ...rest } = data;
+  const { name, email, phone, country, company} = data;
 
   return (
     <div className='mx-auto flex h-full w-full flex-col justify-center gap-6 py-12 sm:w-1/2'>
@@ -98,7 +97,7 @@ const Page = async ({
                 </span>
                 <span>{company}</span>
               </div>
-              <div>
+              {/* <div>
                 <span className='text-muted-foreground'>
                   {dictionary.earlyAccess.ok.information.status}:{' '}
                 </span>
@@ -110,7 +109,7 @@ const Page = async ({
                   readOnly
                   value={JSON.stringify(rest, null, 2)}
                 />
-              </div>
+              </div> */}
             </div>
           </CardContent>
           <CardFooter className='flex justify-center'>
