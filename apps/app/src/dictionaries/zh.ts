@@ -25,7 +25,7 @@ const zh = {
       submit: '提交',
       title: '调查问卷',
       description: '我们希望了解更多关于您的业务，以便为您提供专属解决方案。',
-      help: '您认为 OneFlow 在一定程度上有助于您的业务吗？',
+      help: '您认为 OneFlow 有多少程度上有助于您的业务吗？ (%)',
       how: {
         title: '在做生意时，您如何选择第三方支付提供商？',
         options: [

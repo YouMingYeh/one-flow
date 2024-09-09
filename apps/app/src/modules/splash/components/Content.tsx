@@ -27,8 +27,13 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
         {dictionary.landing.splash.header}
       </h2>
       <p className='text-muted-foreground max-w-2xl px-8 text-lg'>
-        {dictionary.landing.splash.subheader}
+        {`${dictionary.landing.splash.subheader.slice(0, 100)}...`}
       </p>
+      <DrawerDialogButton
+        buttonText={dictionary.buttons.learnMore}
+        description={dictionary.landing.splash.subheader}
+        title={dictionary.landing.splash.header}
+      />
       <div className='relative max-w-lg px-16'>
         <Image
           alt='solution'
@@ -187,7 +192,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
           ))}
         </Marquee>
       </div>
-      <div className='mt-32 w-full bg-gradient-to-tr from-indigo-500/20 from-10% via-sky-500/20 via-50% to-transparent to-100%'>
+      <div className='mt-32 w-full bg-gradient-to-t from-indigo-500/20 from-10% via-sky-500/20 via-50% to-transparent to-100% py-8'>
         <p className='text-5xl font-semibold'>
           {dictionary.landing.content.howWeHelp}
         </p>

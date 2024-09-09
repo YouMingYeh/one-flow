@@ -16,6 +16,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "../ui/chart"
+import { cn } from "../../lib/utils";
 
 // const chartData = [
 //   { x: "January", desktop: 186 },
@@ -39,6 +40,7 @@ chartData: Record<string, unknown>[]
 title?: string
 description?: string
 footer?: React.ReactNode
+className?: string
 }
 
 export function BarChartLabel({
@@ -47,10 +49,10 @@ export function BarChartLabel({
   title,
   description,
   footer,
-
+  className,
 }:BarChartLabelProps) {
   return (
-    <Card>
+    <Card className={cn(className)}>
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>

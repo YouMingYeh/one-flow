@@ -26,7 +26,7 @@ const en = {
       title: 'Questionnaire',
       description:
         'We would like to know more about your business to provide you with tailored solutions.',
-      help: 'Do you think OneFlow helps your business to some extent?',
+      help: 'How much you think OneFlow helps your business? (%)',
       how: {
         title:
           'How do you choose a third-party payment provider when doing business?',

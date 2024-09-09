@@ -262,6 +262,13 @@ export const EarlyAccessForm: FC = () => {
                 dictionary.earlyAccess.form.theMostConcerned.placeholder
               }
             />
+            <Label>{dictionary.earlyAccess.form.currentGateway.label}</Label>
+            <MultipleSelectButtonGroup
+              options={dictionary.earlyAccess.form.currentGateway.options}
+              setValues={setCurrentGateways}
+              values={currentGateways}
+            />
+
             <Suspense
               fallback={<Icons.Spinner className='mx-auto animate-spin' />}
             >
@@ -275,13 +282,6 @@ export const EarlyAccessForm: FC = () => {
                   </AccordionTrigger>
                   <AccordionContent>
                     <div className='flex flex-col gap-6 px-1'>
-                      <MultipleSelectButtonGroup
-                        options={
-                          dictionary.earlyAccess.form.currentGateway.options
-                        }
-                        setValues={setCurrentGateways}
-                        values={currentGateways}
-                      />
                       <FormInputField<EarlyAccessFormValues>
                         label={dictionary.earlyAccess.form.currentRate.label}
                         path='currentRate'
@@ -420,7 +420,7 @@ const MultipleSelectButtonGroup = ({
           type='button'
           variant={values.includes(option.value) ? 'default' : 'outline'}
         >
-          {option.label}
+          {option.label.length > 10 ? `${option.label.slice(0, 8)}...` : option.label}
         </Button>
       ))}
     </div>

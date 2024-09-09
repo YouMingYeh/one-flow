@@ -1,13 +1,16 @@
 import {
+  buttonVariants,
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
+  cn,
   Icons,
 } from 'ui';
 import { Suspense } from 'react';
+import Link from 'next/link';
 import { getDictionary } from '../../i18n';
 import createSupabaseServerClient from '../../../../lib/supabase/server';
 import CopyURLButton from './CopyURLButton';
@@ -47,10 +50,22 @@ const Page = async ({
     };
   };
 
-  const { name, email, phone, country, company} = data;
+  const { name, email, phone, country, company } = data;
 
   return (
     <div className='mx-auto flex h-full w-full flex-col justify-center gap-6 py-12 sm:w-1/2'>
+      <Link
+        className={cn(
+          buttonVariants({
+            variant: 'ghost',
+          }),
+          'flex justify-start items-start',
+        )}
+        href={`/early-access/results/${params.id}`}
+      >
+        <Icons.ChevronLeft />
+        上一页
+      </Link>
       <div className='flex flex-col gap-y-2 text-center'>
         <Icons.logo className='mx-auto h-20 w-20' />
         <h1 className='text-2xl font-semibold tracking-tight'>

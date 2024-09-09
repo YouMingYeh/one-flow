@@ -132,37 +132,38 @@ const Page = async ({
         </h1>
         <p className='text-muted-foreground text-md'>
           OneFlow 帮助您每月节省了{' '}
-          {(originalRate - Number(bestPSPFee)) * cashFlow} 人民币 💰
+          {((originalRate - Number(bestPSPFee)) * cashFlow).toFixed(2)} 人民币 💰
         </p>
         {/* <p>
           並可以享受免費的 {customerServiceMap[bestPSP[0]].join(', ')} 服務 🎉
         </p> */}
       </div>
       <BarChartLabel
-        chartConfig={{
+      chartConfig={{
           y: {
-            label: 'Rate',
+            label: '费率 (%)',
             color: 'hsl(var(--chart-1))',
           },
         }}
         chartData={[
           {
             x: '原有的提款工具 (%)',
-            y: 1.0,
+            y: originalRate,
           },
           {
             x: 'OneFlow 帮你找到 (%)',
             y: bestPSPFee,
           },
         ]}
-        description='OneFlow 帮你找到更好的提款工具，让你的提款费用更低，提款速度更快'
+        className='max-w-lg mx-auto'
+        
         footer={
           <div className='flex items-center gap-2'>
             <Icons.TrendingDown className='text-green-500' />
             {/* expected */}
             <span>
               你可以省下 {originalRate - Number(bestPSPFee)}% 的费率，每月节省了{' '}
-              {(originalRate - Number(bestPSPFee)) * cashFlow} 人民币 💰
+              {((originalRate - Number(bestPSPFee)) * cashFlow).toFixed(2)} 人民币 💰
             </span>
           </div>
         }
@@ -180,14 +181,27 @@ const Page = async ({
         <span className='font-semibold'>{bestPSPName}</span>{' '}
         {dictionary.earlyAccess.results.asYourPaymentGateway}
       </p>
-      <p>
-        {dictionary.earlyAccess.results.youWillPay}{' '}
-        <span className='font-semibold'>{bestPSPFee}%</span>{' '}
-        {dictionary.earlyAccess.results.ofWithdrawalFee}{' '}
-        {dictionary.earlyAccess.results.andWait}{' '}
-        <span className='font-semibold'>{bestPSPDuration}</span>{' '}
-        {dictionary.earlyAccess.results.forWithdrawal}
-      </p>
+      <Table>
+        <TableCaption>👆 最适合您的收款渠道</TableCaption>
+        <TableBody>
+          <TableRow>
+            <TableCell className='border bg-muted w-1/3'>
+              <Image alt={
+                bestPSPName
+              } height={100} src={imagePathMap[bestPSP[0]]} width={100} />
+            </TableCell>
+            <TableCell className='border bg-muted'>
+              <ul className='list-disc list-inside'>
+                <li>费率: {bestPSPFee}%</li>
+                <li>提现时间: {bestPSPDuration}</li>
+                <li>客服时间: {customerServiceMap[bestPSP[0]].join(', ')}</li>
+              </ul>
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+
+      <Separator />
 
       <h3 className='text-lg font-semibold'>
         {dictionary.earlyAccess.results.details}
@@ -440,7 +454,7 @@ const Page = async ({
         {customerServiceMap[thirdPSP[0]].join(', ')}
       </p>
       <p>{dictionary.earlyAccess.results.enjoyYourBusiness}</p> */}
-      <Link href={`/early-access/${id}`}>
+      <Link className='ml-auto' href={`/early-access/${id}`}>
         <Button size='lg'>
           {dictionary.earlyAccess.results.goOn}
           <Icons.ChevronRight className='ml-2' />

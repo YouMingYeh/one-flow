@@ -10,10 +10,9 @@ import { FormSelect } from '../../../components/form/FormSelect';
 import createSupabaseClientClient from '../../../../lib/supabase/client';
 
 const questionnaireFormSchema = z.object({
-  help: z.boolean(),
+  help: z.string().optional().nullable(),
   how: z.string(),
   experience: z.string().optional().nullable(),
-  pay: z.boolean(),
   amount: z.string().optional().nullable(),
   additional: z.string().optional().nullable(),
 });
@@ -27,13 +26,14 @@ export const QuestionnaireForm = ({
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [experienceValue, setExperienceValue] = useState(3);
+  const [helpValue, setHelpValue] = useState(50);
   const { toast } = useToast();
 
   const onSubmit = async ({
     help,
     how,
     experience,
-    pay,
+
     amount,
     additional,
   }: QuestionnaireFormValues) => {
@@ -44,7 +44,7 @@ export const QuestionnaireForm = ({
         help,
         how,
         experience,
-        pay,
+
         amount,
         additional,
       },
@@ -81,13 +81,24 @@ export const QuestionnaireForm = ({
           label={dictionary.earlyAccess.questionnaire.how.title}
           options={dictionary.earlyAccess.questionnaire.how.options}
           path='how'
+          placeholder='请选择'
         />
         <FormInputField<QuestionnaireFormValues>
+          className='shadow-none'
+          defaultValue={helpValue}
           label={dictionary.earlyAccess.questionnaire.help}
+          max={100}
+          min={0}
+          onChange={e => {
+            setHelpValue(Number(e.target.value));
+          }}
           path='help'
-          type='checkbox'
+          type='range'
         />
+        <p className='text-muted-foreground'>{helpValue}%</p>
+        <br />
         <FormInputField<QuestionnaireFormValues>
+          className='shadow-none'
           defaultValue={experienceValue}
           label={dictionary.earlyAccess.questionnaire.experience.title}
           max={5}
@@ -98,6 +109,7 @@ export const QuestionnaireForm = ({
           path='experience'
           type='range'
         />
+
         <p className='text-muted-foreground'>
           {experienceValue} -
           {
@@ -106,15 +118,13 @@ export const QuestionnaireForm = ({
             ]
           }
         </p>
+        <br />
         <FormInputField<QuestionnaireFormValues>
-          label={dictionary.earlyAccess.questionnaire.pay}
-          path='pay'
-          type='checkbox'
-        />
-        <FormSelect<QuestionnaireFormValues>
           label={dictionary.earlyAccess.questionnaire.amount.title}
-          options={dictionary.earlyAccess.questionnaire.amount.options}
+          max={1000}
+          min={1}
           path='amount'
+          type='range'
         />
         <FormInputField<QuestionnaireFormValues>
           label={dictionary.earlyAccess.questionnaire.additional}
