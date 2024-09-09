@@ -14,7 +14,7 @@ const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
   return (
     <section className=''>
       <div className='mb-8 flex flex-col items-center gap-4 text-center'>
-        <div className='w-screen md:h-[80vh] grid grid-rows-1 place-content-center space-x-4 bg-gradient-to-t from-indigo-500/20 from-10% via-sky-500/20 via-50% to-transparent to-100% px-8 py-8 md:grid-cols-2 md:gap-8'>
+        <div className='w-full md:h-[80vh] grid grid-rows-1 place-content-center space-x-4 bg-gradient-to-t from-indigo-500/20 from-10% via-sky-500/20 via-50% to-transparent to-100% px-8 py-8 md:grid-cols-2 md:gap-8'>
           <div className='flex flex-col justify-center items-center'>
             <Header dictionary={dictionary} />
             <Subheader dictionary={dictionary} />

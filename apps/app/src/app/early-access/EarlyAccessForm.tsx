@@ -33,7 +33,7 @@ export const EarlyAccessForm: FC = () => {
   const [currency, setCurrency] = useState<string[]>([]);
   const [customerServices, setCustomerServices] = useState<string[]>([]);
   const [withdrawFeeRange, setWithdrawFeeRange] = useState<[number, number]>([
-    0.1, 1,
+    0, 1,
   ]);
   const [withdrawSpeedRange, setWithdrawSpeedRange] = useState<
     [number, number]
@@ -125,7 +125,7 @@ export const EarlyAccessForm: FC = () => {
 
   return (
     <AppForm onSubmit={onSubmit} schema={earlyAccessFormSchema}>
-      <div className='flex flex-col gap-6 py-4 md:px-16'>
+      <div className='flex flex-col gap-6 py-4'>
         <Separator className='mt-6' />
         {step >= 1 && (
           <>

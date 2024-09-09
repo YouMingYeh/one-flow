@@ -1,5 +1,18 @@
-import { Button, Icons } from 'ui';
+import {
+  BarChartLabel,
+  Button,
+  Icons,
+  Separator,
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from 'ui';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getDictionary } from '../../../i18n';
 import createSupabaseServerClient from '../../../../../lib/supabase/server';
 
@@ -23,6 +36,7 @@ const Page = async ({
       average_monthly_cash_flow: number; // e.g. 10000
       withdraw_fee_range: string; // e.g. "0.5,1.5"
       withdraw_speed_range: string; // e.g. "1,2"
+      current_gateway: string; // e.g. "pingpong"
     } | null;
   };
 
@@ -32,15 +46,13 @@ const Page = async ({
 
   // Extract user data
   const cashFlow = data.average_monthly_cash_flow;
-  const [minWithdrawFee, maxWithdrawFee] = data.withdraw_fee_range
-    .split(',')
-    .map(parseFloat);
-  const [minWithdrawSpeed, maxWithdrawSpeed] = data.withdraw_speed_range
+  const [, maxWithdrawFee] = data.withdraw_fee_range.split(',').map(parseFloat);
+  const [, maxWithdrawSpeed] = data.withdraw_speed_range
     .split(',')
     .map(parseFloat);
 
   // Step 1: Determine the Tier based on cash flow
-  const tier = pricingData.find(t => {
+  let tier = pricingData.find(t => {
     const tierMin = parseFloat(
       t.tier
         .split('~')[0]
@@ -54,25 +66,23 @@ const Page = async ({
           t.tier.split('~')[1].replace('w USD', '').replace(',', '.').trim(),
         )
       : Number.POSITIVE_INFINITY;
-    return cashFlow >= tierMin * 10000 && cashFlow <= tierMax * 10000;
+    return cashFlow * 6 >= tierMin * 10000 && cashFlow * 6 <= tierMax * 10000;
   });
 
   if (!tier) {
-    return null;
+    tier = pricingData[0];
   }
 
   // Step 2: Filter PSPs based on fee and speed preferences
   let suitablePSPs = Object.entries(tier)
     .filter(([, fee]) => {
       if (typeof fee !== 'number') return false;
-      return fee >= minWithdrawFee && fee <= maxWithdrawFee;
+      return fee <= maxWithdrawFee;
     })
     .filter(([psp]) => {
       const duration = withdrawDuration[psp as keyof typeof withdrawDuration];
       const durationSpeed = parseFloat(duration?.match(/\d+/)?.[0] || '0');
-      return (
-        durationSpeed >= minWithdrawSpeed && durationSpeed <= maxWithdrawSpeed
-      );
+      return durationSpeed <= maxWithdrawSpeed;
     });
 
   if (suitablePSPs.length === 0) {
@@ -101,6 +111,18 @@ const Page = async ({
   const thirdPSPDuration =
     withdrawDuration[thirdPSP[0] as keyof typeof withdrawDuration];
 
+  const originalPSP = data.current_gateway.split(',')[0] as
+    | 'pingpong'
+    | 'lianlian'
+    | 'worldfirst'
+    | 'hsbc_merchants_box'
+    | 'zhihui_e'
+    | 'airwallex'
+    | 'skyee'
+    | 'payoneer'
+    | 'paypal';
+  const originalRate = tier[originalPSP] || 1.0;
+
   return (
     <div className='mx-auto flex h-full w-full flex-col justify-center gap-6 py-12 sm:w-2/3'>
       <div className='flex flex-col gap-y-2 text-center'>
@@ -109,9 +131,50 @@ const Page = async ({
           {dictionary.earlyAccess.results.title}
         </h1>
         <p className='text-muted-foreground text-md'>
-          {dictionary.earlyAccess.results.description}
+          OneFlow 帮助您每月节省了{' '}
+          {(originalRate - Number(bestPSPFee)) * cashFlow} 人民币 💰
         </p>
+        {/* <p>
+          並可以享受免費的 {customerServiceMap[bestPSP[0]].join(', ')} 服務 🎉
+        </p> */}
       </div>
+      <BarChartLabel
+        chartConfig={{
+          y: {
+            label: 'Rate',
+            color: 'hsl(var(--chart-1))',
+          },
+        }}
+        chartData={[
+          {
+            x: '原有的提款工具 (%)',
+            y: 1.0,
+          },
+          {
+            x: 'OneFlow 帮你找到 (%)',
+            y: bestPSPFee,
+          },
+        ]}
+        description='OneFlow 帮你找到更好的提款工具，让你的提款费用更低，提款速度更快'
+        footer={
+          <div className='flex items-center gap-2'>
+            <Icons.TrendingDown className='text-green-500' />
+            {/* expected */}
+            <span>
+              你可以省下 {originalRate - Number(bestPSPFee)}% 的费率，每月节省了{' '}
+              {(originalRate - Number(bestPSPFee)) * cashFlow} 人民币 💰
+            </span>
+          </div>
+        }
+        title='OneFlow 帮你找到更好的提款工具'
+      />
+      <Separator />
+      <h3 className='text-lg font-semibold'>
+        {dictionary.earlyAccess.results.checkItOut}
+      </h3>
+      <p className='text-muted-foreground'>
+        {dictionary.earlyAccess.results.according}{' '}
+      </p>
       <p>
         1️⃣ {dictionary.earlyAccess.results.youShouldChoose}{' '}
         <span className='font-semibold'>{bestPSPName}</span>{' '}
@@ -125,9 +188,230 @@ const Page = async ({
         <span className='font-semibold'>{bestPSPDuration}</span>{' '}
         {dictionary.earlyAccess.results.forWithdrawal}
       </p>
+
+      <h3 className='text-lg font-semibold'>
+        {dictionary.earlyAccess.results.details}
+      </h3>
+      <Table>
+        <TableCaption>👆 最适合您的收款渠道</TableCaption>
+        <TableBody>
+          <TableRow>
+            <TableCell className='border bg-muted w-1/3'>
+              <Image alt={
+                bestPSPName
+              } height={100} src={imagePathMap[bestPSP[0]]} width={100} />
+            </TableCell>
+            <TableCell className='border bg-muted'>
+              <ul className='list-disc list-inside'>
+                <li>费率: {bestPSPFee}%</li>
+                <li>提现时间: {bestPSPDuration}</li>
+                <li>客服时间: {customerServiceMap[bestPSP[0]].join(', ')}</li>
+              </ul>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className='border bg-muted'>
+              基本服务
+            </TableCell>
+            <TableCell className='blur-sm'>
+               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className='border bg-muted'>
+              优缺点分析
+            </TableCell>
+            <TableCell className='blur-sm'>
+               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className='border bg-muted'>
+              其他用户点评
+            </TableCell>
+            <TableCell className='blur-sm'>
+               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className='border bg-muted'>
+              可支持的货币与地区
+            </TableCell>
+            <TableCell className='blur-sm'>
+               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className='border bg-muted'>
+              额外服务
+            </TableCell>
+            <TableCell className='blur-sm'>
+               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+      <Table>
+        <TableCaption>
+        👆 我们也推荐您
+        </TableCaption>
+        <TableBody>
+          <TableRow>
+            <TableCell className='border bg-muted w-1/3'>
+              <Image alt={
+                secondPSPName
+              } height={100} src={imagePathMap[secondPSP[0]]} width={100} />
+            </TableCell>
+            <TableCell className='border bg-muted'>
+              <ul className='list-disc list-inside'>
+                <li>费率: {secondPSP}%</li>
+                <li>提现时间: {secondPSPDuration}</li>
+                <li>客服时间: {customerServiceMap[secondPSP[0]].join(', ')}</li>
+              </ul>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className='border bg-muted'>
+              基本服务
+            </TableCell>
+            <TableCell className='blur-sm'>
+               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className='border bg-muted'>
+              优缺点分析
+            </TableCell>
+            <TableCell className='blur-sm'>
+               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className='border bg-muted'>
+              其他用户点评
+            </TableCell>
+            <TableCell className='blur-sm'>
+               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className='border bg-muted'>
+              可支持的货币与地区
+            </TableCell>
+            <TableCell className='blur-sm'>
+               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className='border bg-muted'>
+              额外服务
+            </TableCell>
+            <TableCell className='blur-sm'>
+               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+      <Table>
+        <TableCaption>👆 我们也推荐您</TableCaption>
+        <TableBody>
+          <TableRow>
+            <TableCell className='border bg-muted w-1/3'>
+              <Image alt={
+                thirdPSPName
+              } height={100} src={imagePathMap[thirdPSP[0]]} width={100} />
+            </TableCell>
+            <TableCell className='border bg-muted'>
+              <ul className='list-disc list-inside'>
+                <li>费率: {thirdPSPFee}%</li>
+                <li>提现时间: {thirdPSPDuration}</li>
+                <li>客服时间: {customerServiceMap[thirdPSP[0]].join(', ')}</li>
+              </ul>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className='border bg-muted'>
+              基本服务
+            </TableCell>
+            <TableCell className='blur-sm'>
+               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className='border bg-muted'>
+              优缺点分析
+            </TableCell>
+            <TableCell className='blur-sm'>
+               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className='border bg-muted'>
+              其他用户点评
+            </TableCell>
+            <TableCell className='blur-sm'>
+               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className='border bg-muted'>
+              可支持的货币与地区
+            </TableCell>
+            <TableCell className='blur-sm'>
+               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className='border bg-muted'>
+              额外服务
+            </TableCell>
+            <TableCell className='blur-sm'>
+               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+
+      {/* <div className='grid grid-cols-2 '> */}
+      {/* <div className='border'>
+        1️⃣ {dictionary.earlyAccess.results.youShouldChoose}{' '}
+        <span className='font-semibold'>{bestPSPName}</span>{' '}
+        {dictionary.earlyAccess.results.asYourPaymentGateway}
+      </div>
+      <div  className='border'>
+        {dictionary.earlyAccess.results.youWillPay}{' '}
+        <span className='font-semibold'>{bestPSPFee}%</span>{' '}
+        {dictionary.earlyAccess.results.ofWithdrawalFee}{' '}
+        {dictionary.earlyAccess.results.andWait}{' '}
+        <span className='font-semibold'>{bestPSPDuration}</span>{' '}
+        {dictionary.earlyAccess.results.forWithdrawal}
+      </div>
+      </div>
+      
+      
+      <div className='flex flex-col gap-4'>
+        <div className='grid grid-cols-2 '>
+          <div>
+            <div className='grid grid-rows-5'>
+              <div className='row-span-1'>
+                <h3 className='text-lg font-semibold'>
+                  {dictionary.earlyAccess.results.currentGateway}
+                </h3>
+              </div>
+              <div className='row-span-4'>
+                <p>
+                  {dictionary.earlyAccess.results.yourCurrentGateway}{' '}
+                  <span className='font-semibold'>{originalPSP}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+     
       <p>
         {dictionary.earlyAccess.results.servicesProvided}:{' '}
-        {serviceMap[bestPSP[0]].join(', ')}
+        {customerServiceMap[bestPSP[0]].join(', ')}
       </p>
       <p>
         2️⃣ {dictionary.earlyAccess.results.secondChoice}{' '}
@@ -140,7 +424,7 @@ const Page = async ({
       </p>
       <p>
         {dictionary.earlyAccess.results.servicesProvided}:{' '}
-        {serviceMap[secondPSP[0]].join(', ')}
+        {customerServiceMap[secondPSP[0]].join(', ')}
       </p>
       <p>
         3️⃣ {dictionary.earlyAccess.results.thirdChoice}{' '}
@@ -153,9 +437,9 @@ const Page = async ({
       </p>
       <p>
         {dictionary.earlyAccess.results.servicesProvided}:{' '}
-        {serviceMap[thirdPSP[0]].join(', ')}
+        {customerServiceMap[thirdPSP[0]].join(', ')}
       </p>
-      <p>{dictionary.earlyAccess.results.enjoyYourBusiness}</p>
+      <p>{dictionary.earlyAccess.results.enjoyYourBusiness}</p> */}
       <Link href={`/early-access/${id}`}>
         <Button size='lg'>
           {dictionary.earlyAccess.results.goOn}
@@ -170,172 +454,184 @@ export default Page;
 
 type TierPricing = {
   tier: string;
-  Pingpong: number;
-  Lianlian: number;
-  Worldfirst: number;
-  HSBC_Merchants_box: number;
-  Zhihui_E: number;
-  Airwallex: number;
-  Skyee: number;
-  Payoneer: number;
-  Paypal: number;
+  pingpong: number;
+  lianlian: number;
+  worldfirst: number;
+  hsbc_merchants_box: number;
+  zhihui_e: number;
+  airwallex: number;
+  skyee: number;
+  payoneer: number;
+  paypal: number;
 };
 
 const pricingData: TierPricing[] = [
   {
     tier: '<0.5w 美元',
-    Pingpong: 1.0,
-    Lianlian: 0.7,
-    Worldfirst: 0.3,
-    HSBC_Merchants_box: 0.2,
-    Zhihui_E: 0.3,
-    Airwallex: 0.4,
-    Skyee: 0.6,
-    Payoneer: 1.2,
-    Paypal: 3.0,
+    pingpong: 1.0,
+    lianlian: 0.7,
+    worldfirst: 0.3,
+    hsbc_merchants_box: 0.2,
+    zhihui_e: 0.3,
+    airwallex: 0.4,
+    skyee: 0.6,
+    payoneer: 1.2,
+    paypal: 3.0,
   },
   {
-    tier: '0.5w - 1w 美元',
-    Pingpong: 0.9,
-    Lianlian: 0.7,
-    Worldfirst: 0.3,
-    HSBC_Merchants_box: 0.2,
-    Zhihui_E: 0.3,
-    Airwallex: 0.4,
-    Skyee: 0.6,
-    Payoneer: 1.2,
-    Paypal: 3.0,
+    tier: '0.5w ~ 1w 美元',
+    pingpong: 0.9,
+    lianlian: 0.7,
+    worldfirst: 0.3,
+    hsbc_merchants_box: 0.2,
+    zhihui_e: 0.3,
+    airwallex: 0.4,
+    skyee: 0.6,
+    payoneer: 1.2,
+    paypal: 3.0,
   },
   {
     tier: '1w ~ 2w 美元',
-    Pingpong: 0.8,
-    Lianlian: 0.7,
-    Worldfirst: 0.3,
-    HSBC_Merchants_box: 0.2,
-    Zhihui_E: 0.3,
-    Airwallex: 0.4,
-    Skyee: 0.6,
-    Payoneer: 1.2,
-    Paypal: 3.0,
+    pingpong: 0.8,
+    lianlian: 0.7,
+    worldfirst: 0.3,
+    hsbc_merchants_box: 0.2,
+    zhihui_e: 0.3,
+    airwallex: 0.4,
+    skyee: 0.6,
+    payoneer: 1.2,
+    paypal: 3.0,
   },
   {
     tier: '2w ~ 5w 美元',
-    Pingpong: 0.7,
-    Lianlian: 0.7,
-    Worldfirst: 0.3,
-    HSBC_Merchants_box: 0.2,
-    Zhihui_E: 0.3,
-    Airwallex: 0.4,
-    Skyee: 0.6,
-    Payoneer: 1.1,
-    Paypal: 3.0,
+    pingpong: 0.7,
+    lianlian: 0.7,
+    worldfirst: 0.3,
+    hsbc_merchants_box: 0.2,
+    zhihui_e: 0.3,
+    airwallex: 0.4,
+    skyee: 0.6,
+    payoneer: 1.1,
+    paypal: 3.0,
   },
   {
     tier: '5w ~ 10w 美元',
-    Pingpong: 0.6,
-    Lianlian: 0.6,
-    Worldfirst: 0.3,
-    HSBC_Merchants_box: 0.2,
-    Zhihui_E: 0.3,
-    Airwallex: 0.4,
-    Skyee: 0.6,
-    Payoneer: 1.0,
-    Paypal: 3.0,
+    pingpong: 0.6,
+    lianlian: 0.6,
+    worldfirst: 0.3,
+    hsbc_merchants_box: 0.2,
+    zhihui_e: 0.3,
+    airwallex: 0.4,
+    skyee: 0.6,
+    payoneer: 1.0,
+    paypal: 3.0,
   },
   {
     tier: '10w ~ 20w 美元',
-    Pingpong: 0.5,
-    Lianlian: 0.6,
-    Worldfirst: 0.3,
-    HSBC_Merchants_box: 0.2,
-    Zhihui_E: 0.3,
-    Airwallex: 0.4,
-    Skyee: 0.6,
-    Payoneer: 0.9,
-    Paypal: 3.0,
+    pingpong: 0.5,
+    lianlian: 0.6,
+    worldfirst: 0.3,
+    hsbc_merchants_box: 0.2,
+    zhihui_e: 0.3,
+    airwallex: 0.4,
+    skyee: 0.6,
+    payoneer: 0.9,
+    paypal: 3.0,
   },
   {
     tier: '20w ~ 40w 美元',
-    Pingpong: 0.4,
-    Lianlian: 0.5,
-    Worldfirst: 0.3,
-    HSBC_Merchants_box: 0.2,
-    Zhihui_E: 0.3,
-    Airwallex: 0.4,
-    Skyee: 0.6,
-    Payoneer: 0.8,
-    Paypal: 3.0,
+    pingpong: 0.4,
+    lianlian: 0.5,
+    worldfirst: 0.3,
+    hsbc_merchants_box: 0.2,
+    zhihui_e: 0.3,
+    airwallex: 0.4,
+    skyee: 0.6,
+    payoneer: 0.8,
+    paypal: 3.0,
   },
   {
     tier: '40w ~ 80w 美元',
-    Pingpong: 0.3,
-    Lianlian: 0.4,
-    Worldfirst: 0.3,
-    HSBC_Merchants_box: 0.175,
-    Zhihui_E: 0.3,
-    Airwallex: 0.4,
-    Skyee: 0.6,
-    Payoneer: 0.7,
-    Paypal: 3.0,
+    pingpong: 0.3,
+    lianlian: 0.4,
+    worldfirst: 0.3,
+    hsbc_merchants_box: 0.175,
+    zhihui_e: 0.3,
+    airwallex: 0.4,
+    skyee: 0.6,
+    payoneer: 0.7,
+    paypal: 3.0,
   },
   {
     tier: '80w ~ 150w 美元',
-    Pingpong: 0.2,
-    Lianlian: 0.35,
-    Worldfirst: 0.3,
-    HSBC_Merchants_box: 0.1625,
-    Zhihui_E: 0.3,
-    Airwallex: 0.4,
-    Skyee: 0.6,
-    Payoneer: 0.6,
-    Paypal: 3.0,
+    pingpong: 0.2,
+    lianlian: 0.35,
+    worldfirst: 0.3,
+    hsbc_merchants_box: 0.1625,
+    zhihui_e: 0.3,
+    airwallex: 0.4,
+    skyee: 0.6,
+    payoneer: 0.6,
+    paypal: 3.0,
   },
   {
     tier: '>150w 美元',
-    Pingpong: 0.1,
-    Lianlian: 0.3,
-    Worldfirst: 0.3,
-    HSBC_Merchants_box: 0.1625,
-    Zhihui_E: 0.05,
-    Airwallex: 0.4,
-    Skyee: 0.6,
-    Payoneer: 0.5,
-    Paypal: 3.0,
+    pingpong: 0.1,
+    lianlian: 0.3,
+    worldfirst: 0.3,
+    hsbc_merchants_box: 0.1625,
+    zhihui_e: 0.05,
+    airwallex: 0.4,
+    skyee: 0.6,
+    payoneer: 0.5,
+    paypal: 3.0,
   },
 ];
 
 const withdrawDuration = {
-  Pingpong: 'T+0 (18:00前)',
-  Lianlian: 'T+0 (17:00前)，之后提供灵活的提现方式',
-  Worldfirst: 'T+ 1~2天 (外币2~5天)（通过支付宝实时提现）',
-  HSBC_Merchants_box: 'T+0～1',
-  Zhihui_E: 'T+0 (18:00前)',
-  Airwallex: 'T+0 (17:00前)',
-  Skyee: 'T+0 (18:00前)',
-  Payoneer: 'T+ 1~2天',
-  Paypal: null,
+  pingpong: 'T+0 (18:00前)',
+  lianlian: 'T+0 (17:00前)，之后提供灵活的提现方式',
+  worldfirst: 'T+ 1~2天 (外币2~5天)（通过支付宝实时提现）',
+  hsbc_merchants_box: 'T+0～1',
+  zhihui_e: 'T+0 (18:00前)',
+  airwallex: 'T+0 (17:00前)',
+  skyee: 'T+0 (18:00前)',
+  payoneer: 'T+ 1~2天',
+  paypal: null,
 };
 
 const nameMapping = {
-  Pingpong: 'Pingpong',
-  Lianlian: 'Lianlian',
-  Worldfirst: 'Worldfirst',
-  HSBC_Merchants_box: 'HSBC Merchants box',
-  Zhihui_E: '智汇鹅 Airwallex',
-  Airwallex: 'Skyee',
-  Skyee: 'Payoneer',
-  Payoneer: 'Paypal',
-  Paypal: 'Paypal',
+  pingpong: 'pingpong',
+  lianlian: 'lianlian',
+  worldfirst: 'worldfirst',
+  hsbc_merchants_box: 'HSBC Merchants box',
+  zhihui_e: '智汇鹅 airwallex',
+  airwallex: 'skyee',
+  skyee: 'payoneer',
+  payoneer: 'paypal',
+  paypal: 'paypal',
 };
 
-const serviceMap: Record<string, string[]> = {
-  Pingpong: ['2024-07-24 00:00:00'], // 日期相關的服務數據，可根據需要調整
-  Lianlian: ['2024-07-24 00:00:00'], // 日期相關的服務數據，可根據需要調整
-  Worldfirst: ['2024年07月24日 无专属客服经理，除非月流水达100k人民币'], // 服務條件說明
-  HSBC_Merchants_box: ['工作日 9:00-18:00', 'Phone Call 尚未成功过'], // 工作日服務時間
-  Zhihui_E: ['工作日 10:00-18:00'], // 標準工作日支持時間
-  Airwallex: ['工作日 10:00-18:00，只有前六个月有专属客服经理'], // 初期提供专属客服经理
-  Skyee: ['服务信息不可用'], // 未找到具体数据
-  Payoneer: ['工作日 9:00-18:00', 'Phone Call 尚未成功过'], // 工作日服務時間
-  Paypal: ['24/7 客服支持', '国际支付', '较高的费用'], // 通用服务说明
+const customerServiceMap: Record<string, string[]> = {
+  pingpong: ['24/7 客服支持'], // 日期相關的服務數據，可根據需要調整
+  lianlian: ['24/7 客服支持'], // 日期相關的服務數據，可根據需要調整
+  worldfirst: ['24/7 客服支持，月流水达十万人民币有属客服经理'], // 服務條件說明
+  hsbc_merchants_box: ['工作日 9:00-18:00'], // 工作日服務時間
+  zhihui_e: ['工作日 10:00-18:00'], // 標準工作日支持時間
+  airwallex: ['工作日 10:00-18:00，前六个月有专属客服经理'], // 初期提供专属客服经理
+  skyee: ['未找到具体数据'], // 未找到具体数据
+  payoneer: ['工作日 9:00-18:00'], // 工作日服務時間
+  paypal: ['24/7 客服支持'], // 通用服务说明
+};
+
+const imagePathMap: Record<string, string> = {
+  pingpong: '/brand/pingpong.png',
+  lianlian: '/brand/lianlian.png',
+  worldfirst: '/brand/worldfirst.png',
+  hsbc_merchants_box: '/brand/hsbc_merchants_box.png',
+  zhihui_e: '/brand/zhihui_e.png',
+  airwallex: '/brand/airwallex.png',
+  skyee: '/brand/skyee.png',
+  payoneer: '/brand/payoneer.png',
+  paypal: '/brand/paypal.png',
 };

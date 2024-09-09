@@ -52,7 +52,7 @@ export function Solution2({
       )}
       ref={containerRef}
     >
-      <div className='size-full flex max-w-lg flex-row items-stretch justify-between md:gap-24'>
+      <div className='size-full flex max-w-lg flex-row items-stretch justify-between md:gap-24 px-4'>
         <div className='flex flex-col justify-center'>
           <Circle className='size-12' ref={div7Ref}>
             <Icons.User className='h-12 w-12' />

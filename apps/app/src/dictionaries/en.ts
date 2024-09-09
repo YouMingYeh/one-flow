@@ -73,7 +73,6 @@ const en = {
     },
     results: {
       title: 'Results',
-      description: 'Here is the best solution for you!',
       youShouldChoose: 'You should choose',
       secondChoice: 'Or you can choose',
       thirdChoice: 'Or you can also choose',
@@ -87,6 +86,9 @@ const en = {
       servicesProvided: 'service provided',
       enjoyYourBusiness: 'Enjoy your business!',
       goOn: 'Go on',
+      checkItOut: 'Let\'s Check it out',
+      according: 'According to your answers and preferences, OneFlow utilizes advanced algorithms to provide you with the following tailored solutions.',
+      details: 'Please subscribe to our standard monthly plan to view the details.',
     },
     ok: {
       title: 'Thank you for your interest!',

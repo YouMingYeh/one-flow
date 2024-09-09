@@ -39,5 +39,7 @@ export * from './src/components/ui/slider';
 export * from './src/components/ui/progress';
 export * from './src/components/ui/animated-circular-progress-bar';
 export * from './src/components/ui/marquee';
+export * from './src/components/charts/bar-chart-label';
+export * from './src/components/ui/table';
 
 export { cn } from './src/lib/utils';
