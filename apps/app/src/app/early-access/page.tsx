@@ -19,15 +19,15 @@ const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
           {dictionary.earlyAccess.description}
         </p>
         <Suspense>
-          <p className='text-muted-foreground text-md text-left'>
+          <div className='text-muted-foreground text-md text-left'>
             {dictionary.earlyAccess.benefits.title}: <br />
             <ul className='my-6 ml-6 list-disc [&>li]:mt-2'>
               {dictionary.earlyAccess.benefits.list.map(benefit => (
                 <li key={benefit}>{benefit}</li>
               ))}
             </ul>
-          </p>
-          <p className='text-muted-foreground text-md text-left'>
+          </div>
+          <div className='text-muted-foreground text-md text-left'>
             {dictionary.earlyAccess.responsibilities.title}: <br />
             <ul className='my-6 ml-6 list-disc [&>li]:mt-2'>
               {dictionary.earlyAccess.responsibilities.list.map(
@@ -36,7 +36,7 @@ const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
                 ),
               )}
             </ul>
-          </p>
+          </div>
         </Suspense>
         <p className='text-muted-foreground text-md'>
           {dictionary.earlyAccess.interested}

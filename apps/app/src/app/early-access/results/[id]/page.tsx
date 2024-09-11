@@ -1,3 +1,4 @@
+import type { UrlObject } from 'node:url';
 import {
   BarChartLabel,
   Button,
@@ -132,14 +133,15 @@ const Page = async ({
         </h1>
         <p className='text-muted-foreground text-md'>
           OneFlow 帮助您每月节省了{' '}
-          {((originalRate - Number(bestPSPFee)) * cashFlow).toFixed(2)} 人民币 💰
+          {((originalRate - Number(bestPSPFee)) * cashFlow).toFixed(2)} 人民币
+          💰
         </p>
         {/* <p>
           並可以享受免費的 {customerServiceMap[bestPSP[0]].join(', ')} 服務 🎉
         </p> */}
       </div>
       <BarChartLabel
-      chartConfig={{
+        chartConfig={{
           y: {
             label: '费率 (%)',
             color: 'hsl(var(--chart-1))',
@@ -155,15 +157,15 @@ const Page = async ({
             y: bestPSPFee,
           },
         ]}
-        className='max-w-lg mx-auto'
-        
+        className='mx-auto max-w-lg'
         footer={
           <div className='flex items-center gap-2'>
             <Icons.TrendingDown className='text-green-500' />
             {/* expected */}
             <span>
               你可以省下 {originalRate - Number(bestPSPFee)}% 的费率，每月节省了{' '}
-              {((originalRate - Number(bestPSPFee)) * cashFlow).toFixed(2)} 人民币 💰
+              {((originalRate - Number(bestPSPFee)) * cashFlow).toFixed(2)}{' '}
+              人民币 💰
             </span>
           </div>
         }
@@ -177,7 +179,7 @@ const Page = async ({
         {dictionary.earlyAccess.results.according}{' '}
       </p>
       <p>
-        1️⃣ {dictionary.earlyAccess.results.youShouldChoose}{' '}
+        {dictionary.earlyAccess.results.youShouldChoose}{' '}
         <span className='font-semibold'>{bestPSPName}</span>{' '}
         {dictionary.earlyAccess.results.asYourPaymentGateway}
       </p>
@@ -185,16 +187,24 @@ const Page = async ({
         <TableCaption>👆 最适合您的收款渠道</TableCaption>
         <TableBody>
           <TableRow>
-            <TableCell className='border bg-muted w-1/3'>
-              <Image alt={
-                bestPSPName
-              } height={100} src={imagePathMap[bestPSP[0]]} width={100} />
+            <TableCell className='bg-muted w-1/3 border'>
+              <Image
+                alt={bestPSPName}
+                height={100}
+                src={imagePathMap[bestPSP[0]]}
+                width={100}
+              />
             </TableCell>
-            <TableCell className='border bg-muted'>
-              <ul className='list-disc list-inside'>
+            <TableCell className='bg-muted border'>
+              <ul className='list-inside list-disc'>
                 <li>费率: {bestPSPFee}%</li>
                 <li>提现时间: {bestPSPDuration}</li>
                 <li>客服时间: {customerServiceMap[bestPSP[0]].join(', ')}</li>
+                <Link className='underline' href={linkMap[bestPSP[0]]}>
+                  <Button className='mt-2'>
+                    {dictionary.buttons.learnMore} <Icons.ChevronRight />
+                  </Button>
+                </Link>
               </ul>
             </TableCell>
           </TableRow>
@@ -210,118 +220,57 @@ const Page = async ({
         <TableCaption>👆 最适合您的收款渠道</TableCaption>
         <TableBody>
           <TableRow>
-            <TableCell className='border bg-muted w-1/3'>
-              <Image alt={
-                bestPSPName
-              } height={100} src={imagePathMap[bestPSP[0]]} width={100} />
+            <TableCell className='bg-muted w-1/3 border'>
+              <Image
+                alt={bestPSPName}
+                height={100}
+                src={imagePathMap[bestPSP[0]]}
+                width={100}
+              />
             </TableCell>
-            <TableCell className='border bg-muted'>
-              <ul className='list-disc list-inside'>
+            <TableCell className='bg-muted border'>
+              <ul className='list-inside list-disc'>
                 <li>费率: {bestPSPFee}%</li>
                 <li>提现时间: {bestPSPDuration}</li>
                 <li>客服时间: {customerServiceMap[bestPSP[0]].join(', ')}</li>
+                <Link className='underline' href={linkMap[bestPSP[0]]}>
+                  <Button className='mt-2'>
+                    {dictionary.buttons.learnMore} <Icons.ChevronRight />
+                  </Button>
+                </Link>
               </ul>
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className='border bg-muted'>
-              基本服务
-            </TableCell>
+            <TableCell className='bg-muted border'>基本服务</TableCell>
             <TableCell className='blur-sm'>
-               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className='border bg-muted'>
-              优缺点分析
-            </TableCell>
+            <TableCell className='bg-muted border'>优缺点分析</TableCell>
             <TableCell className='blur-sm'>
-               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className='border bg-muted'>
-              其他用户点评
-            </TableCell>
+            <TableCell className='bg-muted border'>其他用户点评</TableCell>
             <TableCell className='blur-sm'>
-               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className='border bg-muted'>
+            <TableCell className='bg-muted border'>
               可支持的货币与地区
             </TableCell>
             <TableCell className='blur-sm'>
-               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className='border bg-muted'>
-              额外服务
-            </TableCell>
+            <TableCell className='bg-muted border'>额外服务</TableCell>
             <TableCell className='blur-sm'>
-               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-      <Table>
-        <TableCaption>
-        👆 我们也推荐您
-        </TableCaption>
-        <TableBody>
-          <TableRow>
-            <TableCell className='border bg-muted w-1/3'>
-              <Image alt={
-                secondPSPName
-              } height={100} src={imagePathMap[secondPSP[0]]} width={100} />
-            </TableCell>
-            <TableCell className='border bg-muted'>
-              <ul className='list-disc list-inside'>
-                <li>费率: {secondPSPFee}%</li>
-                <li>提现时间: {secondPSPDuration}</li>
-                <li>客服时间: {customerServiceMap[secondPSP[0]].join(', ')}</li>
-              </ul>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell className='border bg-muted'>
-              基本服务
-            </TableCell>
-            <TableCell className='blur-sm'>
-               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell className='border bg-muted'>
-              优缺点分析
-            </TableCell>
-            <TableCell className='blur-sm'>
-               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell className='border bg-muted'>
-              其他用户点评
-            </TableCell>
-            <TableCell className='blur-sm'>
-               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell className='border bg-muted'>
-              可支持的货币与地区
-            </TableCell>
-            <TableCell className='blur-sm'>
-               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell className='border bg-muted'>
-              额外服务
-            </TableCell>
-            <TableCell className='blur-sm'>
-               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             </TableCell>
           </TableRow>
         </TableBody>
@@ -330,130 +279,121 @@ const Page = async ({
         <TableCaption>👆 我们也推荐您</TableCaption>
         <TableBody>
           <TableRow>
-            <TableCell className='border bg-muted w-1/3'>
-              <Image alt={
-                thirdPSPName
-              } height={100} src={imagePathMap[thirdPSP[0]]} width={100} />
+            <TableCell className='bg-muted w-1/3 border'>
+              <Image
+                alt={secondPSPName}
+                height={100}
+                src={imagePathMap[secondPSP[0]]}
+                width={100}
+              />
             </TableCell>
-            <TableCell className='border bg-muted'>
-              <ul className='list-disc list-inside'>
-                <li>费率: {thirdPSPFee}%</li>
-                <li>提现时间: {thirdPSPDuration}</li>
-                <li>客服时间: {customerServiceMap[thirdPSP[0]].join(', ')}</li>
+            <TableCell className='bg-muted border'>
+              <ul className='list-inside list-disc'>
+                <li>费率: {secondPSPFee}%</li>
+                <li>提现时间: {secondPSPDuration}</li>
+                <li>客服时间: {customerServiceMap[secondPSP[0]].join(', ')}</li>
+                <Link className='underline' href={linkMap[secondPSP[0]]}>
+                  <Button className='mt-2'>
+                    {dictionary.buttons.learnMore} <Icons.ChevronRight />
+                  </Button>
+                </Link>
               </ul>
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className='border bg-muted'>
-              基本服务
-            </TableCell>
+            <TableCell className='bg-muted border'>基本服务</TableCell>
             <TableCell className='blur-sm'>
-               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className='border bg-muted'>
-              优缺点分析
-            </TableCell>
+            <TableCell className='bg-muted border'>优缺点分析</TableCell>
             <TableCell className='blur-sm'>
-               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className='border bg-muted'>
-              其他用户点评
-            </TableCell>
+            <TableCell className='bg-muted border'>其他用户点评</TableCell>
             <TableCell className='blur-sm'>
-               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className='border bg-muted'>
+            <TableCell className='bg-muted border'>
               可支持的货币与地区
             </TableCell>
             <TableCell className='blur-sm'>
-               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className='border bg-muted'>
-              额外服务
+            <TableCell className='bg-muted border'>额外服务</TableCell>
+            <TableCell className='blur-sm'>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+      <Table>
+        <TableCaption>👆 我们也推荐您</TableCaption>
+        <TableBody>
+          <TableRow>
+            <TableCell className='bg-muted w-1/3 border'>
+              <Image
+                alt={thirdPSPName}
+                height={100}
+                src={imagePathMap[thirdPSP[0]]}
+                width={100}
+              />
+            </TableCell>
+            <TableCell className='bg-muted border'>
+              <ul className='list-inside list-disc'>
+                <li>费率: {thirdPSPFee}%</li>
+                <li>提现时间: {thirdPSPDuration}</li>
+                <li>客服时间: {customerServiceMap[thirdPSP[0]].join(', ')}</li>
+                <Link className='underline' href={linkMap[thirdPSP[0]]}>
+                  <Button className='mt-2'>
+                    {dictionary.buttons.learnMore} <Icons.ChevronRight />
+                  </Button>
+                </Link>
+              </ul>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className='bg-muted border'>基本服务</TableCell>
+            <TableCell className='blur-sm'>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className='bg-muted border'>优缺点分析</TableCell>
+            <TableCell className='blur-sm'>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className='bg-muted border'>其他用户点评</TableCell>
+            <TableCell className='blur-sm'>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className='bg-muted border'>
+              可支持的货币与地区
             </TableCell>
             <TableCell className='blur-sm'>
-               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className='bg-muted border'>额外服务</TableCell>
+            <TableCell className='blur-sm'>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             </TableCell>
           </TableRow>
         </TableBody>
       </Table>
 
-      {/* <div className='grid grid-cols-2 '> */}
-      {/* <div className='border'>
-        1️⃣ {dictionary.earlyAccess.results.youShouldChoose}{' '}
-        <span className='font-semibold'>{bestPSPName}</span>{' '}
-        {dictionary.earlyAccess.results.asYourPaymentGateway}
-      </div>
-      <div  className='border'>
-        {dictionary.earlyAccess.results.youWillPay}{' '}
-        <span className='font-semibold'>{bestPSPFee}%</span>{' '}
-        {dictionary.earlyAccess.results.ofWithdrawalFee}{' '}
-        {dictionary.earlyAccess.results.andWait}{' '}
-        <span className='font-semibold'>{bestPSPDuration}</span>{' '}
-        {dictionary.earlyAccess.results.forWithdrawal}
-      </div>
-      </div>
-      
-      
-      <div className='flex flex-col gap-4'>
-        <div className='grid grid-cols-2 '>
-          <div>
-            <div className='grid grid-rows-5'>
-              <div className='row-span-1'>
-                <h3 className='text-lg font-semibold'>
-                  {dictionary.earlyAccess.results.currentGateway}
-                </h3>
-              </div>
-              <div className='row-span-4'>
-                <p>
-                  {dictionary.earlyAccess.results.yourCurrentGateway}{' '}
-                  <span className='font-semibold'>{originalPSP}</span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
-     
-      <p>
-        {dictionary.earlyAccess.results.servicesProvided}:{' '}
-        {customerServiceMap[bestPSP[0]].join(', ')}
-      </p>
-      <p>
-        2️⃣ {dictionary.earlyAccess.results.secondChoice}{' '}
-        <span className='font-semibold'>{secondPSPName}</span>{' '}
-        {dictionary.earlyAccess.results.youWillPay}{' '}
-        <span className='font-semibold'>{secondPSPFee}%</span>{' '}
-        {dictionary.earlyAccess.results.andWait}{' '}
-        <span className='font-semibold'>{secondPSPDuration}</span>{' '}
-        {dictionary.earlyAccess.results.forWithdrawal}
-      </p>
-      <p>
-        {dictionary.earlyAccess.results.servicesProvided}:{' '}
-        {customerServiceMap[secondPSP[0]].join(', ')}
-      </p>
-      <p>
-        3️⃣ {dictionary.earlyAccess.results.thirdChoice}{' '}
-        <span className='font-semibold'>{thirdPSPName}</span>{' '}
-        {dictionary.earlyAccess.results.youWillPay}{' '}
-        <span className='font-semibold'>{thirdPSPFee}%</span>{' '}
-        {dictionary.earlyAccess.results.andWait}{' '}
-        <span className='font-semibold'>{thirdPSPDuration}</span>{' '}
-        {dictionary.earlyAccess.results.forWithdrawal}
-      </p>
-      <p>
-        {dictionary.earlyAccess.results.servicesProvided}:{' '}
-        {customerServiceMap[thirdPSP[0]].join(', ')}
-      </p>
-      <p>{dictionary.earlyAccess.results.enjoyYourBusiness}</p> */}
       <Link className='ml-auto' href={`/early-access/${id}`}>
         <Button size='lg'>
           {dictionary.earlyAccess.results.goOn}
@@ -648,4 +588,16 @@ const imagePathMap: Record<string, string> = {
   skyee: '/brand/skyee.png',
   payoneer: '/brand/payoneer.png',
   paypal: '/brand/paypal.png',
+};
+
+const linkMap: Record<string, UrlObject> = {
+  pingpong: new URL('https://www.pingpongx.com'),
+  lianlian: new URL('https://www.lianlianpay.com'),
+  worldfirst: new URL('https://www.worldfirst.com'),
+  hsbc_merchants_box: new URL('https://www.hsbc.com'),
+  zhihui_e: new URL('https://www.airwallex.com'),
+  airwallex: new URL('https://www.airwallex.com'),
+  skyee: new URL('https://www.skyee.com'),
+  payoneer: new URL('https://www.payoneer.com'),
+  paypal: new URL('https://www.paypal.com'),
 };

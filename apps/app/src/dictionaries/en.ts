@@ -60,7 +60,8 @@ const en = {
       pay: 'Are you willing to pay for OneFlow?',
       amount: {
         title:
-          'If yes, how much would you be willing to pay for OneFlow? (RMB/month)',
+          'If yes, how much would you be willing to pay for OneFlow?',
+        unit: '(RMB/month)',
         options: [
           { value: '20', label: 'Less than 20' },
           { value: '40', label: 'Less than 40' },

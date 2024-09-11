@@ -48,7 +48,8 @@ const zh = {
       },
       pay: '您愿意为 OneFlow 付费吗？',
       amount: {
-        title: '如果是，您愿意为 OneFlow 付费吗？（人民币／月）',
+        title: '如果是，您愿意为 OneFlow 付费吗？',
+        unit: '（人民币／月）',
         options: [
           { value: '20', label: '少于 20' },
           { value: '40', label: '少于 40' },

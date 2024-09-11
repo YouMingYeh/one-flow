@@ -27,6 +27,7 @@ export const QuestionnaireForm = ({
   const [isLoading, setIsLoading] = useState(false);
   const [experienceValue, setExperienceValue] = useState(3);
   const [helpValue, setHelpValue] = useState(50);
+  const [amountValue, setAmountValue] = useState(500);
   const { toast } = useToast();
 
   const onSubmit = async ({
@@ -120,12 +121,19 @@ export const QuestionnaireForm = ({
         </p>
         <br />
         <FormInputField<QuestionnaireFormValues>
+          className='shadow-none'
           label={dictionary.earlyAccess.questionnaire.amount.title}
           max={1000}
           min={1}
+          onChange={e => {
+            setAmountValue(Number(e.target.value));
+          }}
           path='amount'
           type='range'
+
         />
+        <p className='text-muted-foreground'>{amountValue} {dictionary.earlyAccess.questionnaire.amount.unit}</p>
+        <br/>
         <FormInputField<QuestionnaireFormValues>
           label={dictionary.earlyAccess.questionnaire.additional}
           path='additional'
