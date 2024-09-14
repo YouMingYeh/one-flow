@@ -6,7 +6,7 @@ import { Subheader } from '../../../modules/splash/components/Subheader';
 import { getDictionary } from '../../i18n';
 import Content from '../../../modules/splash/components/Content';
 import { ThemeToggle } from '../../../components/layouts/ThemeToggle';
-import { LanguageToggle } from '../../../components/layouts/LanguageToggle';
+// import { LanguageToggle } from '../../../components/layouts/LanguageToggle';
 import { Solution1 } from '../../../modules/splash/components/Solution1';
 
 const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
@@ -28,7 +28,7 @@ const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
                   <Icons.ChevronRight />
                 </Link>
                 <div className='flex gap-1'>
-                  <LanguageToggle />
+                  {/* <LanguageToggle /> */}
                   <ThemeToggle />
                 </div>
               </div>
