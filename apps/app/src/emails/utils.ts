@@ -14,7 +14,7 @@ export const sendEmail = async (
       secure: true,
       auth: {
         user: 'team@one-flow.cn',
-        pass: 'teamoneflow1',
+        pass: 'teamoneflow',
       },
     });
 
