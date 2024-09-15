@@ -30,7 +30,6 @@ export const sendEmail = async (
     return response;
   } catch (error) {
     // Handle the error appropriately
-    console.error('Error sending email:', error);
-    throw error; // Re-throw the error for the caller to handle if needed
+    
   }
 };
