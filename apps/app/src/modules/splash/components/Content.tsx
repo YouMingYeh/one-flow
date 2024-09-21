@@ -26,7 +26,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
       <h2 className='mt-8 px-4 text-5xl font-bold tracking-tight'>
         {dictionary.landing.splash.header}
       </h2>
-      <p className='text-muted-foreground max-w-2xl px-8 text-lg'>
+      <p className='text-muted-foreground max-w-2xl px-8 text-xl'>
         {`${dictionary.landing.splash.subheader.slice(0, 100)}...`}
       </p>
       <DrawerDialogButton
@@ -44,7 +44,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
       <h2 className='mt-32 px-4 text-5xl font-bold tracking-tight'>
         {dictionary.landing.content.title}
       </h2>
-      <p className='text-muted-foreground'>
+      <p className='text-muted-foreground text-xl'>
         {dictionary.landing.content.description}
       </p>
       <div className=' grid w-full grid-cols-1 gap-6 px-8 sm:grid-cols-3'>
@@ -54,7 +54,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
               <Icons.Rocket />
               {dictionary.landing.content.cards.findYourBestMatch.title}
             </CardTitle>
-            <CardDescription className='text-lg'>
+            <CardDescription className='text-md'>
               {dictionary.landing.content.cards.findYourBestMatch.description}
             </CardDescription>
           </CardHeader>
@@ -92,7 +92,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
               <Icons.PackageOpen />
               {dictionary.landing.content.cards.itJustWorks.title}
             </CardTitle>
-            <CardDescription className='text-lg'>
+            <CardDescription className='text-md'>
               {dictionary.landing.content.cards.itJustWorks.description}
             </CardDescription>
           </CardHeader>
@@ -130,7 +130,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
               <Icons.PiggyBank />
               {dictionary.landing.content.cards.howMuch.title}
             </CardTitle>
-            <CardDescription className='text-lg'>
+            <CardDescription className='text-md'>
               {dictionary.landing.content.cards.howMuch.description}
             </CardDescription>
           </CardHeader>
@@ -169,7 +169,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
         <p className='mt-4 whitespace-pre-wrap text-8xl font-medium tracking-tighter'>
           <NumberTicker value={15} /> +
         </p>
-        <h2 className='mt-2 px-4 text-2xl font-semibold leading-none tracking-tight'>
+        <h2 className='mt-2 px-4 text-xl font-semibold leading-none tracking-tight'>
           {dictionary.landing.content.numberTicker.footer}
         </h2>
         <Marquee
@@ -178,10 +178,11 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
         >
           {[
             'Pingpong',
-            'Lianlian',
-            'Worldfirst',
+            '连连 Lianlian',
+            '万里汇 Worldfirst',
             'HSBC Merchants box',
-            '智汇鹅	Airwallex',
+            '智汇鹅 Tenpay Global Business',
+            'Airwallex',
             'Skyee',
             'Payoneer',
             'Paypal',
