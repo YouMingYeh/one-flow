@@ -117,7 +117,7 @@ const Page = async ({
     ? Number(data.current_rate.replace('%', ''))
     : data.current_rate ?? 0;
 
-  const originalRate = Number(currentRageNumber)|| tier[originalPSP] || 1.0;
+  const originalRate = Number(currentRageNumber) || tier[originalPSP] || 1.0;
 
   return (
     <div className='mx-auto flex h-full w-full flex-col justify-center gap-6 py-12 sm:w-2/3'>

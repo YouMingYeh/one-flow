@@ -419,7 +419,9 @@ const MultipleSelectButtonGroup = ({
           type='button'
           variant={values.includes(option.value) ? 'default' : 'outline'}
         >
-          {option.label.length > 10 ? `${option.label.slice(0, 8)}...` : option.label}
+          {option.label.length > 10
+            ? `${option.label.slice(0, 8)}...`
+            : option.label}
         </Button>
       ))}
     </div>

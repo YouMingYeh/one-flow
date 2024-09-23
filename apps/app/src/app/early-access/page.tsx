@@ -9,12 +9,13 @@ const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
     <div className='mx-auto flex h-full w-full flex-col justify-center gap-6 py-12 sm:w-1/2'>
       <div className='flex flex-col gap-y-2 text-center'>
         <Icons.logo className='mx-auto h-20 w-20' />
-        
+
         <h1 className='text-xl font-semibold tracking-tight'>
           {dictionary.earlyAccess.title}
         </h1>
         <p className='text-muted-foreground text-md text-left'>
-          {dictionary.earlyAccess.note}{dictionary.earlyAccess.description}
+          {dictionary.earlyAccess.note}
+          {dictionary.earlyAccess.description}
         </p>
         <Suspense>
           <div className='text-muted-foreground text-md text-left'>

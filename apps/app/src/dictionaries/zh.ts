@@ -58,7 +58,8 @@ const zh = {
           { value: 'above', label: '超过 60' },
         ],
       },
-      additional: '6. 您希望在 OneFlow 上看到哪些额外服务？我们如何进一步改进？',
+      additional:
+        '6. 您希望在 OneFlow 上看到哪些额外服务？我们如何进一步改进？',
     },
     results: {
       title: '恭喜',
@@ -76,7 +77,8 @@ const zh = {
       enjoyYourBusiness: '享受您的业务！',
       goOn: '继续',
       checkItOut: '快来查看最适合您的跨境收款解决方案！',
-      according: '根据您的答案和偏好，OneFlow 利用先进的算法为您提供以下定制解决方案。',
+      according:
+        '根据您的答案和偏好，OneFlow 利用先进的算法为您提供以下定制解决方案。',
       details: '请订阅我们的标准月度计划以查看详细信息。',
     },
     ok: {

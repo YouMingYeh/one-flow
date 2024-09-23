@@ -60,8 +60,7 @@ const en = {
         },
       },
       amount: {
-        title:
-          '5. If yes, how much would you be willing to pay for OneFlow?',
+        title: '5. If yes, how much would you be willing to pay for OneFlow?',
         unit: '(RMB/month)',
         options: [
           { value: '20', label: 'Less than 20' },
@@ -88,9 +87,11 @@ const en = {
       servicesProvided: 'service provided',
       enjoyYourBusiness: 'Enjoy your business!',
       goOn: 'Go on',
-      checkItOut: 'Let\'s Check it out',
-      according: 'According to your answers and preferences, OneFlow utilizes advanced algorithms to provide you with the following tailored solutions.',
-      details: 'Please subscribe to our standard monthly plan to view the details.',
+      checkItOut: "Let's Check it out",
+      according:
+        'According to your answers and preferences, OneFlow utilizes advanced algorithms to provide you with the following tailored solutions.',
+      details:
+        'Please subscribe to our standard monthly plan to view the details.',
     },
     ok: {
       title: 'Thank you for your interest!',
