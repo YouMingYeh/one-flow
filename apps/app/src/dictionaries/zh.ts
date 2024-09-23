@@ -22,12 +22,13 @@ const zh = {
   },
   earlyAccess: {
     questionnaire: {
+      done: '感谢您提交问卷',
       submit: '提交',
       title: '调查问卷',
       description: '我们希望了解更多关于您的业务，以便为您提供专属解决方案。',
-      help: '您认为 OneFlow 有多少程度上有助于您的业务吗？ (%)',
+      help: '2. 您认为 OneFlow 有多少程度上有助于您的业务吗？（1-5）',
       how: {
-        title: '在做生意时，您如何选择第三方支付提供商？',
+        title: '1. 在做生意时，您如何选择第三方支付提供商？',
         options: [
           { value: 'platform', label: '基于平台上的可用选项' },
           { value: 'research', label: '基于市场调查和比较' },
@@ -37,7 +38,7 @@ const zh = {
         ],
       },
       experience: {
-        title: '如果是，您对 OneFlow 的体验如何？（1-5）',
+        title: '3. 您对 OneFlow 的体验如何？（1-5）',
         mapping: {
           1: '非常糟糕',
           2: '糟糕',
@@ -46,9 +47,9 @@ const zh = {
           5: '非常好',
         },
       },
-      pay: '您愿意为 OneFlow 付费吗？',
+      willing: '4. 您愿意为 OneFlow 付费吗？',
       amount: {
-        title: '如果是，您愿意为 OneFlow 付费吗？',
+        title: '5. 如果是，您愿意为 OneFlow 付费吗？',
         unit: '（人民币／月）',
         options: [
           { value: '20', label: '少于 20' },
@@ -57,7 +58,7 @@ const zh = {
           { value: 'above', label: '超过 60' },
         ],
       },
-      additional: '您希望在 OneFlow 上看到哪些额外服务？我们如何进一步改进？',
+      additional: '6. 您希望在 OneFlow 上看到哪些额外服务？我们如何进一步改进？',
     },
     results: {
       title: '恭喜',
@@ -214,7 +215,7 @@ const zh = {
       },
       currentRate: {
         label: '您目前支付的跨境收款利率是多少？',
-        placeholder: '2.9% + $0.30',
+        placeholder: '2.9%',
       },
       businessType: {
         label: '业务类型',

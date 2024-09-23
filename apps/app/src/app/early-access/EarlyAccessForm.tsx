@@ -129,7 +129,7 @@ export const EarlyAccessForm: FC = () => {
         <Separator className='mt-6' />
         {step >= 1 && (
           <>
-            <h2 className='flex items-center justify-center gap-1 text-2xl font-semibold'>
+            <h2 className='flex items-center justify-center gap-1 text-xl font-semibold'>
               1️⃣ {dictionary.earlyAccess.form.basicInformation.title}
               <Tooltip>
                 <TooltipTrigger type='button'>
@@ -185,7 +185,7 @@ export const EarlyAccessForm: FC = () => {
         )}
         {step >= 2 && (
           <Suspense>
-            <h2 className='flex items-center justify-center gap-1 text-2xl font-semibold'>
+            <h2 className='flex items-center justify-center gap-1 text-xl font-semibold'>
               2️⃣ {dictionary.earlyAccess.form.financialInformation.title}
               <Tooltip>
                 <TooltipTrigger type='button'>
@@ -319,8 +319,7 @@ export const EarlyAccessForm: FC = () => {
                         {
                           dictionary.earlyAccess.form.provideMoreInformation
                             .tooltip
-                        }{' '}
-                        👇
+                        }
                       </p>
                     </div>
                   </AccordionContent>

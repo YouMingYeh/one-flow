@@ -22,14 +22,16 @@ const en = {
   },
   earlyAccess: {
     questionnaire: {
+      done: 'Thank you for your submission!',
       submit: 'Submit',
       title: 'Questionnaire',
       description:
         'We would like to know more about your business to provide you with tailored solutions.',
-      help: 'How much you think OneFlow helps your business? (%)',
+      help: '2. How much you think OneFlow helps your business? (1-5)',
+      willing: 'Are you willing to pay for OneFlow?',
       how: {
         title:
-          'How do you choose a third-party payment provider when doing business?',
+          '1. How do you choose a third-party payment provider when doing business?',
         options: [
           {
             value: 'platform',
@@ -48,7 +50,7 @@ const en = {
         ],
       },
       experience: {
-        title: 'If so, how would you rate your experience with OneFlow? (1-5)',
+        title: '3. How would you rate your experience with OneFlow? (1-5)',
         mapping: {
           1: 'Very bad',
           2: 'Bad',
@@ -57,10 +59,9 @@ const en = {
           5: 'Very good',
         },
       },
-      pay: 'Are you willing to pay for OneFlow?',
       amount: {
         title:
-          'If yes, how much would you be willing to pay for OneFlow?',
+          '5. If yes, how much would you be willing to pay for OneFlow?',
         unit: '(RMB/month)',
         options: [
           { value: '20', label: 'Less than 20' },
@@ -70,7 +71,7 @@ const en = {
         ],
       },
       additional:
-        'What additional services would you like to see on OneFlow? How can we further improve?',
+        '6. What additional services would you like to see on OneFlow? How can we further improve?',
     },
     results: {
       title: 'Results',
@@ -230,7 +231,7 @@ const en = {
       },
       currentRate: {
         label: 'What is your current cross-border payment rate?',
-        placeholder: '2.9% + $0.30',
+        placeholder: '2.9%',
       },
       businessType: {
         label: 'Business Type',

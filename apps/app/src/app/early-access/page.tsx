@@ -9,14 +9,12 @@ const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
     <div className='mx-auto flex h-full w-full flex-col justify-center gap-6 py-12 sm:w-1/2'>
       <div className='flex flex-col gap-y-2 text-center'>
         <Icons.logo className='mx-auto h-20 w-20' />
-        <p className='text-muted-foreground text-sm'>
-          {dictionary.earlyAccess.note}
-        </p>
-        <h1 className='text-2xl font-semibold tracking-tight'>
+        
+        <h1 className='text-xl font-semibold tracking-tight'>
           {dictionary.earlyAccess.title}
         </h1>
-        <p className='text-muted-foreground text-md'>
-          {dictionary.earlyAccess.description}
+        <p className='text-muted-foreground text-md text-left'>
+          {dictionary.earlyAccess.note}{dictionary.earlyAccess.description}
         </p>
         <Suspense>
           <div className='text-muted-foreground text-md text-left'>
@@ -38,7 +36,7 @@ const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
             </ul>
           </div>
         </Suspense>
-        <p className='text-muted-foreground text-md'>
+        <p className='text-muted-foreground text-md text-left'>
           {dictionary.earlyAccess.interested}
         </p>
       </div>

@@ -38,6 +38,8 @@ const Page = async ({
       withdraw_fee_range: string; // e.g. "0.5,1.5"
       withdraw_speed_range: string; // e.g. "1,2"
       current_gateway: string; // e.g. "pingpong"
+      original_rate: number; // e.g. 1.0
+      current_rate: string; // e.g. "2.9%"
     } | null;
   };
 
@@ -122,19 +124,22 @@ const Page = async ({
     | 'skyee'
     | 'payoneer'
     | 'paypal';
-  const originalRate = tier[originalPSP] || 1.0;
+  const currentRageNumber = Number(data.current_rate.replace('%', ''));
+  const originalRate = currentRageNumber || tier[originalPSP] || 1.0;
 
   return (
     <div className='mx-auto flex h-full w-full flex-col justify-center gap-6 py-12 sm:w-2/3'>
       <div className='flex flex-col gap-y-2 text-center'>
         <Icons.logo className='mx-auto h-20 w-20' />
-        <h1 className='text-2xl font-semibold tracking-tight'>
+        <h1 className='text-xl font-semibold tracking-tight'>
           {dictionary.earlyAccess.results.title}
         </h1>
-        <p className='text-muted-foreground text-md'>
+        <p className='text-md text-primary'>
           OneFlow 帮助您每月节省了{' '}
-          {((originalRate - Number(bestPSPFee)) * cashFlow).toFixed(2)} 人民币
-          💰
+          <span className='text-xl font-bold text-blue-500'>
+            {((originalRate - Number(bestPSPFee)) * cashFlow * 0.01).toFixed(2)}
+          </span>
+          人民币 💰
         </p>
         {/* <p>
           並可以享受免費的 {customerServiceMap[bestPSP[0]].join(', ')} 服務 🎉
@@ -163,8 +168,11 @@ const Page = async ({
             <Icons.TrendingDown className='text-green-500' />
             {/* expected */}
             <span>
-              你可以省下 {originalRate - Number(bestPSPFee)}% 的费率，每月节省了{' '}
-              {((originalRate - Number(bestPSPFee)) * cashFlow).toFixed(2)}{' '}
+              你可以省下 {(originalRate - Number(bestPSPFee)).toFixed(2)}%
+              的费率，每月节省了{' '}
+              {((originalRate - Number(bestPSPFee)) * cashFlow * 0.01).toFixed(
+                2,
+              )}{' '}
               人民币 💰
             </span>
           </div>
@@ -172,7 +180,7 @@ const Page = async ({
         title='OneFlow 帮你找到更好的提款工具'
       />
       <Separator />
-      <h3 className='text-lg font-semibold'>
+      <h3 className='text-xl font-semibold'>
         {dictionary.earlyAccess.results.checkItOut}
       </h3>
       <p className='text-muted-foreground'>
@@ -213,7 +221,7 @@ const Page = async ({
 
       <Separator />
 
-      <h3 className='text-lg font-semibold'>
+      <h3 className='text-xl font-semibold'>
         {dictionary.earlyAccess.results.details}
       </h3>
       <Table>

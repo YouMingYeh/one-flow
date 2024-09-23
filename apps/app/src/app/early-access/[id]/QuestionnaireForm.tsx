@@ -13,6 +13,7 @@ const questionnaireFormSchema = z.object({
   help: z.string().optional().nullable(),
   how: z.string(),
   experience: z.string().optional().nullable(),
+  willing: z.boolean().optional().nullable(),
   amount: z.string().optional().nullable(),
   additional: z.string().optional().nullable(),
 });
@@ -25,6 +26,7 @@ export const QuestionnaireForm = ({
   dictionary: Dictionary;
 }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [done, setDone] = useState(false);
   const [experienceValue, setExperienceValue] = useState(3);
   const [helpValue, setHelpValue] = useState(50);
   const [amountValue, setAmountValue] = useState(500);
@@ -34,7 +36,7 @@ export const QuestionnaireForm = ({
     help,
     how,
     experience,
-
+    willing,
     amount,
     additional,
   }: QuestionnaireFormValues) => {
@@ -42,10 +44,10 @@ export const QuestionnaireForm = ({
     const supabase = createSupabaseClientClient();
     const { error } = await supabase.from('questionnaire').insert([
       {
-        help,
         how,
+        help,
         experience,
-
+        willing,
         amount,
         additional,
       },
@@ -66,30 +68,32 @@ export const QuestionnaireForm = ({
       description: '感谢您填写问卷，OneFlow 会把最好的服务提供给您',
     });
     setIsLoading(false);
+    setDone(true);
   };
 
   return (
     <AppForm onSubmit={onSubmit} schema={questionnaireFormSchema}>
       <div className='flex min-h-0 flex-1 flex-col gap-4'>
-        <h2 className='text-2xl font-semibold'>
+        <h2 className='text-xl font-semibold'>
           {dictionary.earlyAccess.questionnaire.title}
         </h2>
         <p className='text-muted-foreground'>
           {dictionary.earlyAccess.questionnaire.description}
         </p>
-
+        <br/>
         <FormSelect<QuestionnaireFormValues>
           label={dictionary.earlyAccess.questionnaire.how.title}
           options={dictionary.earlyAccess.questionnaire.how.options}
           path='how'
           placeholder='请选择'
         />
+        <br/>
         <FormInputField<QuestionnaireFormValues>
           className='shadow-none'
           defaultValue={helpValue}
           label={dictionary.earlyAccess.questionnaire.help}
-          max={100}
-          min={0}
+          max={5}
+          min={1}
           onChange={e => {
             setHelpValue(Number(e.target.value));
           }}
@@ -119,6 +123,13 @@ export const QuestionnaireForm = ({
             ]
           }
         </p>
+        
+        <FormInputField<QuestionnaireFormValues>
+          className='shadow-none'
+          label={dictionary.earlyAccess.questionnaire.willing}
+          path='experience'
+          type='checkbox'
+        />
         <br />
         <FormInputField<QuestionnaireFormValues>
           className='shadow-none'
@@ -138,8 +149,9 @@ export const QuestionnaireForm = ({
           label={dictionary.earlyAccess.questionnaire.additional}
           path='additional'
         />
-        <Button loading={isLoading} type='submit'>
-          {dictionary.earlyAccess.questionnaire.submit}
+        <br/>
+        <Button disabled={done || isLoading} loading={isLoading} type='submit'>
+          {done ? dictionary.earlyAccess.questionnaire.done : dictionary.earlyAccess.questionnaire.submit}
         </Button>
       </div>
     </AppForm>
