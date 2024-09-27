@@ -59,7 +59,7 @@ const Page = async ({
           buttonVariants({
             variant: 'ghost',
           }),
-          'flex justify-start items-start',
+          'flex items-start justify-start',
         )}
         href={`/early-access/results/${params.id}`}
       >

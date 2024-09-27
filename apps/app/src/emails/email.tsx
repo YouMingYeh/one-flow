@@ -14,7 +14,6 @@ interface EmailProps {
   username?: string;
 }
 
-
 export const Email = ({ username }: EmailProps) => (
   <Html>
     <Head />
@@ -33,7 +32,7 @@ export const Email = ({ username }: EmailProps) => (
         <Heading style={h1}>
           🌍 体验 OneFlow Demo 后，邀请您成为我们的内测用户！
         </Heading>
-        <Text style={heroText}>亲爱的 {username? username : '用户'}，</Text>
+        <Text style={heroText}>亲爱的 {username ? username : '用户'}，</Text>
 
         <Text style={text}>
           非常感谢您使用 OneFlow 的产品

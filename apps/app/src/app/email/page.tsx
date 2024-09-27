@@ -10,7 +10,7 @@ export default function Page() {
         <Button
           formAction={async () => {
             'use server';
-            await sendEmail(<Email username="test" />);
+            await sendEmail(<Email username='test' />);
           }}
         >
           Send Email

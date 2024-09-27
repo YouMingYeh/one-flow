@@ -1,4 +1,4 @@
-"use server"
+'use server';
 import type { Options } from '@react-email/components';
 import { render } from '@react-email/components';
 import { createTransport } from 'nodemailer';
@@ -30,6 +30,5 @@ export const sendEmail = async (
     return response;
   } catch (error) {
     // Handle the error appropriately
-    
   }
 };

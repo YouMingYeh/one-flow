@@ -80,14 +80,14 @@ export const QuestionnaireForm = ({
         <p className='text-muted-foreground'>
           {dictionary.earlyAccess.questionnaire.description}
         </p>
-        <br/>
+        <br />
         <FormSelect<QuestionnaireFormValues>
           label={dictionary.earlyAccess.questionnaire.how.title}
           options={dictionary.earlyAccess.questionnaire.how.options}
           path='how'
           placeholder='请选择'
         />
-        <br/>
+        <br />
         <FormInputField<QuestionnaireFormValues>
           className='shadow-none'
           defaultValue={helpValue}
@@ -123,7 +123,7 @@ export const QuestionnaireForm = ({
             ]
           }
         </p>
-        
+
         <FormInputField<QuestionnaireFormValues>
           className='shadow-none'
           label={dictionary.earlyAccess.questionnaire.willing}
@@ -141,17 +141,20 @@ export const QuestionnaireForm = ({
           }}
           path='amount'
           type='range'
-
         />
-        <p className='text-muted-foreground'>{amountValue} {dictionary.earlyAccess.questionnaire.amount.unit}</p>
-        <br/>
+        <p className='text-muted-foreground'>
+          {amountValue} {dictionary.earlyAccess.questionnaire.amount.unit}
+        </p>
+        <br />
         <FormInputField<QuestionnaireFormValues>
           label={dictionary.earlyAccess.questionnaire.additional}
           path='additional'
         />
-        <br/>
+        <br />
         <Button disabled={done || isLoading} loading={isLoading} type='submit'>
-          {done ? dictionary.earlyAccess.questionnaire.done : dictionary.earlyAccess.questionnaire.submit}
+          {done
+            ? dictionary.earlyAccess.questionnaire.done
+            : dictionary.earlyAccess.questionnaire.submit}
         </Button>
       </div>
     </AppForm>

@@ -47,12 +47,12 @@ export function Solution2({
   return (
     <div
       className={cn(
-        'relative flex w-full flex-col justify-center md:scale-100 md:flex-row px-4',
+        'relative flex w-full flex-col justify-center px-4 md:scale-100 md:flex-row',
         className,
       )}
       ref={containerRef}
     >
-      <div className='size-full flex max-w-lg flex-row items-stretch justify-between md:gap-24 px-4'>
+      <div className='size-full flex max-w-lg flex-row items-stretch justify-between px-4 md:gap-24'>
         <div className='flex flex-col justify-center'>
           <Circle className='size-12' ref={div7Ref}>
             <Icons.User className='h-12 w-12' />

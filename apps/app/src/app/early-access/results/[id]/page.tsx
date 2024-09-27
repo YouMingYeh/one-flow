@@ -39,7 +39,7 @@ const Page = async ({
       withdraw_speed_range: string; // e.g. "1,2"
       current_gateway: string; // e.g. "pingpong"
       original_rate: number; // e.g. 1.0
-      current_rate: string; // e.g. "2.9%"
+      current_rate: string | null;
     } | null;
   };
 
@@ -56,20 +56,8 @@ const Page = async ({
 
   // Step 1: Determine the Tier based on cash flow
   let tier = pricingData.find(t => {
-    const tierMin = parseFloat(
-      t.tier
-        .split('~')[0]
-        .replace('<', '')
-        .replace('w USD', '')
-        .replace(',', '.')
-        .trim(),
-    );
-    const tierMax = t.tier.includes('~')
-      ? parseFloat(
-          t.tier.split('~')[1].replace('w USD', '').replace(',', '.').trim(),
-        )
-      : Number.POSITIVE_INFINITY;
-    return cashFlow * 6 >= tierMin * 10000 && cashFlow * 6 <= tierMax * 10000;
+    const tierMin = t.tier;
+    return cashFlow * 6 >= tierMin;
   });
 
   if (!tier) {
@@ -124,8 +112,12 @@ const Page = async ({
     | 'skyee'
     | 'payoneer'
     | 'paypal';
-  const currentRageNumber = Number(data.current_rate.replace('%', ''));
-  const originalRate = currentRageNumber || tier[originalPSP] || 1.0;
+
+  const currentRageNumber = data.current_rate?.includes('%')
+    ? Number(data.current_rate.replace('%', ''))
+    : data.current_rate ?? 0;
+
+  const originalRate = Number(currentRageNumber) || tier[originalPSP] || 1.0;
 
   return (
     <div className='mx-auto flex h-full w-full flex-col justify-center gap-6 py-12 sm:w-2/3'>
@@ -134,7 +126,7 @@ const Page = async ({
         <h1 className='text-xl font-semibold tracking-tight'>
           {dictionary.earlyAccess.results.title}
         </h1>
-        <p className='text-md text-primary'>
+        <p className='text-md text-foreground'>
           OneFlow 帮助您每月节省了{' '}
           <span className='text-xl font-bold text-blue-500'>
             {((originalRate - Number(bestPSPFee)) * cashFlow * 0.01).toFixed(2)}
@@ -409,7 +401,7 @@ const Page = async ({
 export default Page;
 
 type TierPricing = {
-  tier: string;
+  tier: number;
   pingpong: number;
   lianlian: number;
   worldfirst: number;
@@ -423,103 +415,19 @@ type TierPricing = {
 
 const pricingData: TierPricing[] = [
   {
-    tier: '<0.5w 美元',
-    pingpong: 1.0,
-    lianlian: 0.7,
+    tier: 1500000,
+    pingpong: 0.1,
+    lianlian: 0.3,
     worldfirst: 0.3,
-    hsbc_merchants_box: 0.2,
-    zhihui_e: 0.3,
+    hsbc_merchants_box: 0.1625,
+    zhihui_e: 0.05,
     airwallex: 0.4,
     skyee: 0.6,
-    payoneer: 1.2,
+    payoneer: 0.5,
     paypal: 3.0,
   },
   {
-    tier: '0.5w ~ 1w 美元',
-    pingpong: 0.9,
-    lianlian: 0.7,
-    worldfirst: 0.3,
-    hsbc_merchants_box: 0.2,
-    zhihui_e: 0.3,
-    airwallex: 0.4,
-    skyee: 0.6,
-    payoneer: 1.2,
-    paypal: 3.0,
-  },
-  {
-    tier: '1w ~ 2w 美元',
-    pingpong: 0.8,
-    lianlian: 0.7,
-    worldfirst: 0.3,
-    hsbc_merchants_box: 0.2,
-    zhihui_e: 0.3,
-    airwallex: 0.4,
-    skyee: 0.6,
-    payoneer: 1.2,
-    paypal: 3.0,
-  },
-  {
-    tier: '2w ~ 5w 美元',
-    pingpong: 0.7,
-    lianlian: 0.7,
-    worldfirst: 0.3,
-    hsbc_merchants_box: 0.2,
-    zhihui_e: 0.3,
-    airwallex: 0.4,
-    skyee: 0.6,
-    payoneer: 1.1,
-    paypal: 3.0,
-  },
-  {
-    tier: '5w ~ 10w 美元',
-    pingpong: 0.6,
-    lianlian: 0.6,
-    worldfirst: 0.3,
-    hsbc_merchants_box: 0.2,
-    zhihui_e: 0.3,
-    airwallex: 0.4,
-    skyee: 0.6,
-    payoneer: 1.0,
-    paypal: 3.0,
-  },
-  {
-    tier: '10w ~ 20w 美元',
-    pingpong: 0.5,
-    lianlian: 0.6,
-    worldfirst: 0.3,
-    hsbc_merchants_box: 0.2,
-    zhihui_e: 0.3,
-    airwallex: 0.4,
-    skyee: 0.6,
-    payoneer: 0.9,
-    paypal: 3.0,
-  },
-  {
-    tier: '20w ~ 40w 美元',
-    pingpong: 0.4,
-    lianlian: 0.5,
-    worldfirst: 0.3,
-    hsbc_merchants_box: 0.2,
-    zhihui_e: 0.3,
-    airwallex: 0.4,
-    skyee: 0.6,
-    payoneer: 0.8,
-    paypal: 3.0,
-  },
-  {
-    tier: '40w ~ 80w 美元',
-    pingpong: 0.3,
-    lianlian: 0.4,
-    worldfirst: 0.3,
-    hsbc_merchants_box: 0.175,
-    zhihui_e: 0.3,
-    airwallex: 0.4,
-    skyee: 0.6,
-    payoneer: 0.7,
-    paypal: 3.0,
-  },
-  {
-    tier: '80w ~ 150w 美元',
+    tier: 800000,
     pingpong: 0.2,
     lianlian: 0.35,
     worldfirst: 0.3,
@@ -531,15 +439,99 @@ const pricingData: TierPricing[] = [
     paypal: 3.0,
   },
   {
-    tier: '>150w 美元',
-    pingpong: 0.1,
-    lianlian: 0.3,
+    tier: 400000,
+    pingpong: 0.3,
+    lianlian: 0.4,
     worldfirst: 0.3,
-    hsbc_merchants_box: 0.1625,
-    zhihui_e: 0.05,
+    hsbc_merchants_box: 0.175,
+    zhihui_e: 0.3,
     airwallex: 0.4,
     skyee: 0.6,
-    payoneer: 0.5,
+    payoneer: 0.7,
+    paypal: 3.0,
+  },
+  {
+    tier: 200000,
+    pingpong: 0.4,
+    lianlian: 0.5,
+    worldfirst: 0.3,
+    hsbc_merchants_box: 0.2,
+    zhihui_e: 0.3,
+    airwallex: 0.4,
+    skyee: 0.6,
+    payoneer: 0.8,
+    paypal: 3.0,
+  },
+  {
+    tier: 100000,
+    pingpong: 0.5,
+    lianlian: 0.6,
+    worldfirst: 0.3,
+    hsbc_merchants_box: 0.2,
+    zhihui_e: 0.3,
+    airwallex: 0.4,
+    skyee: 0.6,
+    payoneer: 0.9,
+    paypal: 3.0,
+  },
+  {
+    tier: 50000,
+    pingpong: 0.6,
+    lianlian: 0.6,
+    worldfirst: 0.3,
+    hsbc_merchants_box: 0.2,
+    zhihui_e: 0.3,
+    airwallex: 0.4,
+    skyee: 0.6,
+    payoneer: 1.0,
+    paypal: 3.0,
+  },
+  {
+    tier: 20000,
+    pingpong: 0.7,
+    lianlian: 0.7,
+    worldfirst: 0.3,
+    hsbc_merchants_box: 0.2,
+    zhihui_e: 0.3,
+    airwallex: 0.4,
+    skyee: 0.6,
+    payoneer: 1.1,
+    paypal: 3.0,
+  },
+  {
+    tier: 10000,
+    pingpong: 0.8,
+    lianlian: 0.7,
+    worldfirst: 0.3,
+    hsbc_merchants_box: 0.2,
+    zhihui_e: 0.3,
+    airwallex: 0.4,
+    skyee: 0.6,
+    payoneer: 1.2,
+    paypal: 3.0,
+  },
+  {
+    tier: 5000,
+    pingpong: 0.9,
+    lianlian: 0.7,
+    worldfirst: 0.3,
+    hsbc_merchants_box: 0.2,
+    zhihui_e: 0.3,
+    airwallex: 0.4,
+    skyee: 0.6,
+    payoneer: 1.2,
+    paypal: 3.0,
+  },
+  {
+    tier: 0,
+    pingpong: 1.0,
+    lianlian: 0.7,
+    worldfirst: 0.3,
+    hsbc_merchants_box: 0.2,
+    zhihui_e: 0.3,
+    airwallex: 0.4,
+    skyee: 0.6,
+    payoneer: 1.2,
     paypal: 3.0,
   },
 ];

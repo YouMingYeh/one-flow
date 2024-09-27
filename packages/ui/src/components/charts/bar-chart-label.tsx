@@ -1,6 +1,6 @@
-"use client"
-import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts"
-import React from "react";
+'use client';
+import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from 'recharts';
+import React from 'react';
 import {
   Card,
   CardContent,
@@ -8,15 +8,10 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../ui/card"
-import type {
-  ChartConfig} from "../ui/chart";
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "../ui/chart"
-import { cn } from "../../lib/utils";
+} from '../ui/card';
+import type { ChartConfig } from '../ui/chart';
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from '../ui/chart';
+import { cn } from '../../lib/utils';
 
 // const chartData = [
 //   { x: "January", desktop: 186 },
@@ -35,12 +30,12 @@ import { cn } from "../../lib/utils";
 // } satisfies ChartConfig
 
 interface BarChartLabelProps {
-chartConfig: ChartConfig
-chartData: Record<string, unknown>[]
-title?: string
-description?: string
-footer?: React.ReactNode
-className?: string
+  chartConfig: ChartConfig;
+  chartData: Record<string, unknown>[];
+  title?: string;
+  description?: string;
+  footer?: React.ReactNode;
+  className?: string;
 }
 
 export function BarChartLabel({
@@ -50,7 +45,7 @@ export function BarChartLabel({
   description,
   footer,
   className,
-}:BarChartLabelProps) {
+}: BarChartLabelProps) {
   return (
     <Card className={cn(className)}>
       <CardHeader>
@@ -69,7 +64,7 @@ export function BarChartLabel({
             <CartesianGrid vertical={false} />
             <XAxis
               axisLine={false}
-              dataKey="x"
+              dataKey='x'
               // tickFormatter={(value: string) => value.slice(0, 10)}
               tickLine={false}
               tickMargin={10}
@@ -78,20 +73,20 @@ export function BarChartLabel({
               content={<ChartTooltipContent hideLabel />}
               cursor={false}
             />
-            <Bar dataKey="y" fill="var(--color-y)" radius={8}>
+            <Bar dataKey='y' fill='var(--color-y)' radius={8}>
               <LabelList
-                className="fill-foreground"
+                className='fill-foreground'
                 fontSize={12}
                 offset={12}
-                position="top"
+                position='top'
               />
             </Bar>
           </BarChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
+      <CardFooter className='flex-col items-start gap-2 text-sm'>
         {footer}
       </CardFooter>
     </Card>
-  )
+  );
 }

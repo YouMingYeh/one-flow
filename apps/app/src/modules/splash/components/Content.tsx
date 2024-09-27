@@ -47,7 +47,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
       <p className='text-muted-foreground text-xl'>
         {dictionary.landing.content.description}
       </p>
-      <div className=' grid w-full grid-cols-1 gap-6 px-8 sm:grid-cols-3'>
+      <div className='grid w-full grid-cols-1 gap-6 px-8 sm:grid-cols-3'>
         <Card className='flex flex-col justify-between bg-gradient-to-tr from-indigo-500/20 from-10% via-sky-500/20 via-50% to-transparent to-100%'>
           <CardHeader>
             <CardTitle className='flex flex-col items-center justify-center gap-1 text-xl'>
@@ -159,7 +159,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
           </CardFooter>
         </Card>
       </div>
-      <div className='relative flex flex-col gap-4 overflow-hidden mt-32'>
+      <div className='relative mt-32 flex flex-col gap-4 overflow-hidden'>
         <h2 className='px-4 text-5xl font-semibold leading-none tracking-tight'>
           {dictionary.landing.content.numberTicker.title}
         </h2>
@@ -208,7 +208,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
           <Solution2 features={dictionary.landing.content.solution2.features} />
         </div>
       </div>
-      <div className='flex flex-col items-center justify-center gap-4 px-8 mt-32'>
+      <div className='mt-32 flex flex-col items-center justify-center gap-4 px-8'>
         <h2 className='mt-8 text-5xl font-semibold tracking-tight'>
           {dictionary.landing.earlyAccess.title}
         </h2>
