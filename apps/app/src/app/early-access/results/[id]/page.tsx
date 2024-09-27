@@ -208,11 +208,9 @@ const Page = async ({
                 <li>费率: {bestPSPFee}%</li>
                 <li>提现时间: {bestPSPDuration}</li>
                 <li>客服时间: {customerServiceMap[bestPSP[0]].join(', ')}</li>
-                <Link className='underline' href={linkMap[bestPSP[0]]}>
-                  <Button className='mt-2'>
-                    {dictionary.buttons.learnMore} <Icons.ChevronRight />
-                  </Button>
-                </Link>
+                <Button className='mt-2'>
+                  {dictionary.buttons.learnMore} <Icons.ChevronRight />
+                </Button>
               </ul>
             </TableCell>
           </TableRow>
@@ -252,19 +250,19 @@ const Page = async ({
           <TableRow>
             <TableCell className='bg-muted border'>基本服务</TableCell>
             <TableCell className='blur-sm'>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              请订阅以了解更多基本服务信息，如：提现时间、费率等
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell className='bg-muted border'>优缺点分析</TableCell>
             <TableCell className='blur-sm'>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              请订阅以了解更多优缺点分析，如：使用难易程度
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell className='bg-muted border'>其他用户点评</TableCell>
             <TableCell className='blur-sm'>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              请订阅以了解更多其他用户点评，如：客服服务质量
             </TableCell>
           </TableRow>
           <TableRow>
@@ -272,13 +270,13 @@ const Page = async ({
               可支持的货币与地区
             </TableCell>
             <TableCell className='blur-sm'>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              请订阅以了解更多可支持的货币与地区，如：支持的货币种类
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell className='bg-muted border'>额外服务</TableCell>
             <TableCell className='blur-sm'>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              请订阅以了解更多额外服务，如：提供的额外服务
             </TableCell>
           </TableRow>
         </TableBody>
@@ -300,30 +298,28 @@ const Page = async ({
                 <li>费率: {secondPSPFee}%</li>
                 <li>提现时间: {secondPSPDuration}</li>
                 <li>客服时间: {customerServiceMap[secondPSP[0]].join(', ')}</li>
-                <Link className='underline' href={linkMap[secondPSP[0]]}>
-                  <Button className='mt-2'>
-                    {dictionary.buttons.learnMore} <Icons.ChevronRight />
-                  </Button>
-                </Link>
+                <Button className='mt-2'>
+                  {dictionary.buttons.learnMore} <Icons.ChevronRight />
+                </Button>
               </ul>
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell className='bg-muted border'>基本服务</TableCell>
             <TableCell className='blur-sm'>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              请订阅以了解更多基本服务信息，如：提现时间、费率等
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell className='bg-muted border'>优缺点分析</TableCell>
             <TableCell className='blur-sm'>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              请订阅以了解更多优缺点分析，如：使用难易程度
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell className='bg-muted border'>其他用户点评</TableCell>
             <TableCell className='blur-sm'>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              请订阅以了解更多其他用户点评，如：客服服务质量
             </TableCell>
           </TableRow>
           <TableRow>
@@ -331,13 +327,13 @@ const Page = async ({
               可支持的货币与地区
             </TableCell>
             <TableCell className='blur-sm'>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              请订阅以了解更多可支持的货币与地区，如：支持的货币种类
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell className='bg-muted border'>额外服务</TableCell>
             <TableCell className='blur-sm'>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              请订阅以了解更多额外服务，如：提供的额外服务
             </TableCell>
           </TableRow>
         </TableBody>
@@ -359,30 +355,28 @@ const Page = async ({
                 <li>费率: {thirdPSPFee}%</li>
                 <li>提现时间: {thirdPSPDuration}</li>
                 <li>客服时间: {customerServiceMap[thirdPSP[0]].join(', ')}</li>
-                <Link className='underline' href={linkMap[thirdPSP[0]]}>
-                  <Button className='mt-2'>
-                    {dictionary.buttons.learnMore} <Icons.ChevronRight />
-                  </Button>
-                </Link>
+                <Button className='mt-2'>
+                  {dictionary.buttons.learnMore} <Icons.ChevronRight />
+                </Button>
               </ul>
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell className='bg-muted border'>基本服务</TableCell>
             <TableCell className='blur-sm'>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              请订阅以了解更多基本服务信息，如：提现时间、费率等
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell className='bg-muted border'>优缺点分析</TableCell>
             <TableCell className='blur-sm'>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              请订阅以了解更多优缺点分析，如：使用难易程度
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell className='bg-muted border'>其他用户点评</TableCell>
             <TableCell className='blur-sm'>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              请订阅以了解更多其他用户点评，如：客服服务质量
             </TableCell>
           </TableRow>
           <TableRow>
@@ -390,13 +384,13 @@ const Page = async ({
               可支持的货币与地区
             </TableCell>
             <TableCell className='blur-sm'>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              请订阅以了解更多可支持的货币与地区，如：支持的货币种类
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell className='bg-muted border'>额外服务</TableCell>
             <TableCell className='blur-sm'>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              请订阅以了解更多额外服务，如：提供的额外服务
             </TableCell>
           </TableRow>
         </TableBody>
