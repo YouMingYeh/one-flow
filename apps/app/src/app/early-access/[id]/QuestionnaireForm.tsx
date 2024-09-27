@@ -10,11 +10,11 @@ import { FormSelect } from '../../../components/form/FormSelect';
 import createSupabaseClientClient from '../../../../lib/supabase/client';
 
 const questionnaireFormSchema = z.object({
-  help: z.string().optional().nullable(),
+  help: z.string(),
   how: z.string(),
-  experience: z.string().optional().nullable(),
-  willing: z.boolean().optional().nullable(),
-  amount: z.string().optional().nullable(),
+  experience: z.string(),
+  willing: z.boolean(),
+  amount: z.string(),
   additional: z.string().optional().nullable(),
 });
 
@@ -28,7 +28,7 @@ export const QuestionnaireForm = ({
   const [isLoading, setIsLoading] = useState(false);
   const [done, setDone] = useState(false);
   const [experienceValue, setExperienceValue] = useState(3);
-  const [helpValue, setHelpValue] = useState(50);
+  const [helpValue, setHelpValue] = useState(3);
   const [amountValue, setAmountValue] = useState(500);
   const { toast } = useToast();
 
@@ -72,7 +72,18 @@ export const QuestionnaireForm = ({
   };
 
   return (
-    <AppForm onSubmit={onSubmit} schema={questionnaireFormSchema}>
+    <AppForm
+      defaultValues={{
+        help: '3',
+        how: '',
+        experience: '3',
+        willing: false,
+        amount: '500',
+        additional: '',
+      }}
+      onSubmit={onSubmit}
+      schema={questionnaireFormSchema}
+    >
       <div className='flex min-h-0 flex-1 flex-col gap-4'>
         <h2 className='text-xl font-semibold'>
           {dictionary.earlyAccess.questionnaire.title}
@@ -100,7 +111,14 @@ export const QuestionnaireForm = ({
           path='help'
           type='range'
         />
-        <p className='text-muted-foreground'>{helpValue}%</p>
+        <p className='text-muted-foreground'>
+          {helpValue} -
+          {
+            dictionary.earlyAccess.questionnaire.experience.mapping[
+              helpValue as 1 | 2 | 3 | 4 | 5
+            ]
+          }{' '}
+        </p>
         <br />
         <FormInputField<QuestionnaireFormValues>
           className='shadow-none'
@@ -123,11 +141,11 @@ export const QuestionnaireForm = ({
             ]
           }
         </p>
-
+        <br />
         <FormInputField<QuestionnaireFormValues>
           className='shadow-none'
           label={dictionary.earlyAccess.questionnaire.willing}
-          path='experience'
+          path='willing'
           type='checkbox'
         />
         <br />

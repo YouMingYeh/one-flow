@@ -1,4 +1,3 @@
-import type { UrlObject } from 'node:url';
 import {
   BarChartLabel,
   Button,
@@ -16,6 +15,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getDictionary } from '../../../i18n';
 import createSupabaseServerClient from '../../../../../lib/supabase/server';
+import LearnMoreDialogButton from './LearnMoreDialogButton';
 
 const Page = async ({
   params,
@@ -148,6 +148,7 @@ const Page = async ({
           {
             x: '原有的提款工具 (%)',
             y: originalRate,
+            fill: "grey",
           },
           {
             x: 'OneFlow 帮你找到 (%)',
@@ -200,9 +201,7 @@ const Page = async ({
                 <li>费率: {bestPSPFee}%</li>
                 <li>提现时间: {bestPSPDuration}</li>
                 <li>客服时间: {customerServiceMap[bestPSP[0]].join(', ')}</li>
-                <Button className='mt-2'>
-                  {dictionary.buttons.learnMore} <Icons.ChevronRight />
-                </Button>
+                <LearnMoreDialogButton />
               </ul>
             </TableCell>
           </TableRow>
@@ -231,11 +230,7 @@ const Page = async ({
                 <li>费率: {bestPSPFee}%</li>
                 <li>提现时间: {bestPSPDuration}</li>
                 <li>客服时间: {customerServiceMap[bestPSP[0]].join(', ')}</li>
-                <Link className='underline' href={linkMap[bestPSP[0]]}>
-                  <Button className='mt-2'>
-                    {dictionary.buttons.learnMore} <Icons.ChevronRight />
-                  </Button>
-                </Link>
+                <LearnMoreDialogButton />
               </ul>
             </TableCell>
           </TableRow>
@@ -290,9 +285,7 @@ const Page = async ({
                 <li>费率: {secondPSPFee}%</li>
                 <li>提现时间: {secondPSPDuration}</li>
                 <li>客服时间: {customerServiceMap[secondPSP[0]].join(', ')}</li>
-                <Button className='mt-2'>
-                  {dictionary.buttons.learnMore} <Icons.ChevronRight />
-                </Button>
+                <LearnMoreDialogButton />
               </ul>
             </TableCell>
           </TableRow>
@@ -347,9 +340,7 @@ const Page = async ({
                 <li>费率: {thirdPSPFee}%</li>
                 <li>提现时间: {thirdPSPDuration}</li>
                 <li>客服时间: {customerServiceMap[thirdPSP[0]].join(', ')}</li>
-                <Button className='mt-2'>
-                  {dictionary.buttons.learnMore} <Icons.ChevronRight />
-                </Button>
+                <LearnMoreDialogButton />
               </ul>
             </TableCell>
           </TableRow>
@@ -399,6 +390,8 @@ const Page = async ({
 };
 
 export default Page;
+
+
 
 type TierPricing = {
   tier: number;
@@ -584,14 +577,14 @@ const imagePathMap: Record<string, string> = {
   paypal: '/brand/paypal.png',
 };
 
-const linkMap: Record<string, UrlObject> = {
-  pingpong: new URL('https://www.pingpongx.com'),
-  lianlian: new URL('https://www.lianlianpay.com'),
-  worldfirst: new URL('https://www.worldfirst.com'),
-  hsbc_merchants_box: new URL('https://www.hsbc.com'),
-  zhihui_e: new URL('https://www.airwallex.com'),
-  airwallex: new URL('https://www.airwallex.com'),
-  skyee: new URL('https://www.skyee.com'),
-  payoneer: new URL('https://www.payoneer.com'),
-  paypal: new URL('https://www.paypal.com'),
-};
+// const linkMap: Record<string, UrlObject> = {
+//   pingpong: new URL('https://www.pingpongx.com'),
+//   lianlian: new URL('https://www.lianlianpay.com'),
+//   worldfirst: new URL('https://www.worldfirst.com'),
+//   hsbc_merchants_box: new URL('https://www.hsbc.com'),
+//   zhihui_e: new URL('https://www.airwallex.com'),
+//   airwallex: new URL('https://www.airwallex.com'),
+//   skyee: new URL('https://www.skyee.com'),
+//   payoneer: new URL('https://www.payoneer.com'),
+//   paypal: new URL('https://www.paypal.com'),
+// };

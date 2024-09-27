@@ -33,7 +33,7 @@ export function AppForm<T extends FieldValues>({
 
   useEffect(() => {
     reset(defaultValues);
-  }, [defaultValues, reset]);
+  }, [reset]);
 
   return (
     <FormProvider {...methods}>
