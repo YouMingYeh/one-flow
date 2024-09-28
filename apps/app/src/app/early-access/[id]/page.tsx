@@ -76,7 +76,7 @@ const Page = async ({
         </p>
       </div>
       <Suspense fallback={<Icons.Spinner className='mx-auto animate-spin' />}>
-        <QuestionnaireForm dictionary={dictionary} />
+        <QuestionnaireForm dictionary={dictionary} email={email} username={name} />
       </Suspense>
       <Suspense fallback={<Icons.Spinner className='mx-auto animate-spin' />}>
         <Card>

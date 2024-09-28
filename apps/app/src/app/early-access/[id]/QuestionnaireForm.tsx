@@ -8,6 +8,7 @@ import { FormInputField } from '../../../components/form/FormInputField';
 import type { Dictionary } from '../../../dictionaries';
 import { FormSelect } from '../../../components/form/FormSelect';
 import createSupabaseClientClient from '../../../../lib/supabase/client';
+import { sendEmail } from '../../../emails/utils';
 
 const questionnaireFormSchema = z.object({
   help: z.string(),
@@ -22,8 +23,12 @@ type QuestionnaireFormValues = z.infer<typeof questionnaireFormSchema>;
 
 export const QuestionnaireForm = ({
   dictionary,
+  email,
+  username,
 }: {
   dictionary: Dictionary;
+  email: string;
+  username: string;
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [done, setDone] = useState(false);
@@ -69,6 +74,7 @@ export const QuestionnaireForm = ({
     });
     setIsLoading(false);
     setDone(true);
+    await sendEmail(username, email);
   };
 
   return (
