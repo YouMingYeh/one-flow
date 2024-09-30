@@ -3,12 +3,15 @@
 import { z } from 'zod';
 import { Button, useToast } from 'ui';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { AppForm } from '../../../components/form/AppForm';
 import { FormInputField } from '../../../components/form/FormInputField';
 import type { Dictionary } from '../../../dictionaries';
 import { FormSelect } from '../../../components/form/FormSelect';
 import createSupabaseClientClient from '../../../../lib/supabase/client';
 import { sendEmail } from '../../../emails/utils';
+import { render } from '@react-email/components';
+import Email from '../../../emails/email';
 
 const questionnaireFormSchema = z.object({
   help: z.string(),
@@ -23,10 +26,12 @@ type QuestionnaireFormValues = z.infer<typeof questionnaireFormSchema>;
 
 export const QuestionnaireForm = ({
   dictionary,
+  id,
   email,
   username,
 }: {
   dictionary: Dictionary;
+  id: string;
   email: string;
   username: string;
 }) => {
@@ -36,6 +41,7 @@ export const QuestionnaireForm = ({
   const [helpValue, setHelpValue] = useState(3);
   const [amountValue, setAmountValue] = useState(500);
   const { toast } = useToast();
+  const router = useRouter();
 
   const onSubmit = async ({
     help,
@@ -74,7 +80,9 @@ export const QuestionnaireForm = ({
     });
     setIsLoading(false);
     setDone(true);
-    await sendEmail(username, email);
+    const content = await render(<Email id={id} username={username} />);
+    await sendEmail(content, email);
+    router.push(`/early-access/thanks/${id}`);
   };
 
   return (

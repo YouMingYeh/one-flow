@@ -117,7 +117,8 @@ const Page = async ({
     ? Number(data.current_rate.replace('%', ''))
     : data.current_rate ?? 0;
 
-  const originalRate = Number(currentRageNumber) || tier[originalPSP] || 1.0;
+  const originalRate =
+    Number(currentRageNumber) || maxWithdrawFee || tier[originalPSP] || 1.2;
 
   return (
     <div className='mx-auto flex h-full w-full flex-col justify-center gap-6 py-12 sm:w-2/3'>
@@ -148,7 +149,7 @@ const Page = async ({
           {
             x: '原有的提款工具 (%)',
             y: originalRate,
-            fill: "grey",
+            fill: 'grey',
           },
           {
             x: 'OneFlow 帮你找到 (%)',
@@ -390,8 +391,6 @@ const Page = async ({
 };
 
 export default Page;
-
-
 
 type TierPricing = {
   tier: number;

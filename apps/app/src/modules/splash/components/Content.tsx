@@ -47,7 +47,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
       <p className='text-muted-foreground text-xl'>
         {dictionary.landing.content.description}
       </p>
-      <div className='grid w-full grid-cols-1 gap-6 px-8 sm:grid-cols-3'>
+      <div className='grid w-full grid-cols-1 gap-6 px-8 md:grid-cols-3 max-w-[1500px]'>
         <Card className='flex flex-col justify-between bg-gradient-to-tr from-indigo-500/20 from-10% via-sky-500/20 via-50% to-transparent to-100%'>
           <CardHeader>
             <CardTitle className='flex flex-col items-center justify-center gap-1 text-xl'>

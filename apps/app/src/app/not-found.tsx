@@ -9,10 +9,10 @@ export default function NotFound() {
           <Icons.logo className='h-32 w-32' />
         </div>
         <div className='flex items-center justify-center'>
-          <p className='text-lg font-semibold text-gray-900'>Page not found</p>
+          <p className='text-lg font-semibold text-gray-900'>找不到页面</p>
         </div>
-        <Link className={buttonVariants({})} href='/app'>
-          Go to dashboard
+        <Link className={buttonVariants({})} href='/'>
+          回到首页
         </Link>
       </div>
     </div>

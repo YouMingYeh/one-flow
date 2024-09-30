@@ -6,6 +6,7 @@ import { Toaster } from 'ui';
 import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from '../components/layouts/ThemeProvider';
 import Providers from './providers';
+import { LanguageSetter } from '../components/layouts/LanguageSetter';
 
 const inter = Merriweather({ weight: ['400', '700'], subsets: ['latin'] });
 
@@ -70,6 +71,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
       >
         <Providers>{children}</Providers>
         <Toaster />
+        <LanguageSetter />
       </ThemeProvider>
       <Analytics />
     </body>

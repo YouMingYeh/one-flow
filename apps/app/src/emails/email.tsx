@@ -1,20 +1,24 @@
 import {
   Body,
+  Column,
   Container,
   Head,
   Heading,
   Html,
   Preview,
+  Row,
   Section,
   Text,
+  Button,
 } from '@react-email/components';
 import * as React from 'react';
 
 interface EmailProps {
+  id: string;
   username?: string;
 }
 
-export const Email = ({ username }: EmailProps) => (
+const Email = ({ username, id }: EmailProps) => (
   <Html>
     <Head />
     <Preview>🌍 体验 OneFlow Demo 后，邀请您成为我们的内测用户！</Preview>
@@ -71,6 +75,31 @@ export const Email = ({ username }: EmailProps) => (
           我们期待您能为日后的产品更新提供真实可靠的意见，我们期待与您共同推动
           OneFlow， 成为每一位跨境电商卖家的最佳跨境收款伙伴。
         </Text>
+        <Row>
+          <Column align='center'>
+            <Row>
+              <td align='center' className='w-1/2 pl-[16px]' colSpan={1}>
+                <Button
+                  className='box-border w-full rounded-[8px] border border-solid border-gray-200 bg-white px-[20px] py-[12px] text-center font-semibold text-gray-900'
+                  href='https://one-flow.cn'
+                >
+                  目前没有兴趣
+                </Button>
+              </td>
+              <td align='center' className='w-1/2 pr-[16px]' colSpan={1}>
+                <Button
+                  className='box-border w-full rounded-[8px] bg-indigo-600 px-[20px] py-[12px] text-center font-semibold text-white'
+                  href={`https://one-flow.cn/early-access/email/${id}`}
+                >
+                  立即成为内测用户
+                </Button>
+              </td>
+            </Row>
+          </Column>
+        </Row>
+        <Text style={text}>
+          如果您有任何问题或疑问，请随时联系我们的客服团队，我们将竭诚为您服务。
+        </Text>
         <Text style={text}>
           祝生意兴隆，
           <br />
@@ -87,8 +116,6 @@ export const Email = ({ username }: EmailProps) => (
     </Body>
   </Html>
 );
-
-export default Email;
 
 const footerText = {
   fontSize: '12px',
@@ -144,3 +171,5 @@ const text = {
   fontSize: '14px',
   lineHeight: '24px',
 };
+
+export default Email;

@@ -33,7 +33,7 @@ const Page = async ({
     .single()) as {
     data: {
       id: string;
-      name: string;
+      name: string | null;
       email: string;
       phone: string;
       country: string;
@@ -76,7 +76,12 @@ const Page = async ({
         </p>
       </div>
       <Suspense fallback={<Icons.Spinner className='mx-auto animate-spin' />}>
-        <QuestionnaireForm dictionary={dictionary} email={email} username={name} />
+        <QuestionnaireForm
+          dictionary={dictionary}
+          email={email}
+          id={id}
+          username={name || ''}
+        />
       </Suspense>
       <Suspense fallback={<Icons.Spinner className='mx-auto animate-spin' />}>
         <Card>

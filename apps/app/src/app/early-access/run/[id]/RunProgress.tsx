@@ -108,12 +108,12 @@ export default function RunProgress({
         <AccordionItem value='step-1'>
           <AccordionTrigger className='text-xl'>
             {step === 1 ? (
-              <p className='flex gap-2 font-bold'>
+              <p className='flex gap-2 text-left'>
                 获取实时数据
                 <Icons.Spinner className='animate-spin' />
               </p>
             ) : (
-              <p className='flex gap-2'>
+              <p className='flex gap-2 text-left'>
                 获取实时数据{' '}
                 {step > 1 && <Icons.Check className='text-green-500' />}
               </p>
@@ -124,12 +124,12 @@ export default function RunProgress({
         <AccordionItem value='step-2'>
           <AccordionTrigger className='text-xl'>
             {step === 2 ? (
-              <p className='flex gap-2 font-bold'>
+              <p className='flex gap-2 text-left'>
                 计算最适合您的收费
                 <Icons.Spinner className='animate-spin' />
               </p>
             ) : (
-              <p className='flex gap-2'>
+              <p className='flex gap-2 text-left'>
                 计算最适合您的收费{' '}
                 {step > 2 && <Icons.Check className='text-green-500' />}
               </p>
@@ -142,12 +142,12 @@ export default function RunProgress({
         <AccordionItem value='step-3'>
           <AccordionTrigger className='text-xl'>
             {step === 3 ? (
-              <p className='flex gap-2 font-bold'>
+              <p className='flex gap-2 text-left'>
                 计算最适合您的的收款天数
                 <Icons.Spinner className='animate-spin' />
               </p>
             ) : (
-              <p className='flex gap-2'>
+              <p className='flex gap-2 text-left'>
                 计算最适合您的的收款天数{' '}
                 {step > 3 && <Icons.Check className='text-green-500' />}
               </p>
@@ -160,12 +160,12 @@ export default function RunProgress({
         <AccordionItem value='step-4'>
           <AccordionTrigger className='text-xl'>
             {step === 4 ? (
-              <p className='flex gap-2 font-bold'>
+              <p className='flex gap-2 text-left'>
                 您的客户服务需求
                 <Icons.Spinner className='animate-spin' />
               </p>
             ) : (
-              <p className='flex gap-2'>
+              <p className='flex gap-2 text-left'>
                 您的客户服务需求{' '}
                 {step > 4 && <Icons.Check className='text-green-500' />}
               </p>
@@ -176,13 +176,13 @@ export default function RunProgress({
         <AccordionItem value='step-5'>
           <AccordionTrigger className='text-xl'>
             {step === 5 ? (
-              <p className='flex gap-2 font-bold'>
+              <p className='flex gap-2 text-left'>
                 就快好了！立马找到最适合您的解决方案
                 <Icons.Spinner className='animate-spin' />
               </p>
             ) : (
-              <p className='flex gap-2'>
-                就快好了！立马找到最适合您的解决方案{' '}
+              <p className='flex gap-2 text-left'>
+                就快好了！立马找到最适合您的解决方案
                 {step > 5 && <Icons.Check className='text-green-500' />}
               </p>
             )}
