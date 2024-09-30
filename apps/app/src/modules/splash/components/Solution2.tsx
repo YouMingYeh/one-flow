@@ -59,8 +59,8 @@ export function Solution2({
           </Circle>
         </div>
         <div className='flex flex-col justify-center'>
-          <Circle className='size-16' ref={div6Ref}>
-            <Icons.logo className='h-16 w-16' />
+          <Circle className='size-16 bg-transparent border-none shadow-none' ref={div6Ref}>
+            <Icons.logo className='h-16 w-16 bg-background' />
           </Circle>
         </div>
         <div className='flex flex-col justify-center gap-2'>

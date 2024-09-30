@@ -11,9 +11,9 @@ const inter = Merriweather({ weight: ['400', '700'], subsets: ['latin'] });
 
 // TODO: update the site metadata
 export const metadata: Metadata = {
-  title: 'OneFlow | 您的一站式自动化金融工作流程。',
+  title: 'OneFlow | 一站式跨境收款整合方案。',
   description:
-    'OneFlow 是您的一站式自动化金融工作流程。它帮助您管理和优化金融流程，找到最佳的金融解决方案。从接受付款到处理交易，一切都在一个地方完成。',
+    'OneFlow 致力于为跨境电商卖家解决跨境收款提现端遇到的各种痛点。那么久了！您受够了吗？数不清的收款渠道、模糊不清的阶梯式收费、时有时无的优惠活动，通过 OneFlow 收款小助手，我们会根据您的业务情况、特点、偏好，推荐最适合您的收款网关，更可提供定制化的财资解决方案。通过我们强大的 APIs 及算法，为众多商户提供极致的收款体验。',
   keywords: [
     'OneFlow',
     '金融工作流程',
@@ -25,11 +25,15 @@ export const metadata: Metadata = {
     '金融服务',
     '金融科技',
     '金融软件',
+    '金融技术',
+    '金融解决方案',
+    '金融系统',
+    '金融平台',
   ],
   openGraph: {
-    title: 'OneFlow | 您的一站式自动化金融工作流程。',
+    title: 'OneFlow | 一站式跨境收款整合方案。',
     description:
-      'OneFlow 是您的一站式自动化金融工作流程。它帮助您管理和优化金融流程，找到最佳的金融解决方案。从接受付款到处理交易，一切都在一个地方完成。',
+      'OneFlow 致力于为跨境电商卖家解决跨境收款提现端遇到的各种痛点。那么久了！您受够了吗？数不清的收款渠道、模糊不清的阶梯式收费、时有时无的优惠活动，通过 OneFlow 收款小助手，我们会根据您的业务情况、特点、偏好，推荐最适合您的收款网关，更可提供定制化的财资解决方案。通过我们强大的 APIs 及算法，为众多商户提供极致的收款体验。',
     type: 'website',
     siteName: 'OneFlow',
     images: [
@@ -37,7 +41,7 @@ export const metadata: Metadata = {
         url: 'https://one-flow.cn/icon512_rounded.png',
         width: 1200,
         height: 630,
-        alt: 'OneFlow | 您的一站式自动化金融工作流程。',
+        alt: 'OneFlow | 一站式跨境收款整合方案。',
       },
     ],
   },

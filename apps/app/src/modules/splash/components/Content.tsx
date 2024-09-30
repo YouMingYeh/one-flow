@@ -14,11 +14,11 @@ import type { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import type { Dictionary } from '../../../dictionaries';
 import { DrawerDialogButton } from '../../../components/layouts/DrawerDialogButton';
 import EarlyAccessButton from './EarlyAccessButton';
-import { Solution2 } from './Solution2';
 import ChooseCard from './choose-card.svg';
 import Analysis from './analysis.svg';
 import Solution from './solution.svg';
 import Predict from './predict.svg';
+import { Solution1 } from './Solution1';
 
 export default function Content({ dictionary }: { dictionary: Dictionary }) {
   return (
@@ -205,7 +205,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
             {dictionary.landing.content.solution2.description}
           </h3>
 
-          <Solution2 features={dictionary.landing.content.solution2.features} />
+          <Solution1 />
         </div>
       </div>
       <div className='mt-32 flex flex-col items-center justify-center gap-4 px-8'>

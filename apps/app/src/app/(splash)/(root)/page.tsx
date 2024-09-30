@@ -7,12 +7,12 @@ import { getDictionary } from '../../i18n';
 import Content from '../../../modules/splash/components/Content';
 import { ThemeToggle } from '../../../components/layouts/ThemeToggle';
 // import { LanguageToggle } from '../../../components/layouts/LanguageToggle';
-import { Solution1 } from '../../../modules/splash/components/Solution1';
+import { Solution2 } from '../../../modules/splash/components/Solution2';
 
 const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
   const dictionary = getDictionary(searchParams.lang);
   return (
-    <section className=''>
+    <section className='flex flex-col justify-center items-center w-screen'>
       <div className='mb-8 flex flex-col items-center gap-4 text-center'>
         <div className='grid w-full grid-rows-1 place-content-center space-x-4 bg-gradient-to-t from-indigo-500/20 from-10% via-sky-500/20 via-50% to-transparent to-100% px-8 py-8 md:h-[90vh] md:grid-cols-2 md:gap-8'>
           <div className='flex flex-col items-center justify-center'>
@@ -35,7 +35,7 @@ const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
             </Suspense>
           </div>
           <div className='hidden h-full items-center justify-center md:flex'>
-            <Solution1 />
+            <Solution2 features={dictionary.landing.content.solution2.features}/>
           </div>
         </div>
 
