@@ -17,7 +17,8 @@ const Page = async () => {
   const { early_access: earlyAccess } = data;
   void supabase
     .from('state')
-    .upsert({ id: 'state', early_access: earlyAccess + 1 });
+    .update({ early_access: earlyAccess + 1 })
+    .eq('id', data.id);
 
   return (
     <section className='flex flex-col items-center justify-center gap-4 pt-16'>
