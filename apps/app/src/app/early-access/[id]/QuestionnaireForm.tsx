@@ -59,7 +59,7 @@ export const QuestionnaireForm = ({
         help,
         experience,
         willing,
-        amount,
+        amount: Number(amount),
         additional,
       },
     ]);
