@@ -23,7 +23,7 @@ const Page = async () => {
     <section className='flex flex-col items-center justify-center gap-4 pt-16'>
       <h1 className='text-2xl font-bold'>恭喜你受邀成为 OneFlow 的第</h1>
       <p className='text-primary text-4xl font-bold'>
-        <NumberTicker className='text-primary' value={earlyAccess + 1} />
+        <NumberTicker className='text-primary' value={earlyAccess + 101} />
       </p>
       <h1 className='text-2xl font-bold'>个内侧用户！</h1>
 
