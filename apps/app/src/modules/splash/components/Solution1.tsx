@@ -15,7 +15,7 @@ const Circle = forwardRef<
   return (
     <div
       className={cn(
-        'bg-background size-12 z-10 flex items-center justify-center rounded-full border-2 p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]',
+        'bg-background z-10 flex size-12 items-center justify-center rounded-full border-2 p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]',
         className,
       )}
       ref={ref}
@@ -42,12 +42,12 @@ export function Solution1({ className }: { className?: string }) {
       className={cn('relative h-64 w-full md:h-96', className)}
       ref={containerRef}
     >
-      <div className='size-full relative flex h-full max-w-lg flex-row items-stretch justify-between gap-10 m-auto'>
+      <div className='relative m-auto flex size-full h-full max-w-lg flex-row items-stretch justify-between gap-10'>
         <Circle
-          className='absolute bottom-24 left-1/4 z-20 aspect-square'
+          className='absolute bottom-24 left-1/4 z-20 aspect-square size-16 border-none bg-transparent shadow-none'
           ref={div7Ref}
         >
-          <Icons.User className='h-12 w-12' />
+          <Icons.logo className='bg-background h-16 w-16' />
         </Circle>
         <Circle
           className='absolute right-8 top-4 z-20 aspect-square'
