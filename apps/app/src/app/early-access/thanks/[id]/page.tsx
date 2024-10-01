@@ -4,7 +4,6 @@ import type { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import { NumberTicker } from 'ui';
 import createSupabaseServerClient from '../../../../../lib/supabase/server';
 import Inbox from './inbox.svg';
-import Link from 'next/link';
 
 const Page = async () => {
   const supabase = await createSupabaseServerClient();
@@ -30,15 +29,6 @@ const Page = async () => {
 
       <p className='text-md'>请注意查收我们的邮件并确认您的内测意愿</p>
       <Image alt='inbox' className='m-auto w-72' src={Inbox as StaticImport} />
-      <Link href='https://mail.google.com'>
-        <span className='text-primary'>打开 Gmail</span>
-      </Link>
-      <Link href='https://mail.qq.com'>
-        <span className='text-primary'>打开 QQ 邮箱</span>
-      </Link>
-      <Link href='https://mail.163.com'>
-        <span className='text-primary'>打开 网易邮箱</span>
-      </Link>
     </section>
   );
 };
