@@ -1,10 +1,7 @@
 'use server';
 import { createTransport } from 'nodemailer';
 
-export const sendEmail = async (
-  content: string,
-  recipient: string,
-) => {
+export const sendEmail = async (content: string, recipient: string) => {
   try {
     const transporter = createTransport({
       host: 'smtp-mail.outlook.com',
@@ -28,13 +25,13 @@ export const sendEmail = async (
     void transporter.sendMail({
       from: 'team@one-flow.cn',
       to: 'jasoncjc0514@gmail.com',
-      subject: `剛剛邀请了${  recipient  }成为 OneFlow 的内测用户`,
-      text: `已邀請${  recipient  }成為 OneFlow 的内测用户`,
+      subject: `剛剛邀请了${recipient}成为 OneFlow 的内测用户`,
+      text: `已邀請${recipient}成為 OneFlow 的内测用户`,
     });
     // Remove console.log to address linter error
-    return response;
+    return { data: response, error: null };
   } catch (error) {
     // Handle the error appropriately
-    return error;
+    return { data: null, error };
   }
 };

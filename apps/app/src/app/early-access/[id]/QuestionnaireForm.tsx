@@ -81,7 +81,14 @@ export const QuestionnaireForm = ({
     setIsLoading(false);
     setDone(true);
     const content = await render(<Email id={id} username={username} />);
-    await sendEmail(content, email);
+    const { error: error2 } = await sendEmail(content, email);
+    if (error2) {
+      toast({
+        title: 'Error',
+        description: 'Failed to send email',
+        variant: 'destructive',
+      });
+    }
     router.push(`/early-access/thanks/${id}`);
   };
 
