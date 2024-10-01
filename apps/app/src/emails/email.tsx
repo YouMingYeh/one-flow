@@ -78,11 +78,11 @@ const Email = ({ username, id }: EmailProps) => (
         </Text>
         <Row>
           <Column align='center'>
-            <Row>
+            <Row cellSpacing={4}>
               <td
                 align='center'
                 colSpan={1}
-                style={{ paddingLeft: 16, width: '50%', marginRight: 4 }}
+                style={{ paddingLeft: 16, width: '50%' }}
               >
                 <Button
                   href='https://one-flow.cn'
