@@ -9,7 +9,6 @@ export const LanguageSetter: FC = () => {
     // get client side cookie
     if (typeof window !== 'undefined') {
       setCookie('lang', "zh");
-      window.location.reload();
     }
   }, []);
 
