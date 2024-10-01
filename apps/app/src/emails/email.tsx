@@ -53,6 +53,7 @@ const Email = ({ username, id }: EmailProps) => (
           <br />
           2️⃣
           直接参与反馈：回复本邮件或点击下方按钮，告诉我们您有兴趣加入内测团队，您的声音将直接影响产品的发展！
+          <br />
         </Text>
 
         <Text style={text}>
