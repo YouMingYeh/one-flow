@@ -23,7 +23,7 @@ export const ThemeToggle: FC = () => {
 
   React.useEffect(() => {
     setTheme('light');
-  }, []);
+  }, [setTheme]);
 
   return (
     <DropdownMenu>
