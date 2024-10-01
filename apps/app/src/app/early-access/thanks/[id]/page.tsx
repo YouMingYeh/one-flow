@@ -26,7 +26,7 @@ const Page = async () => {
       <p className='text-primary text-4xl font-bold'>
         <NumberTicker className='text-primary' value={earlyAccess + 101} />
       </p>
-      <h1 className='text-2xl font-bold'>个内侧用户！</h1>
+      <h1 className='text-2xl font-bold'>个内测用户！</h1>
 
       <p className='text-md'>请注意查收我们的邮件并确认您的内测意愿</p>
       <Image alt='inbox' className='m-auto w-72' src={Inbox as StaticImport} />
