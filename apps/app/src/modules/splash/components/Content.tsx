@@ -19,6 +19,7 @@ import Analysis from './analysis.svg';
 import Solution from './solution.svg';
 import Predict from './predict.svg';
 import { Solution1 } from './Solution1';
+import { Solution2 } from './Solution2';
 
 export default function Content({ dictionary }: { dictionary: Dictionary }) {
   return (
@@ -47,7 +48,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
       <p className='text-muted-foreground text-xl'>
         {dictionary.landing.content.description}
       </p>
-      <div className='grid w-full grid-cols-1 gap-6 px-8 md:grid-cols-3 max-w-[1500px]'>
+      <div className='grid w-full max-w-[1500px] grid-cols-1 gap-6 px-8 md:grid-cols-3'>
         <Card className='flex flex-col justify-between bg-gradient-to-tr from-indigo-500/20 from-10% via-sky-500/20 via-50% to-transparent to-100%'>
           <CardHeader>
             <CardTitle className='flex flex-col items-center justify-center gap-1 text-xl'>
@@ -197,7 +198,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
         <p className='text-5xl font-semibold'>
           {dictionary.landing.content.howWeHelp}
         </p>
-        <div className='mt-8 grid w-full grid-cols-1 place-content-center gap-6'>
+        <div className='mt-8 grid w-full grid-cols-1 place-content-center gap-6 pb-16'>
           <h2 className='px-4 text-3xl font-semibold leading-none tracking-tight'>
             {dictionary.landing.content.solution2.title}
           </h2>
@@ -205,7 +206,11 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
             {dictionary.landing.content.solution2.description}
           </h3>
 
-          <Solution1 />
+          <Solution1 className='hidden md:block' />
+          <Solution2
+            className='flex md:hidden'
+            features={dictionary.landing.content.solution2.features}
+          />
         </div>
       </div>
       <div className='mt-32 flex flex-col items-center justify-center gap-4 px-8'>
