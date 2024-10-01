@@ -1,40 +1,43 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import Negotiator from 'negotiator';
-import { match } from '@formatjs/intl-localematcher';
+// import Negotiator from 'negotiator';
+// import { match } from '@formatjs/intl-localematcher';
 import { createClient } from '../lib/supabase/middleware';
-import * as i18n from './app/i18n';
+// import * as i18n from './app/i18n';
 
-const getLocale = (request: NextRequest) => {
-  const negotiatorHeaders: Record<string, string> = {};
-  request.headers.forEach((value, key) => {
-    negotiatorHeaders[key] = value;
-  });
+// const getLocale = (request: NextRequest) => {
+//   const negotiatorHeaders: Record<string, string> = {};
+//   request.headers.forEach((value, key) => {
+//     negotiatorHeaders[key] = value;
+//   });
 
-  const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
-  const defaultLocale = i18n.defaultLanguage;
-  const locales: string[] = i18n.locales;
-  try {
-    return match(languages, locales, defaultLocale);
-  } catch (e) {
-    return defaultLocale;
-  }
-};
+//   const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
+//   const defaultLocale = i18n.defaultLanguage;
+//   const locales: string[] = i18n.locales;
+//   try {
+//     return match(languages, locales, defaultLocale);
+//   } catch (e) {
+//     return defaultLocale;
+//   }
+// };
 
 export async function middleware(request: NextRequest) {
   try {
-    const searchParams = request.nextUrl.searchParams;
+    // const searchParams = request.nextUrl.searchParams;
     const url = request.nextUrl.clone();
-    const cookies = request.cookies;
-    if (!searchParams.has('lang')) {
-      const locale = getLocale(request);
-      url.searchParams.set('lang', locale);
-    }
+    // const cookies = request.cookies;
+    // if (!searchParams.has('lang')) {
+    //   const locale = getLocale(request);
+    //   url.searchParams.set('lang', locale);
+    // }
 
-    const langCookies = cookies.get('lang');
-    const langSearch = searchParams.get('lang');
-    if (langCookies && langCookies.value !== langSearch) {
-      url.searchParams.set('lang', langCookies.value);
-    }
+    // const langCookies = cookies.get('lang');
+    // const langSearch = searchParams.get('lang');
+    // if (langCookies && langCookies.value !== langSearch) {
+    //   url.searchParams.set('lang', langCookies.value);
+    // }
+
+    const locale = 'zh';
+    url.searchParams.set('lang', locale);
 
     // This `try/catch` block is only here for the interactive tutorial.
     // Feel free to remove once you have Supabase connected.
