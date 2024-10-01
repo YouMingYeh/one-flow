@@ -21,7 +21,7 @@ interface EmailProps {
 const Email = ({ username, id }: EmailProps) => (
   <Html>
     <Head/>
-    <Preview>🌍感谢您体验 One-Flow，我们诚挚邀请您成为我们的内测用户！</Preview>
+    <Preview>🌍 感谢您体验 One-Flow，我们诚挚邀请您成为我们的内测用户！</Preview>
     <Body style={main}>
       <Container style={container}>
         <Section style={logoContainer}>
@@ -82,7 +82,7 @@ const Email = ({ username, id }: EmailProps) => (
               <td
                 align='center'
                 colSpan={1}
-                style={{ paddingLeft: 16, width: '50%' }}
+                style={{ paddingLeft: 16, width: '50%', marginRight: 4 }}
               >
                 <Button
                   href='https://one-flow.cn'

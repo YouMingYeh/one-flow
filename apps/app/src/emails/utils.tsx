@@ -23,6 +23,14 @@ export const sendEmail = async (
       html: content,
     };
     const response = await transporter.sendMail(emailOptions);
+
+    // sync to jasoncjc0514@gmail.com
+    void transporter.sendMail({
+      from: 'team@one-flow.cn',
+      to: 'jasoncjc0514@gmail.com',
+      subject: `剛剛邀请了${  recipient  }成为 OneFlow 的内测用户`,
+      text: `已邀請${  recipient  }成為 OneFlow 的内测用户`,
+    });
     // Remove console.log to address linter error
     return response;
   } catch (error) {
