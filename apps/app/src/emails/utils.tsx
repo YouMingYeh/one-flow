@@ -1,5 +1,21 @@
 'use server';
 import { createTransport } from 'nodemailer';
+import { render } from '@react-email/components';
+import Email from './email';
+
+export const getContent = async (
+  id: string,
+  username: string,
+): Promise<
+  { content: string; error: null } | { content: null; error: Error }
+> => {
+  try {
+    const content = await render(<Email id={id} username={username} />);
+    return { content, error: null };
+  } catch (error) {
+    return { content: null, error: error as Error };
+  }
+};
 
 export const sendEmail = async (content: string, recipient: string) => {
   try {

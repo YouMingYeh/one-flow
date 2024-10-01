@@ -9,9 +9,7 @@ import { FormInputField } from '../../../components/form/FormInputField';
 import type { Dictionary } from '../../../dictionaries';
 import { FormSelect } from '../../../components/form/FormSelect';
 import createSupabaseClientClient from '../../../../lib/supabase/client';
-import { sendEmail } from '../../../emails/utils';
-import { render } from '@react-email/components';
-import Email from '../../../emails/email';
+import { getContent, sendEmail } from '../../../emails/utils';
 
 const questionnaireFormSchema = z.object({
   help: z.string(),
@@ -80,9 +78,17 @@ export const QuestionnaireForm = ({
     });
     setIsLoading(false);
     setDone(true);
-    const content = await render(<Email id={id} username={username} />);
-    const { error: error2 } = await sendEmail(content, email);
+    const { content, error: error2 } = await getContent(id, username);
     if (error2) {
+      toast({
+        title: 'Error',
+        description: 'Failed to get email content',
+        variant: 'destructive',
+      });
+      return;
+    }
+    const { error: error3 } = await sendEmail(content, email);
+    if (error3) {
       toast({
         title: 'Error',
         description: 'Failed to send email',
