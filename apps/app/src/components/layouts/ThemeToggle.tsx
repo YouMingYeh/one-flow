@@ -21,10 +21,6 @@ export const ThemeToggle: FC = () => {
     searchParams.get('lang') ?? defaultLanguage,
   );
 
-  React.useEffect(() => {
-    setTheme('light');
-  }, [setTheme]);
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
