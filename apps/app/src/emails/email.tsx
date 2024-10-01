@@ -9,6 +9,7 @@ import {
   Section,
   Text,
   Button,
+  Head,
 } from '@react-email/components';
 import * as React from 'react';
 
@@ -19,6 +20,7 @@ interface EmailProps {
 
 const Email = ({ username, id }: EmailProps) => (
   <Html>
+    <Head/>
     <Preview>🌍感谢您体验 One-Flow，我们诚挚邀请您成为我们的内测用户！</Preview>
     <Body style={main}>
       <Container style={container}>
@@ -53,7 +55,6 @@ const Email = ({ username, id }: EmailProps) => (
           <br />
           2️⃣
           直接参与反馈：回复本邮件或点击下方按钮，告诉我们您有兴趣加入内测团队，您的声音将直接影响产品的发展！
-          <br />
         </Text>
 
         <Text style={text}>
