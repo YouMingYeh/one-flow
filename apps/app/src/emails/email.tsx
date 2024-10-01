@@ -20,8 +20,10 @@ interface EmailProps {
 
 const Email = ({ username, id }: EmailProps) => (
   <Html>
-    <Head/>
-    <Preview>🌍 感谢您体验 One-Flow，我们诚挚邀请您成为我们的内测用户！</Preview>
+    <Head />
+    <Preview>
+      🌍 感谢您体验 One-Flow，我们诚挚邀请您成为我们的内测用户！
+    </Preview>
     <Body style={main}>
       <Container style={container}>
         <Section style={logoContainer}>
@@ -34,7 +36,7 @@ const Email = ({ username, id }: EmailProps) => (
           <Text style={brand}>OneFlow</Text>
         </Section>
         <Heading style={h1}>
-          🌍感谢您体验 One-Flow，我们诚挚邀请您成为我们的内测用户！
+          🌍 感谢您体验 One-Flow，我们诚挚邀请您成为我们的内测用户！
         </Heading>
         <Text style={heroText}>亲爱的 {username ? username : '用户'}，</Text>
 
@@ -63,7 +65,7 @@ const Email = ({ username, id }: EmailProps) => (
           🎁 免费使用权：在正式发布前，全面体验 OneFlow
           的所有功能，找到最适合您的收款渠道。
           <br />
-          💎 专属优惠：享受特别折扣，优化跨境收款成本，确保最佳性价比。
+          💎 专专属优惠：享受特别折扣，优化跨境收款成本，确保最佳性价比。
           <br />
           🚀 首发体验：优先体验即将推出的新功能，包括定制化收款解决方案和强大
           API 支持。
