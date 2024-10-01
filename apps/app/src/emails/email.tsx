@@ -2,7 +2,6 @@ import {
   Body,
   Column,
   Container,
-  Head,
   Heading,
   Html,
   Preview,
@@ -20,8 +19,7 @@ interface EmailProps {
 
 const Email = ({ username, id }: EmailProps) => (
   <Html>
-    <Head />
-    <Preview>🌍 体验 OneFlow Demo 后，邀请您成为我们的内测用户！</Preview>
+    <Preview>🌍感谢您体验 One-Flow，我们诚挚邀请您成为我们的内测用户！</Preview>
     <Body style={main}>
       <Container style={container}>
         <Section style={logoContainer}>
@@ -34,46 +32,47 @@ const Email = ({ username, id }: EmailProps) => (
           <Text style={brand}>OneFlow</Text>
         </Section>
         <Heading style={h1}>
-          🌍 体验 OneFlow Demo 后，邀请您成为我们的内测用户！
+          🌍感谢您体验 One-Flow，我们诚挚邀请您成为我们的内测用户！
         </Heading>
         <Text style={heroText}>亲爱的 {username ? username : '用户'}，</Text>
 
         <Text style={text}>
-          非常感谢您使用 OneFlow 的产品
-          Demo！我们希望这次体验能为您带来流畅的跨境收款体验，并帮助您解决在收款端遇到的痛点。市场上的跨境收款工具繁多，很多时候无法在最短时间内选择最适合您的工具。但我们相信，通过
-          OneFlow，您可以找到性价比最高、最符合您业务需求的解决方案，节省时间并最大化优化收款支出。
+          在这金秋时节，我们热烈祝贺您国庆节快乐！非常感谢您体验 OneFlow
+          的Demo！我们希望这次体验能为您带来流畅的跨境收款解决方案，帮助您解决收款上的痛点。
         </Text>
         <Text style={text}>
-          如果您对 OneFlow Demo 感到满意并希望进一步参与内测，我们正式邀请您成为
-          OneFlow
-          的首批内测用户。作为跨境电商领域的重要一员，您的加入将为我们提供宝贵的反馈，帮助我们不断优化产品的同时提升您的用户体验。
+          现在，我们诚挚地邀请您成为 OneFlow 的内测用户！
+          作为跨境电商领域的重要一员，您的反馈对我们至关重要，将帮助我们不断优化产品，提升您的使用体验。
+        </Text>
+
+        <Text style={text}>
           如何成为内测用户？
-        </Text>
-
-        <Text style={text}>
-          请留意日后的邮件/短信/微信推送。我们将不时为您发送详细的内测用户指南、产品更新信息，并协助您开始体验
-          OneFlow 的所有功能。
-        </Text>
-
-        <Text style={text}>
-          作为内测用户，您将享受：
           <br />
-          🎁 免费使用权：在正式发布之前，全面体验 OneFlow
+          1️⃣
+          留意我们的邮件/短信/微信推送：我们将定期发送详细的内测用户指南和产品更新信息。
+          <br />
+          2️⃣
+          直接参与反馈：回复本邮件或点击下方按钮，告诉我们您有兴趣加入内测团队，您的声音将直接影响产品的发展！
+        </Text>
+
+        <Text style={text}>
+          成为内测用户的好处：
+          <br />
+          🎁 免费使用权：在正式发布前，全面体验 OneFlow
           的所有功能，找到最适合您的收款渠道。
           <br />
           💎 专属优惠：享受特别折扣，优化跨境收款成本，确保最佳性价比。
           <br />
-          🚀
-          首发体验：优先体验我们即将推出的新功能，包括定制化收款解决方案和强大
+          🚀 首发体验：优先体验即将推出的新功能，包括定制化收款解决方案和强大
           API 支持。
           <br />
           🗣️
-          专家咨询：与跨境支付领域专家进行一对一免费咨询，帮助您解决实际挑战。
+          专家咨询：有机会与跨境支付领域专家进行一对一免费咨询，帮助您解决实际挑战。
           <br />
         </Text>
         <Text style={text}>
-          我们期待您能为日后的产品更新提供真实可靠的意见，我们期待与您共同推动
-          OneFlow， 成为每一位跨境电商卖家的最佳跨境收款伙伴。
+          在这个欢庆的节日里，我们期待您的加入，携手推动
+          OneFlow，成为每位跨境电商卖家的最佳收款伙伴。您的真实反馈将直接影响我们的产品发展，帮助我们提升用户体验。再次祝您国庆节快乐，愿您假期愉快！
         </Text>
         <Row>
           <Column align='center'>
@@ -102,7 +101,7 @@ const Email = ({ username, id }: EmailProps) => (
                     color: 'rgb(17,24,39)',
                   }}
                 >
-                  目前没有兴趣
+                  我还没准备好迎接收款革命。。。
                 </Button>
               </td>
               <td
@@ -126,7 +125,7 @@ const Email = ({ username, id }: EmailProps) => (
                     color: 'rgb(255,255,255)',
                   }}
                 >
-                  立即成为内测用户
+                  快给我这款收款神器的内测通行证！！
                 </Button>
               </td>
             </Row>
