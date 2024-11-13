@@ -172,7 +172,7 @@ export default function NewPage({ searchParams: { query } }: NewPageProps) {
                           alt='Adastra'
                           className='h-8 w-8 translate-y-4 rounded'
                           height={32}
-                          src='/logo.png'
+                          src='/favicon.png'
                           width={32}
                         />
                       </div>
