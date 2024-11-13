@@ -57,6 +57,12 @@ import {
   PiggyBank,
   Languages,
   TrendingDown,
+  ArrowUp,
+  ArrowUpRight,
+  Store,
+  CircleDollarSign,
+  ArrowBigDown,
+  Send,
 } from 'lucide-react';
 import { forwardRef } from 'react';
 import { cn } from '../../lib/utils';
@@ -136,6 +142,12 @@ const VerticalEllipsis: LucideIcon = forwardRef((props: LucideProps, ref) => (
 export type Icon = LucideIcon;
 
 export const Icons = {
+  Send,
+  ArrowBigDown,
+  CircleDollarSign,
+  Store,
+  ArrowUpRight,
+  ArrowUp,
   TrendingDown,
   logo: Oneflow,
   close: X,
