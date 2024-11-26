@@ -28,6 +28,16 @@ const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
                   {dictionary.landing.cta}
                   <Icons.ChevronRight />
                 </Link>
+                <Link
+                  className={cn(
+                    buttonVariants({ size: 'lg', variant: 'outline' }),
+                    'bg-background',
+                  )}
+                  href='https://one-flow-ai.vercel.app/chat'
+                >
+                  Try OneFlow AI?
+                  <Icons.ChevronRight />
+                </Link>
                 <div className='flex gap-1'>
                   <LanguageToggle />
                   <ThemeToggle />

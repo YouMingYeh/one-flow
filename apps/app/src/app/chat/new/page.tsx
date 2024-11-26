@@ -169,7 +169,7 @@ export default function NewPage({ searchParams: { query } }: NewPageProps) {
                     {m.role === 'user' ? null : (
                       <div className='flex-shrink-0'>
                         <Image
-                          alt='Adastra'
+                          alt='OneFlowAI'
                           className='h-8 w-8 translate-y-4 rounded'
                           height={32}
                           src='/favicon.png'
