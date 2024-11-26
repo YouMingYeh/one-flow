@@ -1,9 +1,10 @@
-import WordRotate from 'ui/src/components/ui/word-rotate';
+import Compare from './compare';
 import QueryInput from './query-input';
+import Image from 'next/image';
 
 export default function Landing() {
   return (
-    <main className='bg-muted relative flex h-screen w-full max-w-xl flex-1 md:max-w-none md:overflow-hidden'>
+    <main className='bg-muted relative flex h-screen w-full max-w-xl flex-1 overflow-auto md:max-w-none'>
       {/* <Suspense>
         <AnimatedGridPattern
           numSquares={30}
@@ -33,7 +34,19 @@ export default function Landing() {
         >
           <ArrowDown className="h-8 w-8 animate-pulse" />
         </Link> */}
-        <WordRotate
+        <Image
+          alt='logo'
+          className='mx-auto h-16 w-16 rounded'
+          height={800}
+          src='/favicon.png'
+          width={800}
+        />
+
+        <h1 className='my-4 text-center text-4xl font-bold'>OneFlow AI</h1>
+        <h2 className='mb-4 text-center text-2xl font-bold'>
+          只为跨境电商打造的 ChatGPT
+        </h2>
+        {/* <WordRotate
           className='mb-12 mt-[784px] text-center text-4xl font-bold md:mt-0'
           words={[
             '跨境电商平台比较与选择指南',
@@ -57,11 +70,12 @@ export default function Landing() {
             '跨境电商的环保与可持续发展策略',
             '成功跨境电商卖家的经验分享与案例分析',
           ]}
-        />
+        /> */}
 
         <div className='' id='query-input'>
           <QueryInput />
         </div>
+        <Compare />
       </div>
     </main>
   );

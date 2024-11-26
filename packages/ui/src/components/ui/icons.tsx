@@ -63,6 +63,13 @@ import {
   CircleDollarSign,
   ArrowBigDown,
   Send,
+  Target,
+  Brain,
+  Fingerprint,
+  Bot,
+  Clock,
+  Cpu,
+  Zap,
 } from 'lucide-react';
 import { forwardRef } from 'react';
 import { cn } from '../../lib/utils';
@@ -142,6 +149,13 @@ const VerticalEllipsis: LucideIcon = forwardRef((props: LucideProps, ref) => (
 export type Icon = LucideIcon;
 
 export const Icons = {
+  Zap,
+  Cpu,
+  Clock,
+  Bot,
+  Fingerprint,
+  Brain,
+  Target,
   Send,
   ArrowBigDown,
   CircleDollarSign,

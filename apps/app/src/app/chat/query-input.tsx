@@ -14,33 +14,33 @@ const buttonData = [
   },
   {
     icon: Icons.Store,
-    text: '各大跨境电商平台的优缺点是什么？',
+    text: '有哪些收款机构在做活动？',
     iconClass: 'text-purple-500',
-    url: '/chat/new?query=各大跨境电商平台的优缺点是什么？',
+    url: '/chat/new?query=有哪些收款机构在做活动？',
   },
   {
     icon: Icons.Store,
-    text: '如何选择适合我产品的跨境电商平台？',
+    text: '哪个平台最适合做巴西？',
     iconClass: 'text-red-500',
-    url: '/chat/new?query=如何选择适合我产品的跨境电商平台？',
+    url: '/chat/new?query=哪个平台最适合做巴西？',
   },
   {
     icon: Icons.CircleDollarSign,
-    text: '有哪些可靠的国际支付服务提供商？',
+    text: '谁能收 GBP？',
     iconClass: 'text-sky-500',
-    url: '/chat/new?query=有哪些可靠的国际支付服务提供商？',
+    url: '/chat/new?query=谁能收 GBP？',
   },
   {
     icon: Icons.CircleDollarSign,
-    text: '选择国际支付服务时应考虑哪些因素？',
+    text: '做独立站还是平台？',
     iconClass: 'text-blue-500',
-    url: '/chat/new?query=选择国际支付服务时应考虑哪些因素？',
+    url: '/chat/new?query=做独立站还是平台？',
   },
   {
     icon: Icons.CircleDollarSign,
-    text: '跨境电商如何处理各国的税务问题？',
+    text: 'PingPong 比连连强在哪里？',
     iconClass: 'text-yellow-500',
-    url: '/chat/new?query=跨境电商如何处理各国的税务问题？',
+    url: '/chat/new?query=PingPong 比连连强在哪里？',
   },
 ];
 
