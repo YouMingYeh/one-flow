@@ -70,6 +70,9 @@ import {
   Clock,
   Cpu,
   Zap,
+  Wrench,
+  Database,
+  TerminalSquare,
 } from 'lucide-react';
 import { forwardRef } from 'react';
 import { cn } from '../../lib/utils';
@@ -149,6 +152,9 @@ const VerticalEllipsis: LucideIcon = forwardRef((props: LucideProps, ref) => (
 export type Icon = LucideIcon;
 
 export const Icons = {
+  Wrench,
+  Database,
+  TerminalSquare,
   Zap,
   Cpu,
   Clock,

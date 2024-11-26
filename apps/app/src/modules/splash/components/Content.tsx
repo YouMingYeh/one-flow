@@ -200,7 +200,7 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
         </p>
         <div className='mt-8 grid w-full grid-cols-1 place-content-center gap-6 pb-16'>
           <h2 className='px-4 text-3xl font-semibold leading-none tracking-tight'>
-            {dictionary.landing.content.solution2.title}
+            OneFlow 收款
           </h2>
           <h3 className='text-muted-foreground text-xl'>
             {dictionary.landing.content.solution2.description}
@@ -211,6 +211,31 @@ export default function Content({ dictionary }: { dictionary: Dictionary }) {
             className='flex md:hidden'
             features={dictionary.landing.content.solution2.features}
           />
+        </div>
+        <div className='mt-8 grid w-full grid-cols-1 place-content-center gap-6 pb-16'>
+          <h2 className='px-4 text-3xl font-semibold leading-none tracking-tight'>
+            OneFlow AI 助理
+          </h2>
+          <h3 className='text-muted-foreground text-xl'>
+            最了解跨境电商的 AI 助理
+          </h3>
+          <div className='container grid w-full grid-cols-3 gap-6'>
+            <div className='bg-background flex flex-col items-center justify-center gap-4 rounded border p-4 shadow'>
+              <Icons.Wrench />
+              <h3 className='text-xl'>工具</h3>
+              <p>专为跨境电商打造的自动化工具</p>
+            </div>
+            <div className='bg-background flex flex-col items-center justify-center gap-4 rounded border p-4 shadow'>
+              <Icons.Database />
+              <h3 className='text-xl'>数据库</h3>
+              <p>专为模型搜集的数据库</p>
+            </div>
+            <div className='bg-background flex flex-col items-center justify-center gap-4 rounded border p-4 shadow'>
+              <Icons.TerminalSquare />
+              <h3 className='text-xl'>提示词工程</h3>
+              <p>专家调整的提示词工程</p>
+            </div>
+          </div>
         </div>
       </div>
       <div className='mt-32 flex flex-col items-center justify-center gap-4 px-8'>

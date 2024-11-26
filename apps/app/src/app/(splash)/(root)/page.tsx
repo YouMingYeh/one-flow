@@ -35,7 +35,7 @@ const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
                   )}
                   href='https://one-flow-ai.vercel.app/chat'
                 >
-                  Try OneFlow AI?
+                  OneFlow AI 助理
                   <Icons.ChevronRight />
                 </Link>
                 <div className='flex gap-1'>
