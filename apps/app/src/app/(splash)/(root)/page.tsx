@@ -21,23 +21,25 @@ const Page = ({ searchParams }: { searchParams: { lang: string } }) => {
             <Subheader dictionary={dictionary} />
             <Suspense fallback={null}>
               <div className='relative mt-4 flex flex-col items-center justify-center gap-4'>
-                <Link
-                  className={cn(buttonVariants({ size: 'lg' }))}
-                  href='/auth/login'
-                >
-                  {dictionary.landing.cta}
-                  <Icons.ChevronRight />
-                </Link>
-                <Link
-                  className={cn(
-                    buttonVariants({ size: 'lg', variant: 'outline' }),
-                    'bg-background',
-                  )}
-                  href='https://one-flow-ai.vercel.app/chat'
-                >
-                  OneFlow AI 助理
-                  <Icons.ChevronRight />
-                </Link>
+                <div className='space-x-4 space-y-2'>
+                  <Link
+                    className={cn(buttonVariants({ size: 'lg' }), 'm-auto')}
+                    href='/auth/login'
+                  >
+                    {dictionary.landing.cta}
+                    <Icons.ChevronRight />
+                  </Link>
+                  <Link
+                    className={cn(
+                      buttonVariants({ size: 'lg', variant: 'outline' }),
+                      'bg-background m-auto',
+                    )}
+                    href='https://one-flow-ai.vercel.app/chat'
+                  >
+                    OneFlow AI 助理
+                    <Icons.ChevronRight />
+                  </Link>
+                </div>
                 <div className='flex gap-1'>
                   <LanguageToggle />
                   <ThemeToggle />
