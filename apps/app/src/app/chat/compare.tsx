@@ -5,10 +5,10 @@ export default function Compare() {
   return (
     <div className='overflow-auto'>
       <div className='container mx-auto max-w-7xl px-4 py-16'>
-        <h2 className='text-2xl font-bold tracking-tight'>
-          我们的 ChatGPT 更...
-        </h2>
         <div className='grid gap-12 lg:grid-cols-2'>
+          <h2 className='text-2xl font-bold tracking-tight'>
+            我们的 ChatGPT 更...
+          </h2>
           {/* Left Column */}
           <div className='space-y-8'>
             <div className='space-y-4'>
@@ -61,6 +61,9 @@ export default function Compare() {
             </div>
           </div>
 
+          <h2 className='text-2xl font-bold tracking-tight'>
+            我们的 OneFlow 收款
+          </h2>
           {/* Right Column */}
           <div className='space-y-8'>
             <div className='space-y-4'>
