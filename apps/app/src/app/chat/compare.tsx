@@ -1,16 +1,17 @@
-import { Card, CardContent, Icons } from 'ui';
+import Link from 'next/link';
+import { Button, Card, CardContent, Icons } from 'ui';
 
 export default function Compare() {
   return (
     <div className='overflow-auto'>
       <div className='container mx-auto max-w-7xl px-4 py-16'>
+        <h2 className='text-2xl font-bold tracking-tight'>
+          我们的 ChatGPT 更...
+        </h2>
         <div className='grid gap-12 lg:grid-cols-2'>
           {/* Left Column */}
           <div className='space-y-8'>
             <div className='space-y-4'>
-              <h2 className='text-2xl font-bold tracking-tight'>
-                我们的 ChatGPT 更...
-              </h2>
               <div className='grid gap-4'>
                 <Card>
                   <CardContent className='flex items-start gap-4 p-3'>
@@ -63,9 +64,6 @@ export default function Compare() {
           {/* Right Column */}
           <div className='space-y-8'>
             <div className='space-y-4'>
-              <h2 className='text-2xl font-bold tracking-tight'>
-                试用我们的 OneFlow MVP
-              </h2>
               <div className='grid gap-4'>
                 <Card>
                   <CardContent className='flex items-start gap-4 p-3'>
@@ -117,6 +115,12 @@ export default function Compare() {
             </div>
           </div>
         </div>
+        <Link href='/auth/login'>
+          <Button className='mt-8' size='lg'>
+            或试用我们的 OneFlow 收款
+            <Icons.ChevronRight />
+          </Button>
+        </Link>
       </div>
     </div>
   );
