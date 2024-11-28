@@ -64,7 +64,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
     <body className={inter.className}>
       <ThemeProvider
         attribute='class'
-        defaultTheme='system'
+        defaultTheme='light'
         disableTransitionOnChange
         enableSystem
         storageKey='theme'

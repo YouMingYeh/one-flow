@@ -12,12 +12,12 @@ const buttonData = [
     iconClass: 'text-yellow-500',
     url: '/chat/new?query=你是？',
   },
-  {
-    icon: Icons.Store,
-    text: '有哪些收款机构在做活动？',
-    iconClass: 'text-purple-500',
-    url: '/chat/new?query=有哪些收款机构在做活动？',
-  },
+  // {
+  //   icon: Icons.Store,
+  //   text: '有哪些收款机构在做活动？',
+  //   iconClass: 'text-purple-500',
+  //   url: '/chat/new?query=有哪些收款机构在做活动？',
+  // },
   {
     icon: Icons.Store,
     text: '哪个平台最适合做巴西？',
