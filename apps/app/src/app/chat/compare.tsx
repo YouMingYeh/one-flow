@@ -115,7 +115,7 @@ export default function Compare() {
             </div>
           </div>
         </div>
-        <Link href='/auth/login'>
+        <Link href='https://one-flow.cn'>
           <Button className='mt-8' size='lg'>
             或试用我们的 OneFlow 收款
             <Icons.ChevronRight />
